@@ -1,9 +1,9 @@
 /**====================================================================================
- * Archivo    : asdaf.java » Paquete: PruebaReloj » Proyecto: Biblioteca_Alejandrina
- * Autor      : Kevin Hernández Rostrán
- * Carné      : 2014092195
- * Curso      : Programación Orientada a Objetos - Instituto Tecnológico de Costa Rica
- * Descripcion:
+ * Archivo      : Reloj.java » Paquete: PruebaReloj » Proyecto: Biblioteca_Alejandrina
+ * Autores      : Kevin Hernández Rostrán, Jasson Moya Álvarez, 
+ *				  Julián Méndez Oconitrillo, José Aguilar Quesada.
+ * Curso        : Programación Orientada a Objetos - Instituto Tecnológico de Costa Rica
+ * Descripcion  : Control de préstamo de artículos para una Biblioteca
  **==================================================================================== 
  */
 

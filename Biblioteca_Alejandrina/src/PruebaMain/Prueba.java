@@ -1,3 +1,12 @@
+/**====================================================================================
+ * Archivo      : Prueba.java » Paquete: PruebaMain » Proyecto: Biblioteca Alejandrina
+ * Autores      : Kevin Hernández Rostrán, Jasson Moya Álvarez, 
+ *				  Julián Méndez Oconitrillo, José Aguilar Quesada.
+ * Curso        : Programación Orientada a Objetos - Instituto Tecnológico de Costa Rica
+ * Descripcion  : Control de préstamo de artículos para una Biblioteca
+ **==================================================================================== 
+ */
+
 package PruebaMain;
 
 import java.awt.Container;
