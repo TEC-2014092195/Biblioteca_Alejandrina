@@ -10,6 +10,7 @@
 package RegistroArticulo;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
@@ -21,24 +22,34 @@ import java.awt.event.ActionListener;
 
 
 import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.filechooser.*;
 
 
-public class claseRegistroArticulos extends JFrame implements ActionListener{
-	JLabel lblTipo,lblLogo;
+public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListener{
+	JLabel lblTipo,lblLogo,lblDescripcion;//,lblImagenArticulo;
+	JButton btnImagenArticulo;
+	
 	JLabel[] lblDatos = new JLabel[5];
 	JTextField txtTitulo,txtAutor,txtEditorial,txtEdicion;
 	JTextField[] txtDatos =new JTextField[5];
+	JTextArea txtaDescripcion;
 	JPanel panelGrid,panelContenedor;
 	String[] strTipo;
 	String[] strLibro = { "Título de obra", "Autor(es)", "Editorial", "Edición", "Datos5" };
@@ -63,6 +74,8 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		
 		Color colorlbl = new Color(80,30,26);
 		
+		btnImagenArticulo = new JButton("<html><p align=\"center\">"+"Imagen de Articulo </br> -Elegir Imagen-"+"</p></html>");
+		btnImagenArticulo.setForeground(colorlbl);
 		
 		lblDatos[0] = new JLabel("Titulo de obra");
 		lblDatos[0].setForeground(colorlbl);
@@ -82,11 +95,16 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		lblTipo = new JLabel("Tipo Articulo");
 		lblTipo.setForeground(colorlbl);
 		
+		lblDescripcion = new JLabel("Descripción");
+		lblDescripcion.setForeground(colorlbl);
+		
 		txtDatos[0] = new JTextField(20);
 		txtDatos[1] = new JTextField(20);
 		txtDatos[2] = new JTextField(20);
 		txtDatos[3] = new JTextField(20);
 		txtDatos[4] = new JTextField(20);
+		
+		txtaDescripcion = new JTextArea(5,20);	
 		
 		strTipo = new String[] { "Libro","Revista","Película","Serie" };
 		cbTipo = new JComboBox(strTipo);
@@ -128,6 +146,10 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		
 		gbc_1.gridx=0;
 		gbc_1.gridy=5;
+		panelGrid.add(lblDescripcion,gbc_1);
+		
+		gbc_1.gridx=0;
+		gbc_1.gridy=6;
 		panelGrid.add(lblTipo,gbc_1);
 		
 		
@@ -160,28 +182,40 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		
 		gbc_1.gridx=1;
 		gbc_1.gridy=5;
+		panelGrid.add(txtaDescripcion,gbc_1);
+		
+		gbc_1.gridx=1;
+		gbc_1.gridy=6;
 		cbTipo.setBackground(Color.WHITE);
 		cbTipo.addActionListener(this);
 		panelGrid.add(cbTipo,gbc_1);
 		
+		gbc_1.gridx=2;
+		gbc_1.gridy=0;
+		gbc_1.gridheight=7;
+		gbc_1.insets = new Insets(0,30,0,30);
+		
+		
+		btnImagenArticulo.setOpaque(false);
+		btnImagenArticulo.setBorderPainted(false);
+		btnImagenArticulo.setBackground(Color.WHITE);
+		btnImagenArticulo.setFocusable(false);
+		btnImagenArticulo.addActionListener(this);
+		btnImagenArticulo.setPreferredSize(new Dimension(180,150));
+		panelGrid.add(btnImagenArticulo,gbc_1);
 		
 		//Fin Agregar campos
 		panelGrid.setBackground(new Color(233,75,62));
 		
-		BufferedImage bi = null;
-		try {
-			bi = ImageIO.read(getClass().getResource("/recursos/BALogo.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		
 		
-		BufferedImage resizedImage=resize(bi,150,100);
-		ImageIcon img = new ImageIcon(getClass().getResource("/recursos/BALogo.png"));
+		
+		ImageIcon imgLogo = new ImageIcon(getClass().getResource("/recursos/BALogo.png"));
 		lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon(resizedImage));
+		lblLogo.setIcon(imgLogo);
 		gbc_1.gridx=0;
 		gbc_1.gridy=0;
+		gbc_1.gridheight=1;
 		gbc_1.insets = new Insets(32,-5,50,0); 
 		panelContenedor.add(lblLogo,gbc_1);
 		
@@ -205,7 +239,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 	
 	
 	public static void main(String[] args){
-		claseRegistroArticulos n = new claseRegistroArticulos();
+		CopyOfclaseRegistroArticulos n = new CopyOfclaseRegistroArticulos();
 		n.crearObjetos();
 	}
 	
@@ -276,11 +310,52 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 			panelContenedor.revalidate();
 			panelContenedor.repaint();
 			
+		}else if(e.getSource() == btnImagenArticulo){
+			JFileChooser fileChooser = new JFileChooser();
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Images", "jpg", "png", "gif", "bmp");
+			fileChooser.setFileFilter(filter);
+			
+	        int returnValue = fileChooser.showOpenDialog(null);
+	        if (returnValue == JFileChooser.APPROVE_OPTION) {
+	        	File selectedFile = fileChooser.getSelectedFile();
+	        	System.out.println(selectedFile.getPath());
+	        	String path = selectedFile.getPath();
+	        	
+	        	
+	        	BufferedImage imgArticulo = null;
+				try {
+					imgArticulo = getImagenRedimensionada(path);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+	  			btnImagenArticulo.setIcon(new ImageIcon(imgArticulo));
+	  			
+	  			btnImagenArticulo.setPreferredSize(new Dimension(imgArticulo.getWidth(), imgArticulo.getHeight()));
+	  			btnImagenArticulo.setText("");
+	        }
+	        panelContenedor.revalidate();
+			panelContenedor.repaint();
 		}
 		
 	}
 	
-	public static BufferedImage resize(BufferedImage src, int width, int height) {
+	
+	
+	
+	public static BufferedImage getImagenRedimensionada(String src) throws IOException{
+		 
+		
+		BufferedImage bi = ImageIO.read(new File(src));
+		
+		BufferedImage resizedImage=null;
+		
+		resizedImage = resize(bi,180,150);
+		
+		
+		return resizedImage;
+	}
+	
+	public static BufferedImage resize(BufferedImage src, int width, int height) throws IOException {
 		int newWidth;
         int newHeight;
         
@@ -294,30 +369,25 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
         newWidth = Float.valueOf(src.getWidth() * scale).intValue();
         newHeight = Float.valueOf(src.getHeight() * scale).intValue();
 		
+	    BufferedImage bi = scale(src, newWidth, newHeight);
 		
-		
-	    BufferedImage bi = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
-	    Graphics2D g2d = (Graphics2D) bi.createGraphics();
-	    
-	    
-	    
-	    
-	    g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY));
-	    g2d.drawImage(bi, 0, 0, width, height, null);
-	    g2d.dispose();
 	    return bi;
 	}
 	
 	public static BufferedImage scale(BufferedImage src, int width, int height) throws IOException {
-	    BufferedImage dest = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+	    BufferedImage dest = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
 	    Graphics2D g = dest.createGraphics();
 	    AffineTransform at = AffineTransform.getScaleInstance(
 	            (double)width/src.getWidth(),
 	            (double)height/src.getHeight());
-	    g.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY));
-	    //g.drawImage(src,at);        
+	    g.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY)); //RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY
+	    //RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC
+	    g.drawImage(src,at,null);       
+	    
 	    return dest;
 	}
+	
+	
 	
 
 }

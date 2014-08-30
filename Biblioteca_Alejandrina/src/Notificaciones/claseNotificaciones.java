@@ -71,7 +71,7 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 		gbc2.anchor = GridBagConstraints.LINE_END;
 		gbc2.insets = new Insets(20,0,5,15);
 		
-		ImageIcon imagen = new ImageIcon("Ejemplo2.jpg"); 
+		ImageIcon imagen = new ImageIcon(getClass().getResource("/recursos/Ejemplo2.jpg")); //getClass().getResource("/recursos/Ejemplo2.jpg")
 		
 		lblImagenLibro = new JLabel(imagen);
 		lblImagenLibro.setPreferredSize( new Dimension( imagen.getIconWidth() , imagen.getIconHeight() ) );
