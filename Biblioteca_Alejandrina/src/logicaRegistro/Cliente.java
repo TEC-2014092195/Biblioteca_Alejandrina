@@ -1,6 +1,8 @@
 package logicaRegistro;
 
-public class RegistroClientes extends Registro{
+import java.util.*;
+
+public class Cliente extends Registro{
 	
 	/*
 	 * Esta clase recibe los parámetros necesarios para la creación de 
@@ -11,13 +13,15 @@ public class RegistroClientes extends Registro{
 	 */
 	
 	//Constructor para clientes nuevos. 
-	public RegistroClientes(String nNombre,
+	public Cliente(String nNombre,
 							String nApellido1,
 							String nApellido2,
 							String nTelefono,
 							String nCorreo,
-							String nCategoria) 
+							String nCategoria)
+							
 	{	cantClientes++;
+		setPrestamos(new ArrayList<Articulo>());
 		setIdentificadorCliente(cantClientes);
 		setNombre(nNombre);
 		setApellido1(nApellido1);
@@ -42,17 +46,19 @@ public class RegistroClientes extends Registro{
 	public void setCorreo(String correo) {this.correo = correo;}
 	public String getCategoria() {return categoria;}	
 	public void setCategoria(String categoria) {this.categoria = categoria;}
+	public ArrayList<Articulo> getPrestamos() {return prestamos;}
+	public void setPrestamos(ArrayList<Articulo> prestamos) {this.prestamos = prestamos;}
 	//------------------------------------------------------------------------//
-	
 	public String presentarCategoria(){
-		if ("1".equals(getCategoria())){
-			return "Estudiante";}
-		else if ("2".equals(getCategoria())){
-			return "Colega";}
-		else if ("3".equals(getCategoria())){
-			return "Familiar";}
-		else {
-			return "Categoría Desconocida";}}
+		if ("1".equals(getCategoria())){return "Estudiante";}
+		else if ("2".equals(getCategoria())){return "Colega";}
+		else if ("3".equals(getCategoria())){return "Familiar";}
+		else {return "Categoría Desconocida";}}
+	
+	public void prestar (Articulo prestamo){
+		prestamo.setPrestado(true);
+		prestamos.add(prestamo);
+	}
 	
 	public String toString (){
 		String msj = "Cliente "+getIdentificadorCliente()+":\n";
@@ -60,7 +66,12 @@ public class RegistroClientes extends Registro{
 		msj += "Teléfono: "+ getTelefono()+"\n";
 		msj += "Correo: "+getCorreo()+"\n";
 		msj += "Categoria: "+presentarCategoria()+"\n";
+		if (prestamos.size() != 0){
+			msj += "   Objetos prestados: \n";
+			for (Articulo prestado : prestamos) {
+				msj += prestado;}}
 		return msj;
+	
 	}
 }
 

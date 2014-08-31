@@ -1,6 +1,7 @@
 package logicaRegistro;
 
-public class RegistroObjetos extends Registro {
+
+public class Articulo extends Registro {
 	/*
 	 * Esta clase se encarga de la creación de objetos en memoria para 
 	 * préstamos en la biblioteca. 
@@ -9,13 +10,14 @@ public class RegistroObjetos extends Registro {
 	 */
 	
 	//Constructor para objetos
-	public RegistroObjetos( String nTipo,
+	public Articulo( String nTipo,
 			   				String nTitulo,
 			   				String nAutor,
 			   				String nDato1,
 			   				String nDato2,
 			   				String nDirImg,
 			   				String nCalif) 
+			   				
 	{	cantObjetos++;
 		setIdentificadorObjeto(cantObjetos);
 		setTipo(nTipo);
@@ -24,7 +26,8 @@ public class RegistroObjetos extends Registro {
 		setDato1(nDato1);
 		setDato2(nDato2);
 		setDirImg(nDirImg);
-		setCalif (nCalif);	}
+		setCalif (nCalif);	
+		setPrestado(false);	}
 	
 	
 	//Getters y Setters-----------------------------------------------------------//
@@ -45,16 +48,18 @@ public class RegistroObjetos extends Registro {
 	public void setDirImg(String dirImg) {this.dirImg = dirImg;}
 	public String getCalif() {return calif;}
 	public void setCalif(String calif) {this.calif = calif;}
+	public boolean isPrestado() {return prestado;}
+	public void setPrestado(boolean prestado) {this.prestado = prestado;}
 	//------------------------------------------------------------------------------//
 	
 	public String toString (){
-		String msj = "Objeto a prestar "+getIdentificadorObjeto()+":\n";
-		msj += "Tipo: " + getTipo()+"\n";
-		msj += "Titulo: "+getTitulo()+"\n";
-		msj += "Autor: "+getAutor()+"\n";
-		msj += "DATO 1: "+ getDato1()+"\n";
-		msj += "DATO 2: "+ getDato2()+"\n";
-		msj += "Calificacion: "+getCalif()+"\n";
+		String msj = "    Objeto "+getIdentificadorObjeto()+":\n";
+		msj += "\tTipo: " + getTipo()+"\n";
+		msj += "\tTitulo: "+getTitulo()+"\n";
+		msj += "\tAutor: "+getAutor()+"\n";
+		msj += "\tDATO 1: "+ getDato1()+"\n";
+		msj += "\tDATO 2: "+ getDato2()+"\n";
+		msj += "\tCalificacion: "+getCalif()+"\n";
 		return msj;
 	}
 }

@@ -3,18 +3,13 @@ package logicaRegistro;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.util.ArrayList;
+
 
 public class Registro {
 	
-	public static ArrayList<RegistroClientes> clientesRegistrados = new ArrayList<RegistroClientes>();
-	public static ArrayList<RegistroObjetos> objetosRegistrados = new ArrayList<RegistroObjetos>();
-	
-	static BufferedReader in;
-	static PrintStream out;
+	public static ArrayList<Cliente> clientesRegistrados = new ArrayList<Cliente>();
+	public static ArrayList<Articulo> articulosRegistrados = new ArrayList<Articulo>();
 	
 	//Variables de la clase Clientes. 
 		protected static int cantClientes = 0;
@@ -25,6 +20,8 @@ public class Registro {
 		protected String telefono = null;
 		protected String correo = null; 
 		protected String categoria = null;
+		protected ArrayList<Articulo> prestamos;
+		
 	//Variables de la clase Objetos.
 		protected static int cantObjetos = 0;
 		protected int identificadorObjeto = 0;
@@ -35,6 +32,7 @@ public class Registro {
 		protected String dato2 = null;
 		protected String dirImg = null;
 		protected String calif = null;
+		protected boolean prestado = false;
 		
 	public static void leerTxt(String dirFile) {
 		File archivo = null;
@@ -51,18 +49,15 @@ public class Registro {
 				entrada = linea;
 		    	novoEntrada = entrada.split(";");
 		    	if ("Cliente".equals(novoEntrada[0])){
-		    		//out.println(novoEntrada[0]=="Cliente");
-		    		clientesRegistrados.add(new RegistroClientes(novoEntrada[1],
+		    		clientesRegistrados.add(new Cliente(novoEntrada[1],
 		    									novoEntrada[2], novoEntrada[3], 
 		    									novoEntrada[4], novoEntrada[5], 
-		    									novoEntrada[6]));
-		    		}
+		    									novoEntrada[6]));}
 		    	else {
-		    		objetosRegistrados.add(new RegistroObjetos(novoEntrada[0],
+		    		articulosRegistrados.add(new Articulo(novoEntrada[0],
 		    								   novoEntrada[1],novoEntrada[2],
 		    								   novoEntrada[3],novoEntrada[4],
-		    								   novoEntrada[5],novoEntrada[6]));} 
-		    								   }}
+		    								   novoEntrada[5],novoEntrada[6]));}}}
 		catch(Exception e){
 			e.printStackTrace();}
 		finally{
@@ -71,22 +66,6 @@ public class Registro {
 					fr.close();}}
 			catch (Exception e2){ 
 				e2.printStackTrace();}}}
-	
-	public static void main (String[] args) throws IOException {
-		in = new BufferedReader (new InputStreamReader(System.in));
-		out = System.out;
-		
-		leerTxt("archivo.txt");
-		
-		for (RegistroClientes cliente : clientesRegistrados) {
-			out.println("");
-			out.print(cliente/*.toString()*/); //Fun fact: si llamo que printee la vara automáticamente llama al to String.
-			out.print("");}
-		
-		for (RegistroObjetos objeto : objetosRegistrados) {
-			out.println("");
-			out.print(objeto/*.toString()*/);
-			out.print("");}
-	}
+
 }
 
