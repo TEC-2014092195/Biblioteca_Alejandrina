@@ -44,7 +44,7 @@ import javax.swing.filechooser.*;
 
 public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListener{
 	JLabel lblTipo,lblLogo,lblDescripcion;//,lblImagenArticulo;
-	JButton btnImagenArticulo;
+	JButton btnImagenArticulo,btnGuardar;
 	
 	JLabel[] lblDatos = new JLabel[5];
 	JTextField txtTitulo,txtAutor,txtEditorial,txtEdicion;
@@ -76,6 +76,9 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		
 		btnImagenArticulo = new JButton("<html><p align=\"center\">"+"Imagen de Articulo </br> -Elegir Imagen-"+"</p></html>");
 		btnImagenArticulo.setForeground(colorlbl);
+		
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.setBackground(Color.WHITE);
 		
 		lblDatos[0] = new JLabel("Titulo de obra");
 		lblDatos[0].setForeground(colorlbl);
@@ -152,6 +155,14 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		gbc_1.gridy=6;
 		panelGrid.add(lblTipo,gbc_1);
 		
+		gbc_1.gridx=0;
+		gbc_1.gridy=7;
+		gbc_1.gridwidth=3;
+		gbc_1.anchor= GridBagConstraints.CENTER;
+		gbc_1.insets = new Insets(20,0,5,10);
+		panelGrid.add(btnGuardar,gbc_1);
+		btnGuardar.addActionListener(this);
+		gbc_1.gridwidth=1;
 		
 		//Derecha
 		gbc_1.anchor= GridBagConstraints.CENTER;
@@ -192,7 +203,7 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		
 		gbc_1.gridx=2;
 		gbc_1.gridy=0;
-		gbc_1.gridheight=7;
+		gbc_1.gridheight=8;
 		gbc_1.insets = new Insets(0,30,0,30);
 		
 		
@@ -335,6 +346,8 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 	        }
 	        panelContenedor.revalidate();
 			panelContenedor.repaint();
+		}else if(e.getSource()==btnGuardar){
+			System.out.println("Boton guardar");
 		}
 		
 	}
