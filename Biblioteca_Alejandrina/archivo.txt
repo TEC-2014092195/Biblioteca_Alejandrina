@@ -1,0 +1,5 @@
+Cliente;Kevin;Hernández;Rostrán;22222222;kevin@gmail.com;1;
+Cliente;Jasson;Moya;Álvarez;88888888;jasson@gmail.com;1;
+Libro;Fight Club;Chuck Palahniuk;NORTON;1era;C\\:;5;
+Pelicula;Transformers;Michael Bay;2012;170min;ÑC\\.;1;
+Cliente;Jose Manuel;Aguilar;Quesada;89888888;josemanuel@gmail.com;1;
