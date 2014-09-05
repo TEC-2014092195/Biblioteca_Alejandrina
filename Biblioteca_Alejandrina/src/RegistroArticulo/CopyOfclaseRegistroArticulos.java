@@ -10,6 +10,7 @@
 package RegistroArticulo;
 
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics2D;
@@ -22,7 +23,6 @@ import java.awt.event.ActionListener;
 
 
 import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -38,7 +38,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.filechooser.*;
 
 
@@ -58,15 +57,15 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 	String[] strSerie = { "Nombre", "Temporada", "Año", "Empresa", "Datos5" };
 	
 	JComboBox cbTipo;
-	JFrame frm;
+	JPanel frm;
 	GridBagConstraints gbc_1,gbc_2;
 	
 	
-	public void crearObjetos(){
-		frm = new JFrame();
-		frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frm.setSize(800, 600);
-		frm.setLocationRelativeTo(null);
+	public CopyOfclaseRegistroArticulos(){
+		frm = new JPanel();
+//		frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frm.setSize(800, 600);
+//		frm.setLocationRelativeTo(null);
 		frm.setLayout(new FlowLayout());
 		
 		panelContenedor = new JPanel();
@@ -239,7 +238,7 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		
 		frm.add(panelContenedor);
 		
-		frm.setVisible(true);
+//		frm.setVisible(true);
 		
 		
 		
@@ -248,11 +247,15 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		
 	}
 	
-	
-	public static void main(String[] args){
-		CopyOfclaseRegistroArticulos n = new CopyOfclaseRegistroArticulos();
-		n.crearObjetos();
+	public Container getContenedor(){
+		return frm;
 	}
+	
+	
+//	public static void main(String[] args){
+//		CopyOfclaseRegistroArticulos n = new CopyOfclaseRegistroArticulos();
+//		n.crearObjetos();
+//	}
 	
 	public void datosLibro(){
 		
