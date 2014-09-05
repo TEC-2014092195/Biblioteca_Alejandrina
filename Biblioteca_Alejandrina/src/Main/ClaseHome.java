@@ -144,12 +144,12 @@ public class ClaseHome extends JFrame implements ActionListener{
 		if(e.getSource()==btnSalir){
 			System.exit(0);
 		}else if(e.getSource()==btnRegistroPersonas){
-			System.out.println("Funca");
+			
 			cardlayout.show(panelCards, "RegistroPersonas");
 			ventana.revalidate();
 			ventana.repaint();
 		}else if(e.getSource()==btnRegistroArticulos){
-			System.out.println("Funca");
+			
 			cardlayout.show(panelCards, "RegistroArticulos");
 			ventana.revalidate();
 			ventana.repaint();
@@ -157,8 +157,14 @@ public class ClaseHome extends JFrame implements ActionListener{
 		
 	}
 	
+	
+	
 	public CardLayout getCardLayout(){
 		return cardlayout;
+	}
+	
+	public Container getPanelCards(){
+		return panelCards;
 	}
 	
 	public Container getFrame(){

@@ -40,10 +40,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.filechooser.*;
 
+import Main.ClaseHome;
+
 
 public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListener{
 	JLabel lblTipo,lblLogo,lblDescripcion;//,lblImagenArticulo;
-	JButton btnImagenArticulo,btnGuardar;
+	JButton btnImagenArticulo,btnGuardar,btnAtras;
+	
 	
 	JLabel[] lblDatos = new JLabel[5];
 	JTextField txtTitulo,txtAutor,txtEditorial,txtEdicion;
@@ -62,10 +65,8 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 	
 	
 	public CopyOfclaseRegistroArticulos(){
+		
 		frm = new JPanel();
-//		frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frm.setSize(800, 600);
-//		frm.setLocationRelativeTo(null);
 		frm.setLayout(new FlowLayout());
 		
 		panelContenedor = new JPanel();
@@ -217,16 +218,13 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		//Fin Agregar campos
 		panelGrid.setBackground(new Color(233,75,62));
 		
-		
-		
-		
 		ImageIcon imgLogo = new ImageIcon(getClass().getResource("/recursos/BALogo.png"));
 		lblLogo = new JLabel("");
 		lblLogo.setIcon(imgLogo);
 		gbc_1.gridx=0;
 		gbc_1.gridy=0;
 		gbc_1.gridheight=1;
-		gbc_1.insets = new Insets(32,-5,50,0); 
+		gbc_1.insets = new Insets(32,-5,25,0); 
 		panelContenedor.add(lblLogo,gbc_1);
 		
 		gbc_1.gridx=0;
@@ -234,15 +232,19 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		gbc_1.insets = new Insets(0,0,0,0);
 		panelContenedor.add(panelGrid,gbc_1);
 		
+		gbc_1.gridx=0;
+		gbc_1.gridy=2;
+		gbc_1.anchor = GridBagConstraints.LINE_END;
+		gbc_1.insets = new Insets(25,0,0,0); // Extrenal Pad (top, left, bottom, right)
+		btnAtras = new JButton("Atrás");
+		btnAtras.setBackground(Color.DARK_GRAY);
+		btnAtras.setForeground(Color.WHITE);
+		btnAtras.setBorderPainted(false);
+		btnAtras.addActionListener(this);
+		panelContenedor.add(btnAtras,gbc_1);
 		
 		
 		frm.add(panelContenedor);
-		
-//		frm.setVisible(true);
-		
-		
-		
-		
 		
 		
 	}
@@ -252,10 +254,7 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 	}
 	
 	
-//	public static void main(String[] args){
-//		CopyOfclaseRegistroArticulos n = new CopyOfclaseRegistroArticulos();
-//		n.crearObjetos();
-//	}
+
 	
 	public void datosLibro(){
 		
@@ -352,6 +351,13 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 			panelContenedor.repaint();
 		}else if(e.getSource()==btnGuardar){
 			System.out.println("Boton guardar");
+		}else if(e.getSource()==btnAtras){
+			ClaseHome home = new ClaseHome();
+			
+			home.getCardLayout().show(home.getPanelCards(), "Home");
+			home.getFrame().revalidate();
+			home.getFrame().repaint();
+			
 		}
 		
 	}
