@@ -224,7 +224,7 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		gbc_1.gridx=0;
 		gbc_1.gridy=0;
 		gbc_1.gridheight=1;
-		gbc_1.insets = new Insets(32,-5,25,0); 
+		gbc_1.insets = new Insets(32,-2,25,0); 
 		panelContenedor.add(lblLogo,gbc_1);
 		
 		gbc_1.gridx=0;

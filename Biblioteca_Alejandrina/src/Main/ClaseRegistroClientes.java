@@ -207,11 +207,11 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 gbc2.gridheight=1;
 		 gbc2.gridwidth=GridBagConstraints.RELATIVE;
 		 
-		 gbc2.insets = new Insets(32,-5,130,0); 
+		 gbc2.insets = new Insets(32,-2,130,0); 
 		 ImageIcon img = new ImageIcon(getClass().getResource("/recursos/BALogo.png")); 
-		 lblLogo = new JLabel(img);
-		 lblLogo.setPreferredSize(new Dimension(img.getIconWidth(),img.getIconHeight()));
-		 lblLogo.setSize(img.getIconWidth(), img.getIconHeight());
+		 lblLogo = new JLabel("");
+		 lblLogo.setIcon(img);
+		 
 		 panelGeneral.add(lblLogo,gbc2);
 		 
 		 
@@ -237,8 +237,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 
 		 
 		 
-//		 panelGeneral.setBackground(new Color(24,190,155));
-		 panelGeneral.setBackground(new Color(235,235,235));
+
 		 panelGeneral.add(btnAtras,gbc2);
 		 
 		 panelContenedor.add(panelGeneral);
@@ -251,6 +250,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		return panelContenedor;
 	}
 
+	
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnValidar){
