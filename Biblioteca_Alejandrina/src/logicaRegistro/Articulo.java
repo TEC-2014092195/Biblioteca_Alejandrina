@@ -1,6 +1,10 @@
 package logicaRegistro;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Articulo.
+ */
 public class Articulo extends Registro {
 	/*
 	 * Esta clase se encarga de la creación de objetos en memoria para 
@@ -10,6 +14,17 @@ public class Articulo extends Registro {
 	 */
 	
 	//Constructor para objetos
+	/**
+	 * Instantiates a new articulo.
+	 *
+	 * @param nTipo the n tipo
+	 * @param nTitulo the n titulo
+	 * @param nAutor the n autor
+	 * @param nDato1 the n dato1
+	 * @param nDato2 the n dato2
+	 * @param nDirImg the n dir img
+	 * @param nCalif the n calif
+	 */
 	public Articulo( String nTipo,
 			   				String nTitulo,
 			   				String nAutor,
@@ -52,6 +67,9 @@ public class Articulo extends Registro {
 	public void setPrestado(boolean prestado) {this.prestado = prestado;}
 	//------------------------------------------------------------------------------//
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString (){
 		String msj = "    Objeto "+getIdentificadorObjeto()+":\n";
 		msj += "\tTipo: " + getTipo()+"\n";

@@ -2,6 +2,10 @@ package logicaRegistro;
 
 import java.util.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Cliente.
+ */
 public class Cliente extends Registro{
 	
 	/*
@@ -13,6 +17,16 @@ public class Cliente extends Registro{
 	 */
 	
 	//Constructor para clientes nuevos. 
+	/**
+	 * Instantiates a new cliente.
+	 *
+	 * @param nNombre the n nombre
+	 * @param nApellido1 the n apellido1
+	 * @param nApellido2 the n apellido2
+	 * @param nTelefono the n telefono
+	 * @param nCorreo the n correo
+	 * @param nCategoria the n categoria
+	 */
 	public Cliente(String nNombre,
 							String nApellido1,
 							String nApellido2,
@@ -49,17 +63,30 @@ public class Cliente extends Registro{
 	public ArrayList<Articulo> getPrestamos() {return prestamos;}
 	public void setPrestamos(ArrayList<Articulo> prestamos) {this.prestamos = prestamos;}
 	//------------------------------------------------------------------------//
+	/**
+	 * Presentar categoria.
+	 *
+	 * @return the string
+	 */
 	public String presentarCategoria(){
 		if ("1".equals(getCategoria())){return "Estudiante";}
 		else if ("2".equals(getCategoria())){return "Colega";}
 		else if ("3".equals(getCategoria())){return "Familiar";}
 		else {return "Categoría Desconocida";}}
 	
+	/**
+	 * Prestar.
+	 *
+	 * @param prestamo the prestamo
+	 */
 	public void prestar (Articulo prestamo){
 		prestamo.setPrestado(true);
 		prestamos.add(prestamo);
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString (){
 		String msj = "Cliente "+getIdentificadorCliente()+":\n";
 		msj += "Nombre: " + getNombre()+" "+getApellido1()+" "+getApellido2()+"\n";

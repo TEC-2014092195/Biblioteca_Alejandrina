@@ -6,34 +6,82 @@ import java.io.FileReader;
 import java.util.ArrayList;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Registro.
+ */
 public class Registro {
 	
+	/** The clientes registrados. */
 	public static ArrayList<Cliente> clientesRegistrados = new ArrayList<Cliente>();
+	
+	/** The articulos registrados. */
 	public static ArrayList<Articulo> articulosRegistrados = new ArrayList<Articulo>();
 	
 	//Variables de la clase Clientes. 
-		protected static int cantClientes = 0;
+		/** The cant clientes. */
+	protected static int cantClientes = 0;
+		
+		/** The identificador cliente. */
 		protected int identificadorCliente = 0;
+		
+		/** The nombre. */
 		protected String nombre = null;
+		
+		/** The apellido1. */
 		protected String apellido1 = null;
+		
+		/** The apellido2. */
 		protected String apellido2 = null;
+		
+		/** The telefono. */
 		protected String telefono = null;
+		
+		/** The correo. */
 		protected String correo = null; 
+		
+		/** The categoria. */
 		protected String categoria = null;
+		
+		/** The prestamos. */
 		protected ArrayList<Articulo> prestamos;
 		
 	//Variables de la clase Objetos.
-		protected static int cantObjetos = 0;
+		/** The cant objetos. */
+	protected static int cantObjetos = 0;
+		
+		/** The identificador objeto. */
 		protected int identificadorObjeto = 0;
+		
+		/** The tipo. */
 		protected String tipo = null;
+		
+		/** The titulo. */
 		protected String titulo = null;
+		
+		/** The autor. */
 		protected String autor = null;
+		
+		/** The dato1. */
 		protected String dato1 = null;
+		
+		/** The dato2. */
 		protected String dato2 = null;
+		
+		/** The dir img. */
 		protected String dirImg = null;
+		
+		/** The calif. */
 		protected String calif = null;
+		
+		/** The prestado. */
 		protected boolean prestado = false;
 		
+	/**
+	 * Leer txt.
+	 *
+	 * @param dirFile the dir file
+	 */
 	public static void leerTxt(String dirFile) {
 		File archivo = null;
 		FileReader fr = null;

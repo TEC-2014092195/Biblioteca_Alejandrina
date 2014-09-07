@@ -28,19 +28,42 @@ import javax.swing.*;
 
 import RegistroArticulo.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClaseHome.
+ */
 public class ClaseHome extends JFrame implements ActionListener{
 	
+	/** The ventana. */
 	static JFrame ventana = new JFrame();
+	
+	/** The grid. */
 	static GridBagConstraints grid = new GridBagConstraints(); 
+	
+	/** The panel cards. */
 	static JPanel panelCards = new JPanel();
+	
+	/** The panel contenedor. */
 	static JPanel panelContenedor = new JPanel();
 	
+	/** The lbl background. */
 	static JLabel lblBackground;
+	
+	/** The btn salir. */
 	static JButton btnRegistroPersonas,btnRegistroArticulos,btnConsultas,btnSalir;
+	
+	/** The cardlayout. */
 	static CardLayout cardlayout;
+	
+	/** The panel home. */
 	static JPanel panelHome = new JPanel();
+	
+	/** The content pane. */
 	static Container contentPane;
 	
+	/**
+	 * Crear widgets.
+	 */
 	public void crearWidgets(){
 
 		
@@ -149,6 +172,9 @@ public class ClaseHome extends JFrame implements ActionListener{
 	}
 	
 
+	/**
+	 * Crear frame.
+	 */
 	public void crearFrame(){
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -176,6 +202,9 @@ public class ClaseHome extends JFrame implements ActionListener{
 
 	
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnSalir){
 			System.exit(0);
