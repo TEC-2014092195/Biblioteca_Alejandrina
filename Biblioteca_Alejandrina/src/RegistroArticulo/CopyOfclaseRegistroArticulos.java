@@ -335,7 +335,7 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 	        	System.out.println(selectedFile.getPath());
 	        	String path = selectedFile.getPath();
 	        	
-	        	System.out.print(this.getParent());
+	        	
 	        	BufferedImage imgArticulo = null;
 				try {
 					imgArticulo = getImagenRedimensionada(path);

@@ -69,7 +69,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		btnRegistroPersonas = new JButton("Registro Personas");
 		btnRegistroPersonas.setOpaque(false);
 //		btnRegistroPersonas.setContentAreaFilled(false);
-		btnRegistroPersonas.setBorderPainted(true);
+		btnRegistroPersonas.setBorderPainted(false);
 		btnRegistroPersonas.setPreferredSize(new Dimension(140, 140));
 		btnRegistroPersonas.setBackground(Color.WHITE);
 		btnRegistroPersonas.setFocusable(false);
@@ -85,7 +85,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		btnRegistroArticulos = new JButton("Registro Artículos");
 		btnRegistroArticulos.setOpaque(false);
 //		btnRegistroArticulos.setContentAreaFilled(false);
-		btnRegistroArticulos.setBorderPainted(true);
+		btnRegistroArticulos.setBorderPainted(false);
 		btnRegistroArticulos.setPreferredSize(new Dimension(140, 140));
 		btnRegistroArticulos.setBackground(Color.WHITE);
 		btnRegistroArticulos.setFocusable(false);
@@ -100,7 +100,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		btnConsultas = new JButton("<html><p align=\"center\">"+"Consultas  </br>de </br>Artículos"+"</p></html>");
 		btnConsultas.setOpaque(false);
 //		btnConsultas.setContentAreaFilled(false);
-		btnConsultas.setBorderPainted(true);
+		btnConsultas.setBorderPainted(false);
 		btnConsultas.setPreferredSize(new Dimension(140, 140));
 		btnConsultas.setBackground(Color.WHITE);
 		btnConsultas.setFocusable(false);
@@ -116,7 +116,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		btnSalir = new JButton("Salir");
 		btnSalir.setOpaque(false);
 //		btnSalir.setContentAreaFilled(false);
-		btnSalir.setBorderPainted(true);
+		btnSalir.setBorderPainted(false);
 		btnSalir.setPreferredSize(new Dimension(140, 140));
 		btnSalir.setBackground(Color.WHITE);
 		btnSalir.setFocusable(false);
