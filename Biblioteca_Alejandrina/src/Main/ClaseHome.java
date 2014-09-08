@@ -26,7 +26,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import RegistroArticulo.*;
+import registro.articulo.*;
+import registro.clientes.ClaseRegistroClientes;
 
 // TODO: Auto-generated Javadoc
 /**

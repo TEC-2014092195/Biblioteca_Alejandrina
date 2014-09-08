@@ -17,6 +17,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Main.ClaseIntroduccion;
+
 public class Principal extends JFrame implements ActionListener {
 	// ClaseHome Declaracion de variables
 	static CardLayout cardlayout;
@@ -26,7 +28,7 @@ public class Principal extends JFrame implements ActionListener {
 	// Fin Declaracion de Variables
 
 	public static void main(String[] args) {
-		VentanaInicio vi = new VentanaInicio();
+		ClaseIntroduccion vi = new ClaseIntroduccion();
 		JFrame frm = new JFrame();
 		JPanel contentPane = (JPanel) frm.getContentPane();
 		cardlayout = new CardLayout();

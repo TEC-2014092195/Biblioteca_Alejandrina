@@ -1,6 +1,6 @@
 
 
-package Main;
+package registro.clientes;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import Main.ClaseHome;
 
 import java.io.*;
 import java.util.Timer;

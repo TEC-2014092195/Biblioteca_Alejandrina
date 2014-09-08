@@ -1,5 +1,5 @@
 /**====================================================================================
- * Archivo      : claseRegistroArticulos.java » Paquete: RegistroArticulo » Proyecto: Biblioteca_Alejandrina
+ * Archivo      : claseRegistroArticulos.java » Paquete: registro.articulo » Proyecto: Biblioteca_Alejandrina
  * Autores      : Kevin Hernández Rostrán, Jasson Moya Álvarez, 
  *				  Julián Méndez Oconitrillo, José Aguilar Quesada.
  * Curso        : Programación Orientada a Objetos - Instituto Tecnológico de Costa Rica
@@ -7,7 +7,7 @@
  **==================================================================================== 
  */
 
-package RegistroArticulo;
+package registro.articulo;
 
 import java.awt.Color;
 import java.awt.Container;

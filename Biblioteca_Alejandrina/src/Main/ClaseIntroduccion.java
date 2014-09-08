@@ -1,5 +1,5 @@
 /**====================================================================================
- * Archivo      : VentanaInicio.java » Paquete: PruebaMain » Proyecto: Biblioteca Alejandrina
+ * Archivo      : ClaseIntroduccion.java » Paquete: PruebaMain » Proyecto: Biblioteca Alejandrina
  * Autores      : Kevin Hernández Rostrán, Jasson Moya Álvarez, 
  *				  Julián Méndez Oconitrillo, José Aguilar Quesada.
  * Curso        : Programación Orientada a Objetos - Instituto Tecnológico de Costa Rica
@@ -7,7 +7,7 @@
  **==================================================================================== 
  */
 
-package PruebaMain;
+package Main;
 
 import javax.swing.JWindow;  
 import java.awt.Color;
@@ -15,17 +15,17 @@ import java.awt.Graphics;
 import java.awt.Image; 
 import java.awt.Toolkit; 
 
-public class VentanaInicio extends JWindow { 
+public class ClaseIntroduccion extends JWindow { 
 	Image img=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/recursos/Logo.jpg"));
 	Image img2=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/recursos/load.gif"));
-	public VentanaInicio() { 
+	public ClaseIntroduccion() { 
 		try { 
 			setSize(800,600); 
 			setLocationRelativeTo(null);
 			setBackground(new Color(1.0f,1.0f,1.0f,0.5f));
 			
 			setVisible(true);
-			Thread.sleep(4000); 
+			Thread.sleep(2500); 
 			dispose(); 
 			
 		}catch(Exception exception) { 
