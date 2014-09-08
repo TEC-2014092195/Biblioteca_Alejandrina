@@ -19,18 +19,44 @@ import javax.mail.internet.MimeMultipart;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Email.
+ */
 public class Email {
     
+    /** The usuario correo. */
     String usuarioCorreo;
+    
+    /** The password. */
     String password;
     
+    /** The ruta archivo. */
     String rutaArchivo;
+    
+    /** The nombre archivo. */
     String nombreArchivo;
     
+    /** The destinatario. */
     String destinatario;
+    
+    /** The asunto. */
     String asunto;
+    
+    /** The mensaje. */
     String mensaje;
     
+    /**
+     * Instantiates a new email.
+     *
+     * @param usuarioCorreo the usuario correo
+     * @param password the password
+     * @param rutaArchivo the ruta archivo
+     * @param nombreArchivo the nombre archivo
+     * @param destinatario the destinatario
+     * @param asunto the asunto
+     * @param mensaje the mensaje
+     */
     public Email(String usuarioCorreo, String password, String rutaArchivo, String nombreArchivo, String destinatario, String asunto,String mensaje) {
         this.usuarioCorreo = usuarioCorreo;
         this.password = password;
@@ -41,14 +67,36 @@ public class Email {
         this.mensaje = mensaje;
     }
     
+    /**
+     * Instantiates a new email.
+     *
+     * @param usuarioCorre the usuario corre
+     * @param password the password
+     * @param destinatario the destinatario
+     * @param mensaje the mensaje
+     */
     public Email(String usuarioCorre,String password,String destinatario,String mensaje){
         this(usuarioCorre,password,"","",destinatario,"",mensaje);
     }
     
+    /**
+     * Instantiates a new email.
+     *
+     * @param usuarioCorre the usuario corre
+     * @param password the password
+     * @param destinatario the destinatario
+     * @param asunto the asunto
+     * @param mensaje the mensaje
+     */
     public Email(String usuarioCorre,String password,String destinatario,String asunto,String mensaje){
         this(usuarioCorre,password,"","",destinatario,asunto,mensaje);
     }    
 
+    /**
+     * Send mail.
+     *
+     * @return true, if successful
+     */
     public boolean sendMail(){
         try
         {
@@ -97,10 +145,10 @@ public class Email {
         }        
     }
     
-/*Ejemplo de como implementar la clase
- *     public static void main(String[] args){
+//Ejemplo de como implementar la clase
+     /* public static void main(String[] args){
         String clave = "TEC12345"; 
-        Email e = new Email("biblioalejandrinatec@gmail.com",clave,"destinatario","asunto","contenido"); //no cambiar el primer correo 
+        Email e = new Email("biblioalejandrinatec@gmail.com",clave,"jasc996@gmail.com","Prueba","Implementado en la progra"); //no cambiar el primer correo 
         if (e.sendMail()){
             System.out.println("El email se mandó correctamente");
         }

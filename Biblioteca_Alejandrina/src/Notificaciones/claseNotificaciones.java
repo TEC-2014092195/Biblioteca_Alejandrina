@@ -24,26 +24,64 @@ import java.util.Hashtable;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class claseNotificaciones.
+ */
 public class claseNotificaciones extends JFrame implements ActionListener{
 	
+	/** The btn prueba. */
 	JButton btnPrueba;
+	
+	/** The Pos x. */
 	int index=0,PosX=0;
+	
+	/** The lstbtn. */
 	JButton[] lstbtn = new JButton[30]; 
+	
+	/** The lbl can dias prestamo. */
 	JLabel lbl,lblPrueba,lblTipoDoc,lblNombreDoc,lblImagenLibro,lblEstrellas,lblSeparador,lblDiasPrestamo,lblCanDiasPrestamo;
+	
+	/** The lbl can fecha prestamo. */
 	JLabel lblDiasRetraso,lblCanDiasRetraso,lblPrestadoA,lblNomPrestadoA,lblFechaPrestamo,lblCanFechaPrestamo;
+	
+	/** The lbl nom autor. */
 	JLabel lblTitulo,lblNomTitulo,lblDescripcion,lblNomDescripcion,lblAutor,lblNomAutor;
+	
+	/** The gbc. */
 	GridBagConstraints gbc;
+	
+	/** The v. */
 	JFrame v;
+	
+	/** The gblayout. */
 	GridBagLayout gblayout;
+	
+	/** The gbc2. */
 	GridBagConstraints gbc2 = new GridBagConstraints();
+	
+	/** The bandera. */
 	boolean flag=false,bandera=false;
+	
+	/** The j. */
 	JPanel j;
+	
+	/** The panel. */
 	JPanel panel =new JPanel();
+	
+	/** The paises. */
 	Hashtable<String,String> paises = new Hashtable<String,String>();
+	
+	/** The scroll. */
 	JScrollPane scroll;
+	
+	/** The b titled2. */
 	Border bGreyLine, bTitled1, bTitled2;
 	
 	
+	/**
+	 * Instantiates a new clase notificaciones.
+	 */
 	public claseNotificaciones(){
 		
 		v = new JFrame("notificaciones");
@@ -247,6 +285,13 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 	}
 	
 	
+	/**
+	 * Gets the constraints.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @return the constraints
+	 */
 	public GridBagConstraints getConstraints(int x, int y){
 		GridBagConstraints grid = new GridBagConstraints();
 		grid.gridx =x;
@@ -254,6 +299,9 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 		return grid;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource()==btnPrueba){
 			if (bandera==false){

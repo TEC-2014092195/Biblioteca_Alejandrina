@@ -22,21 +22,49 @@ import java.util.Hashtable;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class claseNotificaciones.
+ */
 public class claseNotificaciones extends JFrame implements ActionListener{
 	
+	/** The btn3. */
 	JButton btn,btn2,btn3;
+	
+	/** The index. */
 	int index=0;
+	
+	/** The lstbtn. */
 	JButton[] lstbtn = new JButton[30]; 
+	
+	/** The lbl. */
 	JLabel lbl;
+	
+	/** The gbc. */
 	GridBagConstraints gbc;
+	
+	/** The v. */
 	JFrame v;
+	
+	/** The gblayout. */
 	GridBagLayout gblayout;
+	
+	/** The flag. */
 	boolean flag=false;
+	
+	/** The j. */
 	JPanel j;
+	
+	/** The paises. */
 	Hashtable<String,String> paises = new Hashtable<String,String>();
+	
+	/** The scroll. */
 	JScrollPane scroll;
 	
 	
+	/**
+	 * Instantiates a new clase notificaciones.
+	 */
 	public claseNotificaciones(){
 		
 		v = new JFrame("notificaciones");
@@ -135,6 +163,9 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 	
 	
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource()==btn){
 			if (index < 30){

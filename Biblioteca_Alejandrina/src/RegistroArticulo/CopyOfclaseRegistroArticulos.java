@@ -43,27 +43,62 @@ import javax.swing.filechooser.*;
 import Main.ClaseHome;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CopyOfclaseRegistroArticulos.
+ */
 public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListener{
+	
+	/** The lbl descripcion. */
 	JLabel lblTipo,lblLogo,lblDescripcion;//,lblImagenArticulo;
+	
+	/** The btn atras. */
 	JButton btnImagenArticulo,btnGuardar,btnAtras;
 	
 	
+	/** The lbl datos. */
 	JLabel[] lblDatos = new JLabel[5];
+	
+	/** The txt edicion. */
 	JTextField txtTitulo,txtAutor,txtEditorial,txtEdicion;
+	
+	/** The txt datos. */
 	JTextField[] txtDatos =new JTextField[5];
+	
+	/** The txta descripcion. */
 	JTextArea txtaDescripcion;
+	
+	/** The panel contenedor. */
 	JPanel panelGrid,panelContenedor;
+	
+	/** The str tipo. */
 	String[] strTipo;
+	
+	/** The str libro. */
 	String[] strLibro = { "Título de obra", "Autor(es)", "Editorial", "Edición", "Datos5" };
+	
+	/** The str revista. */
 	String[] strRevista = { "Título de obra", "Autor", "Editorial", "Edición", "Datos5" };
+	
+	/** The str pelicula. */
 	String[] strPelicula = { "Título de obra", "Género", "Fecha", "Estrellas", "Datos5" };
+	
+	/** The str serie. */
 	String[] strSerie = { "Nombre", "Temporada", "Año", "Empresa", "Datos5" };
 	
+	/** The cb tipo. */
 	JComboBox cbTipo;
+	
+	/** The frm. */
 	JPanel frm;
+	
+	/** The gbc_2. */
 	GridBagConstraints gbc_1,gbc_2;
 	
 	
+	/**
+	 * Instantiates a new copy ofclase registro articulos.
+	 */
 	public CopyOfclaseRegistroArticulos(){
 		
 		frm = new JPanel();
@@ -256,6 +291,9 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 	
 
 	
+	/**
+	 * Datos libro.
+	 */
 	public void datosLibro(){
 		
 		for (int i=0; i < lblDatos.length -1 ; i++){
@@ -266,6 +304,9 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		
 	}
 	
+	/**
+	 * Datos revista.
+	 */
 	public void datosRevista(){
 		
 		for (int i=0; i < lblDatos.length -1 ; i++){
@@ -275,6 +316,9 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		
 	}
 	
+	/**
+	 * Datos pelicula.
+	 */
 	public void datosPelicula(){
 		
 		for (int i=0; i < lblDatos.length -1 ; i++){
@@ -283,6 +327,10 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		}
 		
 	}
+	
+	/**
+	 * Datos serie.
+	 */
 	public void datosSerie(){
 		
 		for (int i=0; i < lblDatos.length -1 ; i++){
@@ -294,6 +342,9 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 
 
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==cbTipo){
 			String tipo = (String)cbTipo.getSelectedItem();
@@ -365,6 +416,13 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 	
 	
 	
+	/**
+	 * Gets the imagen redimensionada.
+	 *
+	 * @param src the src
+	 * @return the imagen redimensionada
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static BufferedImage getImagenRedimensionada(String src) throws IOException{
 		 
 		
@@ -378,6 +436,15 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		return resizedImage;
 	}
 	
+	/**
+	 * Resize.
+	 *
+	 * @param src the src
+	 * @param width the width
+	 * @param height the height
+	 * @return the buffered image
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static BufferedImage resize(BufferedImage src, int width, int height) throws IOException {
 		int newWidth;
         int newHeight;
@@ -397,6 +464,15 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 	    return bi;
 	}
 	
+	/**
+	 * Scale.
+	 *
+	 * @param src the src
+	 * @param width the width
+	 * @param height the height
+	 * @return the buffered image
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static BufferedImage scale(BufferedImage src, int width, int height) throws IOException {
 	    BufferedImage dest = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
 	    Graphics2D g = dest.createGraphics();

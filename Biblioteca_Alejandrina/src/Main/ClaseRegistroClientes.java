@@ -21,22 +21,46 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ClaseRegistroClientes.
+ */
 public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	
 	//-------Declaracion Variables
+	/** The panel contenedor. */
 	JPanel panel,panelGeneral,panelContenedor;
+	
+	/** The gridbag. */
 	GridBagLayout gridbag;
+	
+	/** The gbc2. */
 	GridBagConstraints c,gbc2;
+	
+	/** The grid. */
 	GridLayout grid;
+	
+	/** The lbl logo. */
 	JLabel lblNombre,lblPApellido,lblSApellido,lblTelefono,lblCorreo,lblCategoria,lblLogo;
+	
+	/** The txt correo. */
 	JTextField txtNombre,txtPApellido,txtSApellido,txtTelefono,txtCorreo;
+	
+	/** The cb categoria. */
 	JComboBox cbCategoria;
+	
+	/** The str categoria. */
 	String[] strCategoria; 
+	
+	/** The btn atras. */
 	JButton btnValidar,btnAtras;
 	
 	
 	//-------Fin declaracion variables
 	
+	/**
+	 * Instantiates a new clase registro clientes.
+	 */
 	public ClaseRegistroClientes(){
 		 panelContenedor = new JPanel();
 		 panelContenedor.setLayout(new FlowLayout());
@@ -252,6 +276,9 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 
 	
 	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnValidar){
 			String s = "";
@@ -276,6 +303,9 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		
 	}
 	
+	/**
+	 * Limpiar textos.
+	 */
 	public void limpiarTextos(){
 //		JTextField txtNombre,txtPApellido,txtSApellido,txtTelefono,txtCorreo;
 		txtNombre.setText("");
