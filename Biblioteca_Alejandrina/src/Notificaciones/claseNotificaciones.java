@@ -9,16 +9,12 @@
 
 package Notificaciones;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
+
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Hashtable;
 
 
@@ -110,6 +106,7 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 		gbc2.insets = new Insets(20,0,5,15);
 		
 		ImageIcon imagen = new ImageIcon(getClass().getResource("/recursos/Ejemplo2.jpg")); //getClass().getResource("/recursos/Ejemplo2.jpg")
+		System.out.println(imagen.getIconWidth() +"\n"+ imagen.getIconHeight());
 		
 		lblImagenLibro = new JLabel(imagen);
 		lblImagenLibro.setPreferredSize( new Dimension( imagen.getIconWidth() , imagen.getIconHeight() ) );
@@ -123,7 +120,7 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 		gbc2.anchor = GridBagConstraints.PAGE_END;
 		gbc2.insets = new Insets(0,10,0,20);     // Extrenal Pad (top, left, bottom, right) -->Corregido
 		
-		imagen = new ImageIcon("4estrellas.png"); 
+		imagen = new ImageIcon( getClass().getResource("/recursos/4estrellas.png") ); 
 		
 		lblEstrellas = new JLabel(imagen);
 		lblEstrellas.setPreferredSize( new Dimension( imagen.getIconWidth() , imagen.getIconHeight() ) );

@@ -2,10 +2,8 @@
 
 package registro.clientes;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -17,10 +15,9 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Main.ClaseHome;
+import logicaRegistro.Cliente;
 
-import java.io.*;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 
 // TODO: Auto-generated Javadoc
@@ -56,6 +53,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	
 	/** The btn atras. */
 	JButton btnValidar,btnAtras;
+	
+	Cliente cliente_reg;
 	
 	
 	//-------Fin declaracion variables
@@ -293,6 +292,11 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 			s+="Categoria: "+cbCategoria.getSelectedItem()+"\n";
 			
 			JOptionPane.showMessageDialog(null, s);
+			
+			cliente_reg = new Cliente(txtNombre.getText(), txtPApellido.getText(), txtSApellido.getText(), txtTelefono.getText(), txtCorreo.getText(), (String) cbCategoria.getSelectedItem());
+			
+			
+			limpiarTextos();
 		}if(e.getSource()==btnAtras){
 			
 			ClaseHome home = new ClaseHome();

@@ -83,7 +83,7 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 		
 		BufferedImage img = null;
 		try {
-		    img = ImageIO.read(new File("imagen.png")); //getClass().getResource("/recursos/imagen.png")
+		    img = ImageIO.read(new File(getClass().getResource("/recursos/imagen.png").getPath())); //getClass().getResource("/recursos/imagen.png")
 		} catch (IOException e) {
 		}
 	     

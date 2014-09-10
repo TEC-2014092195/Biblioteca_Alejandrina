@@ -45,9 +45,9 @@ import Main.ClaseHome;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class CopyOfclaseRegistroArticulos.
+ * The Class claseRegistroArticulos.
  */
-public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListener{
+public class claseRegistroArticulos extends JFrame implements ActionListener{
 	
 	/** The lbl descripcion. */
 	JLabel lblTipo,lblLogo,lblDescripcion;//,lblImagenArticulo;
@@ -95,11 +95,13 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 	/** The gbc_2. */
 	GridBagConstraints gbc_1,gbc_2;
 	
+	Color colorlbl = new Color(80,30,26);
+	
 	
 	/**
 	 * Instantiates a new copy ofclase registro articulos.
 	 */
-	public CopyOfclaseRegistroArticulos(){
+	public claseRegistroArticulos(){
 		
 		frm = new JPanel();
 		frm.setLayout(new FlowLayout());
@@ -107,7 +109,7 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		panelContenedor = new JPanel();
 		panelGrid = new JPanel();
 		
-		Color colorlbl = new Color(80,30,26);
+		
 		
 		btnImagenArticulo = new JButton("<html><p align=\"center\">"+"Imagen de Articulo </br> -Elegir Imagen-"+"</p></html>");
 		btnImagenArticulo.setForeground(colorlbl);
@@ -403,6 +405,8 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		}else if(e.getSource()==btnGuardar){
 			System.out.println("Boton guardar");
 		}else if(e.getSource()==btnAtras){
+			
+			LimpiarImagen();
 			ClaseHome home = new ClaseHome();
 			
 			home.getCardLayout().show(home.getPanelCards(), "Home");
@@ -413,7 +417,12 @@ public class CopyOfclaseRegistroArticulos extends JFrame implements ActionListen
 		
 	}
 	
-	
+	private void LimpiarImagen(){
+		btnImagenArticulo.setIcon(null);
+		btnImagenArticulo.setText("<html><p align=\"center\">"+"Imagen de Articulo </br> -Elegir Imagen-"+"</p></html>");
+		btnImagenArticulo.setForeground(colorlbl);
+		btnImagenArticulo.setPreferredSize(new Dimension(180,150));
+	}
 	
 	
 	/**

@@ -159,7 +159,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		ClaseRegistroClientes rc = new ClaseRegistroClientes(); 
 		panelCards.add("RegistroPersonas", rc.getContenedor());
 		
-		CopyOfclaseRegistroArticulos ra = new CopyOfclaseRegistroArticulos();
+		claseRegistroArticulos ra = new claseRegistroArticulos();
 		panelCards.add("RegistroArticulos", ra.getContenedor());
 		
 		
