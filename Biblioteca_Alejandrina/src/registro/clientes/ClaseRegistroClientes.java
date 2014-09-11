@@ -113,7 +113,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 lblCategoria = new JLabel("Categoria ");
 		 lblCategoria.setForeground(colorlbl);
 		 
-		 strCategoria = new String[] { "Estudiante" , "Familiar" , "Funcionario" };
+		 strCategoria = new String[] { "Estudiante" , "Familiar" , "Colega" };
 		 cbCategoria = new JComboBox(strCategoria);
 		 
 		 c.gridx=0;
