@@ -80,10 +80,27 @@ public class Cliente extends Registro{
 		else if ("3".equals(getCategoria())){return "Familiar";}
 		else {return "Categoría Desconocida";}}
 	
-	public void prestar (Articulo prestamo){
+	public void prestar (int ID){
+		for (Articulo elemento : articulosRegistrados){
+			if (elemento.getIdentificadorObjeto() == ID ){
+				prestarInterno (elemento);
+				break;}}}
+	
+	private void prestarInterno (Articulo prestamo){
 		prestamo.setPrestado(true);
 		prestamo.setDiasPrestado(1);
 		prestamos.add(prestamo);}
+	
+	public void devolver (int ID){
+		for (Articulo elemento : articulosRegistrados){
+			if (elemento.getIdentificadorObjeto() == ID ){
+				devolverInterno (elemento);
+				break;}}}
+	
+	private void devolverInterno (Articulo prestamo){
+		prestamo.setPrestado(false);
+		prestamo.setDiasPrestado(0);
+		prestamos.remove(prestamo);}
 	
 	public String toString (){
 		String msj = "Cliente "+getIdentificadorCliente()+":\n";
