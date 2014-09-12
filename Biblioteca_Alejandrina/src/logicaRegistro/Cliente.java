@@ -2,10 +2,6 @@ package logicaRegistro;
 
 import java.util.*;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class Cliente.
- */
 public class Cliente extends Registro{
 	
 	/*
@@ -14,25 +10,20 @@ public class Cliente extends Registro{
 	 * Cada usuario tiene dos identificadores fundamentales:
 	 * -El número de usuario (definido con cant. clientes)
 	 * -El tipo de usuario, que es 1, 2 o 3.
+	 * 
+	 * Su segundo constructor recibe los parámetros del Txt para 
+	 * reestablecer, entre los que viene una lista con los objetos
+	 * que tenía prestados, incluída la cantidad de días que tenía con cada
+	 * objeto. 
 	 */
 	
 	//Constructor para clientes nuevos. 
-	/**
-	 * Instantiates a new cliente.
-	 *
-	 * @param nNombre the n nombre
-	 * @param nApellido1 the n apellido1
-	 * @param nApellido2 the n apellido2
-	 * @param nTelefono the n telefono
-	 * @param nCorreo the n correo
-	 * @param nCategoria the n categoria
-	 */
 	public Cliente(String nNombre,
-							String nApellido1,
-							String nApellido2,
-							String nTelefono,
-							String nCorreo,
-							String nCategoria)
+				   String nApellido1,
+				   String nApellido2,
+				   String nTelefono,
+			       String nCorreo,
+				   String nCategoria)
 							
 	{	cantClientes++;
 		setPrestamos(new ArrayList<Articulo>());
@@ -43,6 +34,26 @@ public class Cliente extends Registro{
 		setTelefono(nTelefono);
 		setCorreo(nCorreo);
 		setCategoria(nCategoria);	}
+	
+	//Constructor para reestablecer sistema. 
+	public Cliente(String nNombre,
+			   		String nApellido1,
+			   		String nApellido2,
+			   		String nTelefono,
+			   		String nCorreo,
+			   		String nCategoria,
+			   		ArrayList<Articulo> nPrestados)
+						
+		{	cantClientes++;
+			setPrestamos(new ArrayList<Articulo>());
+			setIdentificadorCliente(cantClientes);
+			setNombre(nNombre);
+			setApellido1(nApellido1);
+			setApellido2(nApellido2);
+			setTelefono(nTelefono);
+			setCorreo(nCorreo);
+			setCategoria(nCategoria);
+			for (Articulo prestado : nPrestados) {prestamos.add(prestado);}		}
 	
 	//Setters y Getters.------------------------------------------------------//
 	public int getCantClientes() {return cantClientes;} //El equivalente al largo de la lista
@@ -63,30 +74,17 @@ public class Cliente extends Registro{
 	public ArrayList<Articulo> getPrestamos() {return prestamos;}
 	public void setPrestamos(ArrayList<Articulo> prestamos) {this.prestamos = prestamos;}
 	//------------------------------------------------------------------------//
-	/**
-	 * Presentar categoria.
-	 *
-	 * @return the string
-	 */
 	public String presentarCategoria(){
 		if ("1".equals(getCategoria())){return "Estudiante";}
 		else if ("2".equals(getCategoria())){return "Colega";}
 		else if ("3".equals(getCategoria())){return "Familiar";}
 		else {return "Categoría Desconocida";}}
 	
-	/**
-	 * Prestar.
-	 *
-	 * @param prestamo the prestamo
-	 */
 	public void prestar (Articulo prestamo){
 		prestamo.setPrestado(true);
-		prestamos.add(prestamo);
-	}
+		prestamo.setDiasPrestado(1);
+		prestamos.add(prestamo);}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	public String toString (){
 		String msj = "Cliente "+getIdentificadorCliente()+":\n";
 		msj += "Nombre: " + getNombre()+" "+getApellido1()+" "+getApellido2()+"\n";
@@ -98,7 +96,6 @@ public class Cliente extends Registro{
 			for (Articulo prestado : prestamos) {
 				msj += prestado;}}
 		return msj;
-	
 	}
 }
 
