@@ -38,9 +38,16 @@ import java.io.IOException;
 
 
 
+
+
+
+
+
+
+
 import redimensionar.Imagen;
 
-public class claseNotificaciones extends JFrame implements ActionListener{
+public class claseNotificaciones extends JFrame implements ActionListener, MouseListener{
 	
 	GridBagConstraints gridInfo;
 	GridBagConstraints gridGrilla = new GridBagConstraints();
@@ -54,6 +61,8 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 	
 	
 	JScrollPane scroll;
+	
+	private MouseListener CombinacionEditar;
 	
 	
 	public claseNotificaciones(){
@@ -99,6 +108,7 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 		scroll.setWheelScrollingEnabled(true);
 		scroll.getVerticalScrollBar().setUnitIncrement(50);
 		scroll.setBorder(BorderFactory.createEmptyBorder(0,0,0,20));
+		
 		panelContenedor.add(scroll);
 		panelContenedor.setBorder(BorderFactory.createEmptyBorder(20,50,20,50)); // Extrenal Pad (top, left, bottom, right)
 		frm.add(panelContenedor);
@@ -280,6 +290,7 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 
 		lblFechaPrestamo = new JLabel("Fecha préstamo: ");
 		lblFechaPrestamo.setForeground(lblColor);
+		
 		panelInfo.add(lblFechaPrestamo,gridInfo);
 		
 		
@@ -296,10 +307,13 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 		lblCanFechaPrestamo.setForeground(lblColor);
 		panelInfo.add(lblCanFechaPrestamo,gridInfo);
 		
+		panelInfo.addMouseListener(this);
 		
 		return panelInfo;
 
 	}
+	
+
 	
 	public JLabel getLabelImagen(){
 		JLabel lblImagen = new JLabel(); 
@@ -347,6 +361,57 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e){
 		
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if (e.getButton()==3){
+//			System.out.println("Boton Der");
+//			System.out.println( ((JLabel) ((Container) e.getComponent()).getComponent(2)).getText() );
+//			JOptionPane.showMessageDialog(null, ((JLabel) ((Container) e.getComponent()).getComponent(2)).getText());
+			JOptionPane.showMessageDialog(null, e.getComponent());
+		}
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	

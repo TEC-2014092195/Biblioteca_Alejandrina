@@ -128,7 +128,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		btnConsultas.setPreferredSize(new Dimension(140, 140));
 		btnConsultas.setBackground(Color.WHITE);
 		btnConsultas.setFocusable(false);
-		btnConsultas.setBounds(385, 237, 150, 150);
+		btnConsultas.setBounds(390, 237, 150, 150);
 		panelContenedor.add(btnConsultas,grid);
 		panelContenedor.setComponentZOrder(btnConsultas, 0);
 		

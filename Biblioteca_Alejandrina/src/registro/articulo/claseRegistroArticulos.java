@@ -16,6 +16,7 @@ import java.awt.FlowLayout;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
@@ -28,6 +29,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -36,11 +38,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.filechooser.*;
 
 import Main.ClaseHome;
+import redimensionar.Imagen;
 
 
 // TODO: Auto-generated Javadoc
@@ -50,10 +54,12 @@ import Main.ClaseHome;
 public class claseRegistroArticulos extends JFrame implements ActionListener{
 	
 	/** The lbl descripcion. */
-	JLabel lblTipo,lblLogo,lblDescripcion;//,lblImagenArticulo;
+	JLabel lblTipo,lblLogo,lblDescripcion,lblCalificacion;//,lblImagenArticulo;
 	
 	/** The btn atras. */
 	JButton btnImagenArticulo,btnGuardar,btnAtras;
+	
+	ImageIcon imgCalificacion;
 	
 	
 	/** The lbl datos. */
@@ -63,7 +69,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 	JTextField txtTitulo,txtAutor,txtEditorial,txtEdicion;
 	
 	/** The txt datos. */
-	JTextField[] txtDatos =new JTextField[5];
+	JTextField[] txtDatos = new JTextField[5];
 	
 	/** The txta descripcion. */
 	JTextArea txtaDescripcion;
@@ -75,19 +81,22 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 	String[] strTipo;
 	
 	/** The str libro. */
-	String[] strLibro = { "Título de obra", "Autor(es)", "Editorial", "Edición", "Datos5" };
+	String[] strLibro = { "Título de obra", "Autor(es)", "Editorial", "Edición", "Calificación" };
 	
 	/** The str revista. */
-	String[] strRevista = { "Título de obra", "Autor", "Editorial", "Edición", "Datos5" };
+	String[] strRevista = { "Título de obra", "Autor", "Editorial", "Edición", "Calificación" };
 	
 	/** The str pelicula. */
-	String[] strPelicula = { "Título de obra", "Género", "Fecha", "Estrellas", "Datos5" };
+	String[] strPelicula = { "Título de obra", "Género", "Fecha", "Estrellas", "Calificación" };
 	
 	/** The str serie. */
-	String[] strSerie = { "Nombre", "Temporada", "Año", "Empresa", "Datos5" };
+	String[] strSerie = { "Nombre", "Temporada", "Año", "Empresa", "Calificación" };
 	
 	/** The cb tipo. */
 	JComboBox cbTipo;
+	
+	JRadioButton[] radioButton = new JRadioButton[6];
+	
 	
 	/** The frm. */
 	JPanel frm;
@@ -129,7 +138,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		lblDatos[3] = new JLabel("Edicion");
 		lblDatos[3].setForeground(colorlbl);
 		
-		lblDatos[4] = new JLabel("Dato 5");
+		lblDatos[4] = new JLabel("Calificación");
 		lblDatos[4].setForeground(colorlbl);
 		
 		lblTipo = new JLabel("Tipo Articulo");
@@ -149,6 +158,56 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		strTipo = new String[] { "Libro","Revista","Película","Serie" };
 		cbTipo = new JComboBox(strTipo);
 		
+		
+		
+//		JRadioButton ceroButton = new JRadioButton("0");
+//	    //birdButton.setActionCommand("0");
+//	    ceroButton.setSelected(true);
+//	    
+//	    JRadioButton unoButton = new JRadioButton("0");
+//	    //birdButton.setActionCommand("0");
+//	    unoButton.setSelected(true);
+//	    
+//	    JRadioButton dosButton = new JRadioButton("0");
+//	    //birdButton.setActionCommand("0");
+//	    dosButton.setSelected(true);
+//	    
+//	    JRadioButton tresButton = new JRadioButton("0");
+//	    //birdButton.setActionCommand("0");
+//	    tresButton.setSelected(true);
+//	    
+//	    JRadioButton cuatroButton = new JRadioButton("0");
+//	    //birdButton.setActionCommand("0");
+//	    cuatroButton.setSelected(true);
+	    
+		
+		
+		
+        
+        
+        
+        
+        
+        
+        
+        
+        ButtonGroup group = new ButtonGroup();
+        JPanel radioPanel = new JPanel(new GridLayout(1, 0));
+        
+        for (int i = 0; i < radioButton.length; i++ ){
+        	radioButton[i] = new JRadioButton(""+i);
+        	group.add(radioButton[i]);
+        	radioButton[i].setActionCommand(""+i);
+        	radioButton[i].addActionListener(this);
+        	radioButton[i].setBackground(new Color(233,75,62));
+        	radioButton[i].setForeground(colorlbl);
+        	radioPanel.add(radioButton[i]);
+        }
+        radioPanel.setBackground(new Color(233,75,62));
+        radioButton[0].setSelected(true);
+        
+        
+	    
 		gbc_1 = new GridBagConstraints();
 		gbc_2 = new GridBagConstraints();
 		
@@ -226,7 +285,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		
 		gbc_1.gridx=1;
 		gbc_1.gridy=4;
-		panelGrid.add(txtDatos[4],gbc_1);
+		panelGrid.add(radioPanel,gbc_1);
 		
 		gbc_1.gridx=1;
 		gbc_1.gridy=5;
@@ -240,7 +299,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		
 		gbc_1.gridx=2;
 		gbc_1.gridy=0;
-		gbc_1.gridheight=8;
+		gbc_1.gridheight=7;
 		gbc_1.insets = new Insets(0,30,0,30);
 		
 		
@@ -251,6 +310,17 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		btnImagenArticulo.addActionListener(this);
 		btnImagenArticulo.setPreferredSize(new Dimension(180,150));
 		panelGrid.add(btnImagenArticulo,gbc_1);
+		
+		gbc_1.gridx=2;
+		gbc_1.gridy=6;
+		gbc_1.gridheight=1;
+		gbc_1.insets = new Insets(0,30,0,30);
+		
+		imgCalificacion = new ImageIcon(getClass().getResource("/recursos/0estrellas.png"));
+		lblCalificacion = new JLabel("");
+		lblCalificacion.setIcon(imgCalificacion);
+		panelGrid.add(lblCalificacion,gbc_1);
+		
 		
 		//Fin Agregar campos
 		panelGrid.setBackground(new Color(233,75,62));
@@ -286,214 +356,181 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		
 	}
 	
-	public Container getContenedor(){
-		return frm;
-	}
 	
-	
-
-	
-	/**
-	 * Datos libro.
-	 */
-	public void datosLibro(){
-		
-		for (int i=0; i < lblDatos.length -1 ; i++){
-			lblDatos[i].setText(strLibro[i]);
-			txtDatos[i].setText("");
-		}
-	
-		
-	}
-	
-	/**
-	 * Datos revista.
-	 */
-	public void datosRevista(){
-		
-		for (int i=0; i < lblDatos.length -1 ; i++){
-			lblDatos[i].setText(strRevista[i]);
-			txtDatos[i].setText("");
-		}
-		
-	}
-	
-	/**
-	 * Datos pelicula.
-	 */
-	public void datosPelicula(){
-		
-		for (int i=0; i < lblDatos.length -1 ; i++){
-			lblDatos[i].setText(strPelicula[i]);
-			txtDatos[i].setText("");
-		}
-		
-	}
-	
-	/**
-	 * Datos serie.
-	 */
-	public void datosSerie(){
-		
-		for (int i=0; i < lblDatos.length -1 ; i++){
-			lblDatos[i].setText(strSerie[i]);
-			txtDatos[i].setText("");
-		}
-		
-	}
-
-
-	
-	/* (non-Javadoc)
-	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==cbTipo){
-			String tipo = (String)cbTipo.getSelectedItem();
-			
-			
-			switch(tipo){
-				case "Libro":
-					datosLibro();
-					
-					break;
-				case "Revista":
-					datosRevista();
-					
-					break;
-				case "Película":
-					datosPelicula();
-					
-					break;
-				case "Serie":
-					datosSerie();
-					
-					break;
-				default:
-					JOptionPane.showMessageDialog(null, "Opción Inválida");
-					break;
+		if (e.getSource() == cbTipo) {
+			String tipo = (String) cbTipo.getSelectedItem();
+
+			switch (tipo) {
+			case "Libro":
+				datosLibro();
+
+				break;
+			case "Revista":
+				datosRevista();
+
+				break;
+			case "Película":
+				datosPelicula();
+
+				break;
+			case "Serie":
+				datosSerie();
+
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Opción Inválida");
+				break;
 			}
-			
+
 			panelContenedor.revalidate();
 			panelContenedor.repaint();
-			
-		}else if(e.getSource() == btnImagenArticulo){
-			JFileChooser fileChooser = new JFileChooser();
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("Images", "jpg", "png", "gif", "bmp");
-			fileChooser.setFileFilter(filter);
-			
-	        int returnValue = fileChooser.showOpenDialog(null);
-	        if (returnValue == JFileChooser.APPROVE_OPTION) {
-	        	File selectedFile = fileChooser.getSelectedFile();
-	        	System.out.println(selectedFile.getPath());
-	        	String path = selectedFile.getPath();
-	        	
-	        	
-	        	BufferedImage imgArticulo = null;
-				try {
-					imgArticulo = getImagenRedimensionada(path);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-	  			btnImagenArticulo.setIcon(new ImageIcon(imgArticulo));
-	  			
-	  			btnImagenArticulo.setPreferredSize(new Dimension(imgArticulo.getWidth(), imgArticulo.getHeight()));
-	  			btnImagenArticulo.setText("");
-	        }
-	        panelContenedor.revalidate();
+
+		} else if (e.getSource() == btnImagenArticulo) {
+
+			ElegirImagen();
+
+			panelContenedor.revalidate();
 			panelContenedor.repaint();
-		}else if(e.getSource()==btnGuardar){
+		} else if (e.getSource() == btnGuardar) {
 			System.out.println("Boton guardar");
-		}else if(e.getSource()==btnAtras){
-			
+		} else if (e.getSource() == btnAtras) {
+
 			LimpiarImagen();
 			ClaseHome home = new ClaseHome();
-			
+
 			home.getCardLayout().show(home.getPanelCards(), "Home");
 			home.getFrame().revalidate();
 			home.getFrame().repaint();
-			
+
+		} else {
+			switch (e.getActionCommand()) {
+			case "0":
+				lblCalificacion.setIcon(new ImageIcon(getClass().getResource(
+						"/recursos/0estrellas.png")));
+				break;
+			case "1":
+				lblCalificacion.setIcon(new ImageIcon(getClass().getResource(
+						"/recursos/1estrellas.png")));
+				break;
+			case "2":
+				lblCalificacion.setIcon(new ImageIcon(getClass().getResource(
+						"/recursos/2estrellas.png")));
+				break;
+			case "3":
+				lblCalificacion.setIcon(new ImageIcon(getClass().getResource(
+						"/recursos/3estrellas.png")));
+				break;
+			case "4":
+				lblCalificacion.setIcon(new ImageIcon(getClass().getResource(
+						"/recursos/4estrellas.png")));
+				break;
+			case "5":
+				lblCalificacion.setIcon(new ImageIcon(getClass().getResource(
+						"/recursos/5estrellas.png")));
+				break;
+			default:
+				break;
+			}
 		}
-		
+
 	}
 	
-	private void LimpiarImagen(){
+	
+	public Container getContenedor() {
+		return frm;
+	}
+
+	/**
+	 * Datos libro.
+	 */
+	public void datosLibro() {
+
+		for (int i = 0; i < lblDatos.length - 1; i++) {
+			lblDatos[i].setText(strLibro[i]);
+			txtDatos[i].setText("");
+		}
+
+	}
+
+	/**
+	 * Datos revista.
+	 */
+	public void datosRevista() {
+
+		for (int i = 0; i < lblDatos.length - 1; i++) {
+			lblDatos[i].setText(strRevista[i]);
+			txtDatos[i].setText("");
+		}
+
+	}
+
+	/**
+	 * Datos pelicula.
+	 */
+	public void datosPelicula() {
+
+		for (int i = 0; i < lblDatos.length - 1; i++) {
+			lblDatos[i].setText(strPelicula[i]);
+			txtDatos[i].setText("");
+		}
+
+	}
+
+	/**
+	 * Datos serie.
+	 */
+	public void datosSerie() {
+
+		for (int i = 0; i < lblDatos.length - 1; i++) {
+			lblDatos[i].setText(strSerie[i]);
+			txtDatos[i].setText("");
+		}
+
+	}
+
+	private void LimpiarImagen() {
 		btnImagenArticulo.setIcon(null);
-		btnImagenArticulo.setText("<html><p align=\"center\">"+"Imagen de Articulo </br> -Elegir Imagen-"+"</p></html>");
+		btnImagenArticulo.setText("<html><p align=\"center\">"
+				+ "Imagen de Articulo </br> -Elegir Imagen-" + "</p></html>");
 		btnImagenArticulo.setForeground(colorlbl);
-		btnImagenArticulo.setPreferredSize(new Dimension(180,150));
+		btnImagenArticulo.setPreferredSize(new Dimension(180, 150));
+	}
+
+	public void ElegirImagen() {
+		JFileChooser fileChooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Images",
+				"jpg", "png", "gif", "bmp");
+		fileChooser.setFileFilter(filter);
+
+		int returnValue = fileChooser.showOpenDialog(null);
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			File selectedFile = fileChooser.getSelectedFile();
+			System.out.println(selectedFile.getPath());
+			String path = selectedFile.getPath();
+
+			BufferedImage imgArticulo = null;
+			try {
+				imgArticulo = Imagen.getImagenRedimensionada(path);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			btnImagenArticulo.setIcon(new ImageIcon(imgArticulo));
+
+			btnImagenArticulo.setPreferredSize(new Dimension(imgArticulo
+					.getWidth(), imgArticulo.getHeight()));
+			btnImagenArticulo.setText("");
+		}
 	}
 	
 	
-	/**
-	 * Gets the imagen redimensionada.
-	 *
-	 * @param src the src
-	 * @return the imagen redimensionada
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static BufferedImage getImagenRedimensionada(String src) throws IOException{
-		 
-		
-		BufferedImage bi = ImageIO.read(new File(src));
-		
-		BufferedImage resizedImage=null;
-		
-		resizedImage = resize(bi,180,150);
-		
-		
-		return resizedImage;
-	}
 	
-	/**
-	 * Resize.
-	 *
-	 * @param src the src
-	 * @param width the width
-	 * @param height the height
-	 * @return the buffered image
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static BufferedImage resize(BufferedImage src, int width, int height) throws IOException {
-		int newWidth;
-        int newHeight;
-        
-        Float scale;
-        if (src.getWidth() > src.getHeight()) {
-            scale = Float.valueOf(width) / Float.valueOf(src.getWidth());
-        } else {
-            scale = Float.valueOf(height) / Float.valueOf(src.getHeight());
-        }
-        
-        newWidth = Float.valueOf(src.getWidth() * scale).intValue();
-        newHeight = Float.valueOf(src.getHeight() * scale).intValue();
-		
-	    BufferedImage bi = scale(src, newWidth, newHeight);
-		
-	    return bi;
-	}
-	
-	/**
-	 * Scale.
-	 *
-	 * @param src the src
-	 * @param width the width
-	 * @param height the height
-	 * @return the buffered image
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	public static BufferedImage scale(BufferedImage src, int width, int height) throws IOException {
-	    BufferedImage dest = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
-	    Graphics2D g = dest.createGraphics();
-	    AffineTransform at = AffineTransform.getScaleInstance(
-	            (double)width/src.getWidth(),
-	            (double)height/src.getHeight());
-	    g.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY)); //RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY
-	    //RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC
-	    g.drawImage(src,at,null);       
-	    
-	    return dest;
-	}
 	
 	
 	
