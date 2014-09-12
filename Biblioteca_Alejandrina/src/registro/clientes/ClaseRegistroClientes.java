@@ -23,6 +23,9 @@ import logicaRegistro.Cliente;
 // TODO: Auto-generated Javadoc
 /**
  * The Class ClaseRegistroClientes.
+ * Clase de interfaz
+ * Crea la interfaz para ingresar un nuevo cliente o
+ * editar uno existente
  */
 public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	
