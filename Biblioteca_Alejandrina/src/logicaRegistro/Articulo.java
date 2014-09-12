@@ -1,10 +1,6 @@
 package logicaRegistro;
 
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class Articulo.
- */
 public class Articulo extends Registro {
 	/*
 	 * Esta clase se encarga de la creación de objetos en memoria para 
@@ -13,18 +9,7 @@ public class Articulo extends Registro {
 	 * y poder trabajar a futuro cada selección de objetos por separado. 
 	 */
 	
-	//Constructor para objetos
-	/**
-	 * Instantiates a new articulo.
-	 *
-	 * @param nTipo the n tipo
-	 * @param nTitulo the n titulo
-	 * @param nAutor the n autor
-	 * @param nDato1 the n dato1
-	 * @param nDato2 the n dato2
-	 * @param nDirImg the n dir img
-	 * @param nCalif the n calif
-	 */
+	//Constructor para objetos nuevos. 
 	public Articulo( String nTipo,
 			   				String nTitulo,
 			   				String nAutor,
@@ -42,7 +27,32 @@ public class Articulo extends Registro {
 		setDato2(nDato2);
 		setDirImg(nDirImg);
 		setCalif (nCalif);	
-		setPrestado(false);	}
+		setPrestado(false);	
+		setDiasPrestado(1);		}
+	
+	//Constructor para reestablecer el sistema, recibe el dato de si el objeto
+	//ya fue prestado o no, y si lo fué, cuántos días lleva prestado. 
+	public Articulo( String nTipo,
+				String nTitulo,
+				String nAutor,
+				String nDato1,
+				String nDato2,
+				String nDirImg,
+				String nCalif,
+				boolean nPrestado,
+				int DiasPrestado) 
+				
+	{	cantObjetos++;
+		setIdentificadorObjeto(cantObjetos);
+		setTipo(nTipo);
+		setTitulo(nTitulo);
+		setAutor(nAutor);
+		setDato1(nDato1);
+		setDato2(nDato2);
+		setDirImg(nDirImg);
+		setCalif (nCalif);	
+		setPrestado(nPrestado);	
+		setDiasPrestado(DiasPrestado);		}
 	
 	
 	//Getters y Setters-----------------------------------------------------------//
@@ -65,11 +75,10 @@ public class Articulo extends Registro {
 	public void setCalif(String calif) {this.calif = calif;}
 	public boolean isPrestado() {return prestado;}
 	public void setPrestado(boolean prestado) {this.prestado = prestado;}
+	public int getDiasPrestado() {return diasPrestado;}
+	public void setDiasPrestado(int diasPrestado) {this.diasPrestado = diasPrestado;}
 	//------------------------------------------------------------------------------//
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	public String toString (){
 		String msj = "    Objeto "+getIdentificadorObjeto()+":\n";
 		msj += "\tTipo: " + getTipo()+"\n";
