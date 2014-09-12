@@ -46,6 +46,9 @@ import Main.ClaseHome;
 // TODO: Auto-generated Javadoc
 /**
  * The Class claseRegistroArticulos.
+ * Clase de interfaz
+ * Crea la interfaz para ingresar un nuevo artículo o
+ * editar uno existente
  */
 public class claseRegistroArticulos extends JFrame implements ActionListener{
 	

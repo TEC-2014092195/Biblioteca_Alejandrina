@@ -57,6 +57,8 @@ public class Email {
      * @param asunto the asunto
      * @param mensaje the mensaje
      */
+    // Crea el objeto Email, recibe el correo remitente y la clave, el correo destino, asunto, mensaje
+    // y como opcional se crea un constructor para enviar archivos adjuntos
     public Email(String usuarioCorreo, String password, String rutaArchivo, String nombreArchivo, String destinatario, String asunto,String mensaje) {
         this.usuarioCorreo = usuarioCorreo;
         this.password = password;
@@ -145,10 +147,10 @@ public class Email {
         }        
     }
     
-//Ejemplo de como implementar la clase
-     /* public static void main(String[] args){
+/*//Ejemplo de como implementar la clase
+      public static void main(String[] args){
         String clave = "TEC12345"; 
-        Email e = new Email("biblioalejandrinatec@gmail.com",clave,"jasc996@gmail.com","Prueba","Implementado en la progra"); //no cambiar el primer correo 
+        Email e = new Email("biblioalejandrinatec@gmail.com",clave,"acejas29@gmail.com","Prueba","Biblioteca Alejandrina le está enviando una notificación"); //no cambiar el primer correo 
         if (e.sendMail()){
             System.out.println("El email se mandó correctamente");
         }
