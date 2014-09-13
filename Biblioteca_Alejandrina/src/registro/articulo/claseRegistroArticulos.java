@@ -160,39 +160,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		
 		strTipo = new String[] { "Libro","Revista","Película","Serie" };
 		cbTipo = new JComboBox(strTipo);
-		
-		
-		
-//		JRadioButton ceroButton = new JRadioButton("0");
-//	    //birdButton.setActionCommand("0");
-//	    ceroButton.setSelected(true);
-//	    
-//	    JRadioButton unoButton = new JRadioButton("0");
-//	    //birdButton.setActionCommand("0");
-//	    unoButton.setSelected(true);
-//	    
-//	    JRadioButton dosButton = new JRadioButton("0");
-//	    //birdButton.setActionCommand("0");
-//	    dosButton.setSelected(true);
-//	    
-//	    JRadioButton tresButton = new JRadioButton("0");
-//	    //birdButton.setActionCommand("0");
-//	    tresButton.setSelected(true);
-//	    
-//	    JRadioButton cuatroButton = new JRadioButton("0");
-//	    //birdButton.setActionCommand("0");
-//	    cuatroButton.setSelected(true);
-	    
-		
-		
-		
-        
-        
-        
-        
-        
-        
-        
+
         
         ButtonGroup group = new ButtonGroup();
         JPanel radioPanel = new JPanel(new GridLayout(1, 0));
@@ -405,7 +373,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 			System.out.println("Boton guardar");
 		} else if (e.getSource() == btnAtras) {
 
-			LimpiarImagen();
+			limpiarDatos();
 			ClaseHome home = new ClaseHome();
 
 			home.getCardLayout().show(home.getPanelCards(), "Home");
@@ -459,7 +427,9 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 			lblDatos[i].setText(strLibro[i]);
 			txtDatos[i].setText("");
 		}
-
+		txtaDescripcion.setText("");
+		radioButton[0].setSelected(true);
+		lblCalificacion.setIcon(imgCalificacion);
 	}
 
 	/**
@@ -471,7 +441,10 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 			lblDatos[i].setText(strRevista[i]);
 			txtDatos[i].setText("");
 		}
-
+		
+		txtaDescripcion.setText("");
+		radioButton[0].setSelected(true);
+		lblCalificacion.setIcon(imgCalificacion);
 	}
 
 	/**
@@ -483,7 +456,9 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 			lblDatos[i].setText(strPelicula[i]);
 			txtDatos[i].setText("");
 		}
-
+		txtaDescripcion.setText("");
+		radioButton[0].setSelected(true);
+		lblCalificacion.setIcon(imgCalificacion);
 	}
 
 	/**
@@ -495,10 +470,18 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 			lblDatos[i].setText(strSerie[i]);
 			txtDatos[i].setText("");
 		}
-
+		txtaDescripcion.setText("");
+		radioButton[0].setSelected(true);
+		lblCalificacion.setIcon(imgCalificacion);
+		
+	}
+	
+	public void limpiarDatos(){
+		datosLibro();
+		LimpiarImagen();
 	}
 
-	private void LimpiarImagen() {
+	public void LimpiarImagen() {
 		btnImagenArticulo.setIcon(null);
 		btnImagenArticulo.setText("<html><p align=\"center\">"
 				+ "Imagen de Articulo </br> -Elegir Imagen-" + "</p></html>");
