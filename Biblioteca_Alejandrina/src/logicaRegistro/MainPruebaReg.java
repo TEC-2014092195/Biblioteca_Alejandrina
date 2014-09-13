@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.ArrayList;
 
 public class MainPruebaReg {
 
@@ -15,17 +16,24 @@ public class MainPruebaReg {
 		out = System.out;
 		
 		//Se hace el registro de todos los articulos y clientes
-		Registro.leerTxtDeCero("archivo.txt");
+		//Registro.leerTxtDeCero("archivo.txt");
 		//Prestar un articulo
 		
-		Registro.clientesRegistrados.get(0).prestar(2);
+		//Registro.clientesRegistrados.get(0).prestar(2);
 		//out.println(Registro.clientesRegistrados.get(0).toString());
 		
-		Registro.clientesRegistrados.get(0).devolver(2);
+		//Registro.clientesRegistrados.get(0).devolver(2);
 		
 		//Aquí elimino todo el sistema, y lo reestablezco
-		Registro.guardarEstadoActualSistema("pruebaguardado.txt");
-		Registro.recuperarEstadoSistema("pruebaguardado.txt");
+		//Registro.guardarEstadoActualSistema("pruebaguardado.txt");
+		//Registro.recuperarEstadoSistema("pruebaguardado.txt");
+		
+		Cliente caso1 = new Cliente("c","a","Vargas","88888888","soymari@tumail.com","Estudiante");
+		Cliente caso2 = new Cliente("b","b","Mora","88887777","soyantonio@tumail.com","Familiar");
+		Cliente caso3 = new Cliente("a","c","Delgado","88333388","soyrolo@tumail.com","Colega");
+		Registro.clientesRegistrados.add(caso1);
+		Registro.clientesRegistrados.add(caso2);
+		Registro.clientesRegistrados.add(caso3);
 		//---------------
 		
 		//----Printeo todos los resultados: Hacerlo antes o después de la 
@@ -43,5 +51,29 @@ public class MainPruebaReg {
 			if (!objeto.isPrestado()){
 				out.print(objeto);
 				out.print("");}}
+		
+		//Ejemplo de los filtros
+		Filtro registro = new Filtro(Registro.clientesRegistrados,Registro.articulosRegistrados);
+		ArrayList<Cliente> filtro1 = registro.sortNombre(Registro.clientesRegistrados);
+		out.println("Filtrados por Nombre");
+		for (Cliente cliente : filtro1){
+			out.println("");
+			out.print(cliente);
+			out.print("");}
+		
+		ArrayList<Cliente> filtro2 = registro.sortApellido1(Registro.clientesRegistrados);
+		out.println("Filtrados por Apellido");
+		for (Cliente cliente : filtro2){
+			out.println("");
+			out.print(cliente);
+			out.print("");}
+		
+		ArrayList<Cliente> filtro3 = registro.sortCategoria(Registro.clientesRegistrados);
+		out.println("Filtrados por Categoria");
+		for (Cliente cliente :filtro3){
+			out.println("");
+			out.print(cliente);
+			out.print("");}
 	}
-}
+		
+	}
