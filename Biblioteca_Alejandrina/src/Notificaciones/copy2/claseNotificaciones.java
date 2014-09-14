@@ -52,7 +52,7 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 	GridBagConstraints gridInfo;
 	GridBagConstraints gridGrilla = new GridBagConstraints();
 	
-	
+	static int indice = 0;
 	JPanel panelGeneral = new JPanel();
 	JPanel panelGrilla = new JPanel();
 	JPanel panelContenedor = new JPanel();
@@ -117,23 +117,25 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 		
 	}
 	
+	
+    // TODO método crearNotificacion()
 	public Container crearNotificacion(String pCategoria, String pDireccionImagen,
 			String pTitulo, String pAutor, int pDiasPrestamo, int pDiasRetraso,
 			String pPrestamista, String pFechaPrestamo) {
-
+		
 		JPanel panelInfo = new JPanel();
 		panelInfo.setLayout(new GridBagLayout());
 		gridInfo = new GridBagConstraints();
 
 		JLabel lblArticuloImagen = new JLabel();
 
-		JLabel lbl, lblPrueba, lblTipoDoc, lblNombreDoc, lblImagenLibro, lblEstrellas, lblSeparador, lblDiasPrestamo, lblCanDiasPrestamo;
+		JLabel lblEstrellas, lblDiasPrestamo, lblCanDiasPrestamo;
 
 		/** The lbl can fecha prestamo. */
 		JLabel lblDiasRetraso, lblCanDiasRetraso, lblPrestadoA, lblNomPrestadoA, lblFechaPrestamo, lblCanFechaPrestamo;
 
 		/** The lbl nom autor. */
-		JLabel lblCategoria, lblTitulo, lblDescripcion, lblNomDescripcion, lblAutor, lblNomAutor;
+		JLabel lblCategoria, lblTitulo, lblAutor;
 		
 		Color bgColorRed = new Color(222, 87, 101),
 			  bgColorYellow = new Color(219, 165, 49);
@@ -308,6 +310,9 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 		panelInfo.add(lblCanFechaPrestamo,gridInfo);
 		
 		panelInfo.addMouseListener(this);
+		panelInfo.setName(""+indice);
+		indice++;
+		
 		
 		return panelInfo;
 
@@ -373,7 +378,8 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 //			System.out.println("Boton Der");
 //			System.out.println( ((JLabel) ((Container) e.getComponent()).getComponent(2)).getText() );
 //			JOptionPane.showMessageDialog(null, ((JLabel) ((Container) e.getComponent()).getComponent(2)).getText());
-			JOptionPane.showMessageDialog(null, e.getComponent());
+//			JOptionPane.showMessageDialog(null, e.getComponent());
+			JOptionPane.showMessageDialog(null, e.getComponent().getName());
 		}
 		
 	}
