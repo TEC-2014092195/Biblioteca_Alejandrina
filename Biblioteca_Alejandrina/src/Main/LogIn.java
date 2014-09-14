@@ -7,6 +7,10 @@
  */
 
 package Main;
+import java.awt.Container;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -17,6 +21,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
+
 import javax.swing.*;
 
 
@@ -25,9 +30,10 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class LogIn extends JFrame implements ActionListener{
 	// Variables
-	JPanel panel;
-	JFrame frame;
+	JPanel panel = new JPanel();;
+	JPanel frame = new JPanel();;
 	JLabel userLabel,passLabel;
+	GridBagConstraints grid = new GridBagConstraints();
 	static JTextField passText;
 	static JTextField userText;
 	JButton logButton, regButton;
@@ -38,47 +44,59 @@ public class LogIn extends JFrame implements ActionListener{
 	//Fin de Variables
 	
 	
-	public void crearWidgets(JPanel panel) {
+	public void crearWidgets() {
 		
-		panel.setLayout(null);
+		panel.setLayout(new GridBagLayout());
+		grid.gridx = 0;
+		grid.gridy = 0;
+		grid.insets = new Insets(0,0,10,10); // Extrenal Pad (top, left, bottom, right)
+		grid.anchor = GridBagConstraints.FIRST_LINE_END;
 		userLabel = new JLabel("Usuario:");
-		userLabel.setBounds(10, 10, 80, 25);
-		panel.add(userLabel);
+		panel.add( userLabel, grid );
 
+		grid.gridx = 1;
+		grid.gridy = 0;
 		userText = new JTextField(20);
-		userText.setBounds(100, 10, 160, 25);
-		panel.add(userText);
+		panel.add( userText, grid );
 
+		grid.gridx = 0;
+		grid.gridy = 1;
 		passLabel = new JLabel("Contraseña:");
-		passLabel.setBounds(10, 40, 80, 25);
-		panel.add(passLabel);
+		panel.add(passLabel, grid);
 
+		grid.gridx = 1;
+		grid.gridy = 1;
 		passText = new JTextField(20);
-		passText.setBounds(100, 40, 160, 25);
-		panel.add(passText);
+		panel.add(passText, grid);
 
+		grid.gridx = 0;
+		grid.gridy = 2;
+		grid.anchor = GridBagConstraints.CENTER;
+		grid.gridwidth = 2;
 		logButton = new JButton("Iniciar Sesión");
-		logButton.setBounds(10, 80, 120, 25);
-		panel.add(logButton);
+		panel.add(logButton, grid);
 		
+		grid.gridx = 0;
+		grid.gridy = 3;
+		grid.gridwidth = 2;
 		regButton = new JButton("Registrar");
-		regButton.setBounds(150, 80, 120, 25);
-		panel.add(regButton);
+		panel.add(regButton, grid);
 		
 		logButton.addActionListener(this);
 		regButton.addActionListener(this);
 	}
 	
-	public void crearFrame(){
-			frame = new JFrame("Ingreso a la Bibilioteca");
-			frame.setSize(300, 150);
-			frame.setLocation(550, 300);
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			panel = new JPanel();
-			frame.add(panel);
-			crearWidgets(panel);
-			frame.setVisible(true);
-		}
+	
+	
+	public LogIn(){
+		crearWidgets();
+	}
+	
+	public Container getContenedor(){
+		
+		return panel;
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==logButton){
 			String valid = "Usuario válido";

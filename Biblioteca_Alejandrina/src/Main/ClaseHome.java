@@ -156,6 +156,9 @@ public class ClaseHome extends JFrame implements ActionListener{
 		
 		panelCards.add("Home", panelHome);
 		
+		LogIn li = new LogIn();
+		panelCards.add("LogIn", li.getContenedor());
+		
 		ClaseRegistroClientes rc = new ClaseRegistroClientes(); 
 		panelCards.add("RegistroPersonas", rc.getContenedor());
 		
@@ -163,7 +166,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		panelCards.add("RegistroArticulos", ra.getContenedor());
 		
 		
-		cardlayout.show(panelCards, "Home");
+		cardlayout.show(panelCards, "LogIn");
 		
 		contentPane.add(panelCards);
 		

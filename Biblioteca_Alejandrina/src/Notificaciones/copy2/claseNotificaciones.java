@@ -313,7 +313,7 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 		panelInfo.setName(""+indice);
 		indice++;
 		
-		
+//		System.out.println(panelInfo.get);
 		return panelInfo;
 
 	}
