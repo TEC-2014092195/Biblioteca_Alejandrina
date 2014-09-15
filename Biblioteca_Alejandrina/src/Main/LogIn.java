@@ -93,13 +93,13 @@ public class LogIn extends JFrame implements ActionListener{
 	}
 	
 	public Container getContenedor(){
-		
 		return panel;
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==logButton){
-			
+
+			recuperarEstado("usuarios.txt");
 			String valid = "Usuario válido";
 			String invalid = "Usuario no válido";
 			usuario = userText.getText();
@@ -120,6 +120,7 @@ public class LogIn extends JFrame implements ActionListener{
 			String reg = "Usted está registrado, puede iniciar sesión";
 			String guardar = usuario+clave;
 			users.add(guardar);
+			guardarEstado("usuarios.txt");
 			JOptionPane.showMessageDialog(null, reg);
 			limpiarTextos();
 		}
@@ -128,6 +129,7 @@ public class LogIn extends JFrame implements ActionListener{
 		userText.setText("");
 		passText.setText("");
 	}
+	//revisa en la lista con los usuarios existe el usuario
 	public boolean revisar(String linea){
 		if (users.contains(linea) == true){
 			return true;
@@ -136,7 +138,7 @@ public class LogIn extends JFrame implements ActionListener{
 			return false;
 		}
 	}
-
+	//Escribe los usuarios que no estaban en el txt 
 	public static void guardarEstado (String dirFile) {
 		File archivo = new File(dirFile);
 		last = null;
@@ -165,9 +167,8 @@ public class LogIn extends JFrame implements ActionListener{
 		catch(IOException e){};
 	}
 
-	
+	//Saca todos los usuarios del TXT y los mete a las lista
 	public static void recuperarEstado(String dirFile){
-		//Se reinician los contadores de objetos. 
 		users.clear();
 		File archivo = null;
 		FileReader fr = null;
