@@ -99,6 +99,7 @@ public class LogIn extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==logButton){
+			
 			String valid = "Usuario válido";
 			String invalid = "Usuario no válido";
 			usuario = userText.getText();

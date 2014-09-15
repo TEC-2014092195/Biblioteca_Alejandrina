@@ -96,13 +96,14 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 	String[] strSerie = { "Nombre", "Temporada", "Año", "Empresa", "Calificación" };
 	
 	/** The cb tipo. */
-	JComboBox cbTipo;
+	
+	JComboBox<String> cbTipo;
 	
 	JRadioButton[] radioButton = new JRadioButton[6];
 	
 	
-	/** The frm. */
-	JPanel frm;
+	/** The panelFrame. */
+	JPanel panelFrame;
 	
 	/** The gbc_2. */
 	GridBagConstraints gbc_1,gbc_2;
@@ -110,13 +111,15 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 	Color colorlbl = new Color(80,30,26);
 	
 	
+	
 	/**
 	 * Instantiates a new copy ofclase registro articulos.
 	 */
 	public claseRegistroArticulos(){
 		
-		frm = new JPanel();
-		frm.setLayout(new FlowLayout());
+		
+		panelFrame = new JPanel();
+		panelFrame.setLayout(new FlowLayout());
 		
 		panelContenedor = new JPanel();
 		panelGrid = new JPanel();
@@ -159,7 +162,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		txtaDescripcion = new JTextArea(5,20);	
 		
 		strTipo = new String[] { "Libro","Revista","Película","Serie" };
-		cbTipo = new JComboBox(strTipo);
+		cbTipo = new JComboBox<String>(strTipo);
 
         
         ButtonGroup group = new ButtonGroup();
@@ -222,23 +225,23 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		gbc_1.gridy=6;
 		panelGrid.add(lblTipo,gbc_1);
 		
-		gbc_1.gridx=0;
-		gbc_1.gridy=7;
-		gbc_1.gridwidth=3;
-		gbc_1.anchor= GridBagConstraints.CENTER;
-		gbc_1.insets = new Insets(20,0,5,10);
-		panelGrid.add(btnGuardar,gbc_1);
+		gbc_1.gridx = 0;
+		gbc_1.gridy = 7;
+		gbc_1.gridwidth = 3;
+		gbc_1.anchor = GridBagConstraints.CENTER;
+		gbc_1.insets = new Insets(20, 0, 5, 10);
+		panelGrid.add(btnGuardar, gbc_1);
 		btnGuardar.addActionListener(this);
-		gbc_1.gridwidth=1;
+		gbc_1.gridwidth = 1;
 		
 		//Derecha
 		gbc_1.anchor= GridBagConstraints.CENTER;
 		gbc_1.insets = new Insets(10,0,5,10);
 		
 		
-		gbc_1.gridx=1;
-		gbc_1.gridy=0;
-		panelGrid.add(txtDatos[0],gbc_1);
+		gbc_1.gridx = 1;
+		gbc_1.gridy = 0;
+		panelGrid.add(txtDatos[0], gbc_1);
 		
 		
 		gbc_1.insets = new Insets(0,0,5,10); // Extrenal Pad (top, left, bottom, right)
@@ -322,7 +325,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 		panelContenedor.add(btnAtras,gbc_1);
 		
 		
-		frm.add(panelContenedor);
+		panelFrame.add(panelContenedor);
 		
 		
 	}
@@ -415,7 +418,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener{
 	
 	
 	public Container getContenedor() {
-		return frm;
+		return panelFrame;
 	}
 
 	/**

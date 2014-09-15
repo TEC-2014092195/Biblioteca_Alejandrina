@@ -15,6 +15,8 @@ import java.awt.Graphics;
 import java.awt.Image; 
 import java.awt.Toolkit; 
 
+//http://mrbool.com/how-to-make-a-splash-screen-with-java/25090
+
 public class ClaseIntroduccion extends JWindow { 
 	Image img=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/recursos/Logo.jpg"));
 	Image img2=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/recursos/load.gif"));
@@ -29,7 +31,7 @@ public class ClaseIntroduccion extends JWindow {
 			dispose(); 
 			
 		}catch(Exception exception) { 
-				//javax.swing.JOptionPane.showMessageDialog((java.awt.Component) null,"Error"+exception.getMessage(), "Error:", javax.swing.JOptionPane.DEFAULT_OPTION); 
+				javax.swing.JOptionPane.showMessageDialog((java.awt.Component) null,"Error"+exception.getMessage(), "Error:", javax.swing.JOptionPane.DEFAULT_OPTION); 
 		} 
 		
 	} 

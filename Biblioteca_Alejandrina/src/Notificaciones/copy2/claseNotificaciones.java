@@ -19,6 +19,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.*;
@@ -27,30 +28,12 @@ import java.io.IOException;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import redimensionar.Imagen;
 
+@SuppressWarnings("serial")
 public class claseNotificaciones extends JFrame implements ActionListener, MouseListener{
 	
 	GridBagConstraints gridInfo;
-	GridBagConstraints gridGrilla = new GridBagConstraints();
 	
 	static int indice = 0;
 	JPanel panelGeneral = new JPanel();
@@ -58,15 +41,15 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 	JPanel panelContenedor = new JPanel();
 	static int Posx=0;
 	static int Posy=0;
+	JFrame frm;
 	
 	
 	JScrollPane scroll;
 	
-	private MouseListener CombinacionEditar;
 	
 	
 	public claseNotificaciones(){
-		JFrame frm = new JFrame("Prueba");
+		frm = new JFrame("Prueba");
 		
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
@@ -82,7 +65,7 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 		
 		panelGeneral.setLayout( new FlowLayout() );
 		
-		panelGrilla.setLayout( new GridBagLayout() );
+		panelGrilla.setLayout( new GridLayout(0, 3, 10, 10) );
 		
 		
 		
@@ -104,7 +87,6 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 		
 		
 		scroll = new JScrollPane(panelGeneral, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scroll.setBorder(null);
 		scroll.setWheelScrollingEnabled(true);
 		scroll.getVerticalScrollBar().setUnitIncrement(50);
 		scroll.setBorder(BorderFactory.createEmptyBorder(0,0,0,20));
@@ -197,6 +179,7 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 				lblAutor.getFont().getSize()));
 		lblAutor.setForeground(lblColorAutor);
 		panelInfo.add(lblAutor, gridInfo);
+		
 
 		gridInfo.gridx = 1;
 		gridInfo.gridy = 3;
@@ -314,6 +297,16 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 		indice++;
 		
 //		System.out.println(panelInfo.get);
+		
+//		Component[] comps = panelInfo.getComponents();
+//		GridBagLayout layout =  (GridBagLayout) panelInfo.getLayout();
+//
+//		for (int i = 0; i < comps.length; ++i) {
+//		    Component comp = comps[i];
+//		    GridBagConstraints gbc = layout.getConstraints(comp);
+//		    System.out.println("Component : " + comp + " , with GBC: " + gbc);
+//		}
+		
 		return panelInfo;
 
 	}
@@ -339,30 +332,14 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 	
 	public void addNotificacion(){
 		
-		gridGrilla = getGridGrilla();
+		
 		Container nuevo = crearNotificacion("Libro", "pDireccionImagen", "pTitulo", "pAutor", 5, 5, "pPrestamista", "pFechaPrestamo");
-		panelGrilla.add(nuevo,gridGrilla);
+		panelGrilla.add(nuevo);
 		
 		panelGeneral.add(panelGrilla);
 	}
 	
-	public GridBagConstraints getGridGrilla(){
-		
-		gridGrilla.gridx = Posx;
-		gridGrilla.gridy = Posy;
-		gridGrilla.insets = new Insets(2,2,2,2);   // Extrenal Pad (top, left, bottom, right) -->Corregido
-		if (Posx < 2){
-			
-			Posx++;
-		}else{
-			
-			Posx=0;
-			Posy++;
-		}
-		
-		
-		return gridGrilla;
-	}
+	
 	
 	public void actionPerformed(ActionEvent e){
 		
@@ -380,6 +357,19 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 //			JOptionPane.showMessageDialog(null, ((JLabel) ((Container) e.getComponent()).getComponent(2)).getText());
 //			JOptionPane.showMessageDialog(null, e.getComponent());
 			JOptionPane.showMessageDialog(null, e.getComponent().getName());
+			
+			panelGrilla.removeAll();
+			indice = 0;
+			addNotificacion();
+			addNotificacion();
+			addNotificacion();
+			addNotificacion();
+			addNotificacion();
+			addNotificacion();
+			
+			frm.revalidate();
+			frm.repaint();
+			
 		}
 		
 	}

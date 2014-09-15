@@ -26,8 +26,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import registro.articulo.*;
+import registro.articulo.claseRegistroArticulos;
 import registro.clientes.ClaseRegistroClientes;
+import consultas.ClaseConsulta; 
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -97,7 +99,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		btnRegistroPersonas.setPreferredSize(new Dimension(140, 140));
 		btnRegistroPersonas.setBackground(Color.WHITE);
 		btnRegistroPersonas.setFocusable(false);
-		//btnRegistroPersonas.setBounds(50, 236, 150, 150);
+		
 		panelContenedor.add(btnRegistroPersonas,grid);
 		panelContenedor.setComponentZOrder(btnRegistroPersonas, 0);
 		
@@ -153,6 +155,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		btnSalir.addActionListener(this);
 		btnRegistroPersonas.addActionListener(this);
 		btnRegistroArticulos.addActionListener(this);
+		btnConsultas.addActionListener(this);
 		
 		panelCards.add("Home", panelHome);
 		
@@ -165,8 +168,12 @@ public class ClaseHome extends JFrame implements ActionListener{
 		claseRegistroArticulos ra = new claseRegistroArticulos();
 		panelCards.add("RegistroArticulos", ra.getContenedor());
 		
+		ClaseConsulta cc = new ClaseConsulta();
+		panelCards.add("Consultas", cc.getContenedor());
 		
-		cardlayout.show(panelCards, "LogIn");
+		
+		
+		cardlayout.show(panelCards, "Home");
 		
 		contentPane.add(panelCards);
 		
@@ -196,7 +203,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		contentPane = ventana.getContentPane();
 		
 		cardlayout = new CardLayout();
-		panelCards.setLayout(cardlayout); //SuperPanel para añadir los demás Paneles
+		panelCards.setLayout(cardlayout); //panelCards para añadir los demás Paneles
 		
 		
 		crearWidgets();
@@ -220,6 +227,10 @@ public class ClaseHome extends JFrame implements ActionListener{
 		}else if(e.getSource()==btnRegistroArticulos){
 			
 			cardlayout.show(panelCards, "RegistroArticulos");
+			ventana.revalidate();
+			ventana.repaint();
+		}else if (e.getSource() == btnConsultas){
+			cardlayout.show(panelCards, "Consultas");
 			ventana.revalidate();
 			ventana.repaint();
 		}
