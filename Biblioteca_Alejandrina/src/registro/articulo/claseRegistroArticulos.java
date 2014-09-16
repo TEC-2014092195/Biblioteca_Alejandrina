@@ -83,16 +83,18 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 			"Edición", "Calificación" };
 
 	/** The str revista. */
-	String[] strRevista = { "Título de obra", "Autor", "Editorial", "Edición",
+	String[] strRevista = { "Título de publicación", "Nombre de Revista", "Año", "Lugar",
 			"Calificación" };
 
 	/** The str pelicula. */
-	String[] strPelicula = { "Título de obra", "Género", "Fecha", "Estrellas",
+	String[] strPelicula = { "Título de obra", "Género", "Año", "Duración",
 			"Calificación" };
 
 	/** The str serie. */
 	String[] strSerie = { "Nombre", "Temporada", "Año", "Empresa",
 			"Calificación" };
+	
+	String[] strGeneral = { "Título o Nombre", "Autor", "Año", "Breve Descripción" , "Calificación" };
 
 	String dirImagen = "";
 	
@@ -160,7 +162,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 
 		
 
-		strTipo = new String[] { "Libro", "Revista", "Película", "Serie" };
+		strTipo = new String[] { "Libro", "Revista", "Película", "Serie", "General" };
 		cbTipo = new JComboBox<String>(strTipo);
 
 		ButtonGroup group = new ButtonGroup();
@@ -336,6 +338,10 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 				datosSerie();
 
 				break;
+			case "General":
+				datosGeneral();
+				
+				break;
 			default:
 				JOptionPane.showMessageDialog(null, "Opción Inválida");
 				break;
@@ -452,6 +458,18 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 		radioButton[0].setSelected(true);
 		lblCalificacion.setIcon(imgCalificacion);
 	}
+
+	public void datosGeneral() {
+
+		for (int i = 0; i < lblDatos.length - 1; i++) {
+			lblDatos[i].setText(strGeneral[i]);
+			txtDatos[i].setText("");
+		}
+		
+		radioButton[0].setSelected(true);
+		lblCalificacion.setIcon(imgCalificacion);
+	}
+	
 
 	
 	public void datosRevista() {
