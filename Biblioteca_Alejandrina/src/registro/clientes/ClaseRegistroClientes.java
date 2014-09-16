@@ -11,11 +11,14 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.*;
 
 import Main.ClaseHome;
 import logicaRegistro.Cliente;
+import logicaRegistro.Registro;
 
 
 
@@ -285,21 +288,40 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnValidar){
-			String s = "";
 			
-			s+="Nombre: "+txtNombre.getText()+"\n";
-			s+="PrimerApe: "+txtPApellido.getText()+"\n";
-			s+="SegundoApe: "+txtSApellido.getText()+"\n";
-			s+="Telefono: "+txtTelefono.getText()+"\n";
-			s+="Correo: "+txtCorreo.getText()+"\n";
-			s+="Categoria: "+cbCategoria.getSelectedItem()+"\n";
+			if (verificarDatos()){
+				
+				if (verificarEmail(txtCorreo.getText())){
+					
+					
+					guardarDatos();
+					
+					String s = "";
+					
+					s+="Nombre: "+txtNombre.getText()+"\n";
+					s+="PrimerApe: "+txtPApellido.getText()+"\n";
+					s+="SegundoApe: "+txtSApellido.getText()+"\n";
+					s+="Telefono: "+txtTelefono.getText()+"\n";
+					s+="Correo: "+txtCorreo.getText()+"\n";
+					s+="Categoria: "+cbCategoria.getSelectedItem()+"\n";
+					
+					JOptionPane.showMessageDialog(null, s);
+					
+					limpiarTextos();
+					
+					
+				}else{
+					JOptionPane.showMessageDialog(null, "La dirección de correo no es válida");
+				}
+			}
 			
-			JOptionPane.showMessageDialog(null, s);
-			
-			cliente_reg = new Cliente(txtNombre.getText(), txtPApellido.getText(), txtSApellido.getText(), txtTelefono.getText(), txtCorreo.getText(), (String) cbCategoria.getSelectedItem());
 			
 			
-			limpiarTextos();
+			
+			
+			
+			
+			
 		}if(e.getSource()==btnAtras){
 			
 			ClaseHome home = new ClaseHome();
@@ -310,6 +332,13 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 			limpiarTextos();
 		}
 		
+	}
+	
+	public void guardarDatos(){
+		cliente_reg = new Cliente(txtNombre.getText(), txtPApellido.getText(), txtSApellido.getText(), txtTelefono.getText(), txtCorreo.getText(), (String) cbCategoria.getSelectedItem());
+		Registro.recuperarEstadoSistema();
+		Registro.clientesRegistrados.add(cliente_reg);
+		Registro.guardarEstadoActualSistema();
 	}
 	
 	/**
@@ -324,6 +353,51 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		txtCorreo.setText("");
 		cbCategoria.setSelectedIndex(0);
 	}
+	
+    //http://mirastro.wordpress.com/2012/02/09/validar-direccion-email-con-java/
+	public static boolean verificarEmail (String email) {
+
+	    // Establecer el patron
+	    Pattern p = Pattern.compile("[-\\w\\.]+@[\\.\\w]+\\.\\w+");
+
+	    // Asociar el string al patron
+	    Matcher m = p.matcher(email);
+
+	   // Comprobar si encaja
+	   return m.matches();
+
+	}
+	
+	
+	public boolean verificarDatos(){
+		if ( txtNombre.getText().matches("\\s*") ){ //Verifica si tiene espacios en blanco
+			JOptionPane.showMessageDialog(null, "El dato nombre no ha sido ingresado");
+			return false;
+		}
+		if ( txtPApellido.getText().matches("\\s*") ){
+			JOptionPane.showMessageDialog(null, "El dato Primer Apellido no ha sido ingresado");
+			return false;
+		}
+		if ( txtSApellido.getText().matches("\\s*") ){
+			JOptionPane.showMessageDialog(null, "El dato Segundo Apellido no ha sido ingresado");
+			return false;
+		}
+		if ( !txtTelefono.getText().matches("\\d*") || txtTelefono.getText().matches("\\s*") ){
+			JOptionPane.showMessageDialog(null, "El número de Teléfono solo acepta números del 0 al 9");
+			return false;
+		}
+		if ( txtCorreo.getText().matches("\\s*") ){
+			JOptionPane.showMessageDialog(null, "El dato Correo no ha sido ingresado");
+			return false;
+		}
+		
+		return true;
+		
+		
+	}
+	
+	
+	
 	
 	
 	

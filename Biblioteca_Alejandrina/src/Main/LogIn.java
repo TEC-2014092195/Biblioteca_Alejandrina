@@ -119,7 +119,7 @@ public class LogIn extends JFrame implements ActionListener{
 			clave = passText.getText();
 			String reg = "Usted está registrado, puede iniciar sesión";
 			String guardar = usuario+clave;
-			users.add(guardar);
+			users.add(""+guardar);
 			guardarEstado("usuarios.txt");
 			JOptionPane.showMessageDialog(null, reg);
 			limpiarTextos();

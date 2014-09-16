@@ -29,6 +29,7 @@ import javax.swing.*;
 import registro.articulo.claseRegistroArticulos;
 import registro.clientes.ClaseRegistroClientes;
 import consultas.ClaseConsulta; 
+import logicaRegistro.Registro;
 
 
 // TODO: Auto-generated Javadoc
@@ -63,6 +64,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 	
 	/** The content pane. */
 	static Container contentPane;
+	
 	
 	/**
 	 * Crear widgets.
@@ -171,6 +173,8 @@ public class ClaseHome extends JFrame implements ActionListener{
 		ClaseConsulta cc = new ClaseConsulta();
 		panelCards.add("Consultas", cc.getContenedor());
 		
+		
+		Registro.recuperarEstadoSistema();
 		
 		
 		cardlayout.show(panelCards, "Home");

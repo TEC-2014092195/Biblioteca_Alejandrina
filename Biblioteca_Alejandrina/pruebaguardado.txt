@@ -1,7 +1,3 @@
-Libro;Don Quijote de la Mancha;Miguel de Cervantes;Editorial Madrid;Quinta Edicion;sistema/carpetaImagenes/img.jpg;5;false;7;
-Revista;mtbPRO;Sports Team;Editorial Deportiva;Edicion de Setiembre;sistema/carpetaImagenes/img2.jpg;4;false;4;
-Pelicula;The Avengers;Marvel;Marvel Movies;Version Extendida;sistema/carpetaImagenes/img3.jpg;3;true;1;
-Serie;The Walking Death;Fox;Fox Studios;Primera Remporada;sistema/carpetaImagenes/img4.jpg;4;true;1;
-Cliente;Roberto;Aguilar;Quesada;22490339;roberto-aq@tumail.com;Familiar;0-4-;
-Cliente;Manuel;Quesada;Jiménez;24167913;manuel.quesada@tumail.com;Funcionario;0-3-;
-Cliente;Mariana;Mora;Alpízar;88861748;mariana.ma@tumail.com;Estudiante;0-;
+Cliente;Kevin;Hernández;Rostrán;22136900;kevinah95@gmail.com;Estudiante;0-;
+Cliente;Kevin;Hernández;Rostrán;22136900;kevinah95@gmail.com;Estudiante;0-;
+Cliente;log;log;lo;g;k@g.com;Estudiante;0-;

@@ -3,6 +3,8 @@ package logicaRegistro;
 import java.io.*;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 
 public class Registro {
 	
@@ -32,17 +34,34 @@ public class Registro {
 		protected String calif = null;
 		protected boolean prestado = false;
 		protected int diasPrestado  = 0;
+		
+		protected static final String dirFile = "Biblioteca_Alejandrina/data/registrodatos.txt";  
+		
+	public static void verificarArchivo() throws IOException { 
+		File file = new File(dirFile);
+    	if (file.getParentFile().mkdirs()) {
+    	    file.createNewFile();
+    	    System.out.println(file.getParentFile());
+    	    JOptionPane.showMessageDialog(null, "Directorio CREADO: "+file.getCanonicalPath());
+    	} 
+	}
 
 	/*
 	 * Esta función lee un txt con información nueva para un inicio de programa
 	 * automatizado. 
 	 * Utiliza los constructores para nuevo objeto y nuevo cliente. 
 	 */
-	public static void leerTxtDeCero (String dirFile) {
+	public static void leerTxtDeCero () {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
 		String[] novoEntrada = null;
+		
+		try {
+			verificarArchivo();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		try {
 			archivo = new File (dirFile); 
@@ -74,7 +93,14 @@ public class Registro {
 			catch (Exception e2){ 
 				e2.printStackTrace();}}}
 	
-	public static void guardarEstadoActualSistema (String dirFile) {
+	public static void guardarEstadoActualSistema () {
+		try {
+			verificarArchivo();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		
 		File archivo = new File(dirFile);
 		try{
 			FileWriter w = new FileWriter(archivo.getAbsolutePath() + java.io.File.separator);
@@ -135,12 +161,18 @@ public class Registro {
 	 * información que se guardó por última vez en el Txt. 
 	 */
 	
-	public static void recuperarEstadoSistema (String dirFile){
+	public static void recuperarEstadoSistema (){
 		//Se reinician los contadores de objetos. 
 		cantClientes = 0;
 		cantObjetos = 0;
 		clientesRegistrados.clear();
 		articulosRegistrados.clear();
+		
+		try {
+			verificarArchivo();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		File archivo = null;
 		FileReader fr = null;
