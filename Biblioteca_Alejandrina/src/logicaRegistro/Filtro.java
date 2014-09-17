@@ -13,8 +13,14 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Filtro {
-	public ArrayList<Cliente> tempClientes;
-	public ArrayList<Articulo> tempArticulos;
+	public ArrayList<Cliente> tempClientes =  new ArrayList<Cliente>();
+	public ArrayList<Articulo> tempArticulos = new ArrayList<Articulo>();
+	public ArrayList<Articulo> libros = new ArrayList<Articulo>();
+	public ArrayList<Articulo> revistas = new ArrayList<Articulo>();
+	public ArrayList<Articulo> peliculas = new ArrayList<Articulo>();
+	public ArrayList<Articulo> series = new ArrayList<Articulo>();
+	public ArrayList<Articulo> prestados = new ArrayList<Articulo>();
+	public ArrayList<Articulo> noPrestados = new ArrayList<Articulo>();
 	
 	/**
 	 * @param clientesRegistrados
@@ -146,5 +152,49 @@ public class Filtro {
 	});
 		return tempArticulos;
 	}
+	//Estos métodos generan una lista con los respectivos articulos de cada tipo
+	public void obtLibros(ArrayList<Articulo> lista){
+		for (int i = 0 ; i < lista.size() ; i++){
+			if (lista.get(i).getTipo() == "Libro"){
+				libros.add(lista.get(i));
+			}
+		}
+	}
+	public void obtRevistas(ArrayList<Articulo> lista){
+		for (int i = 0 ; i < lista.size() ; i++){
+			if (lista.get(i).getTipo() == "Revista"){
+				revistas.add(lista.get(i));
+			}
+		}
+	}
+	public void obtPeliculas(ArrayList<Articulo> lista){
+		for (int i = 0 ; i < lista.size() ; i++){
+			if (lista.get(i).getTipo() == "Película"){
+				peliculas.add(lista.get(i));
+			}
+		}
+	}
+	public void obtSeries(ArrayList<Articulo> lista){
+		for (int i = 0 ; i < lista.size() ; i++){
+			if (lista.get(i).getTipo() == "Serie"){
+				series.add(lista.get(i));
+			}
+		}
+	}
+	public void asignarPrestados(ArrayList<Articulo> lista){
+		for (int i = 0 ; i < lista.size() ; i++){
+			if (lista.get(i).isPrestado() == true){
+				prestados.add(lista.get(i));
+			}
+			else{
+				noPrestados.add(lista.get(i));
+			}
+		}
+	}
+	/*La idea de estas funciones es que a la hora de llamar a la ventana de consulta de artículos  ejecutar 
+	 * los metodos que sean VOID para llenarlos con los datos correspondientes en el momento de la consulta.
+	 * así las listas quedan llenas y se pueden poner en la interfaz de acuerdo a lo que el cliente requiera
+	 * EJEMPLO: se llama a la ventana de consultas y se ejecutan los metodos,  Con las listas ya creadas nada mas
+	 * se imprime en forma de interfaz grafica la que el cliente seleccione*/
 	
 }
