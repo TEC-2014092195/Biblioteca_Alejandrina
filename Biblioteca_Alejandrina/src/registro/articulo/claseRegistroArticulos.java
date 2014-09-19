@@ -106,7 +106,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 
 	JRadioButton[] radioButton = new JRadioButton[6];
 
-	/** The panelFrame. */
+	/** The panelContenedor. */
 	JPanel panelFrame;
 
 	/** The gbc_2. */
@@ -317,6 +317,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 
 	}
 
+// TODO ActionListener()
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == cbTipo) {
 			String tipo = (String) cbTipo.getSelectedItem();
@@ -424,7 +425,6 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 	public void guardarDatos(){
 		
 		articulo_reg = new Articulo( cbTipo.getSelectedItem().toString() , txtDatos[0].getText(), txtDatos[1].getText(), txtDatos[2].getText(), txtDatos[3].getText(), dirImagen, strCalificacion);
-		Registro.recuperarEstadoSistema();
 		Registro.articulosRegistrados.add(articulo_reg);
 		System.out.println(articulo_reg.toString());
 		Registro.guardarEstadoActualSistema();

@@ -282,7 +282,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	}
 
 	
-	
+	//TODO ActionListener()
 	/* (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
@@ -336,7 +336,6 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	
 	public void guardarDatos(){
 		cliente_reg = new Cliente(txtNombre.getText(), txtPApellido.getText(), txtSApellido.getText(), txtTelefono.getText(), txtCorreo.getText(), (String) cbCategoria.getSelectedItem());
-		Registro.recuperarEstadoSistema();
 		Registro.clientesRegistrados.add(cliente_reg);
 		Registro.guardarEstadoActualSistema();
 	}
@@ -371,7 +370,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	
 	public boolean verificarDatos(){
 		if ( txtNombre.getText().matches("\\s*") ){ //Verifica si tiene espacios en blanco
-			JOptionPane.showMessageDialog(null, "El dato nombre no ha sido ingresado");
+			JOptionPane.showMessageDialog(null, "El dato Nombre no ha sido ingresado");
 			return false;
 		}
 		if ( txtPApellido.getText().matches("\\s*") ){

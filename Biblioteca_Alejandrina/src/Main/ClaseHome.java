@@ -54,7 +54,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 	static JLabel lblBackground;
 	
 	/** The btn salir. */
-	static JButton btnRegistroPersonas,btnRegistroArticulos,btnConsultas,btnSalir;
+	static JButton btnRegistroPersonas,btnRegistroArticulos,btnConsultas,btnPrestamos,btnDevoluciones,btnSalir;
 	
 	/** The cardlayout. */
 	static CardLayout cardlayout;
@@ -93,7 +93,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		
 		grid.gridx=0;
 		grid.gridy=0;
-		grid.insets = new Insets(57, -532, 0, 0); // Extrenal Pad (top, left, bottom, right)
+		grid.insets = new Insets(57, -505, 0, 0); // Extrenal Pad (top, left, bottom, right)
 		btnRegistroPersonas = new JButton("Registro Personas");
 		btnRegistroPersonas.setOpaque(false);
 //		btnRegistroPersonas.setContentAreaFilled(false);
@@ -109,7 +109,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		
 		grid.gridx=0;
 		grid.gridy=0;
-		grid.insets = new Insets(57, -195, 0, 0); // Extrenal Pad (top, left, bottom, right)
+		grid.insets = new Insets(57, -170, 0, 0); // Extrenal Pad (top, left, bottom, right)
 		btnRegistroArticulos = new JButton("Registro Artículos");
 		btnRegistroArticulos.setOpaque(false);
 //		btnRegistroArticulos.setContentAreaFilled(false);
@@ -124,8 +124,8 @@ public class ClaseHome extends JFrame implements ActionListener{
 		
 		grid.gridx=0;
 		grid.gridy=0;
-		grid.insets = new Insets(57, 139, 0, 0); // Extrenal Pad (top, left, bottom, right)
-		btnConsultas = new JButton("<html><p align=\"center\">"+"Consultas  </br>de </br>Artículos"+"</p></html>");
+		grid.insets = new Insets(65, 175, 0, 0); // Extrenal Pad (top, left, bottom, right)
+		btnConsultas = new JButton("<html><p align=\"center\">"+"Consultas  </br> de </br>Artículos"+"</p></html>");
 		btnConsultas.setOpaque(false);
 //		btnConsultas.setContentAreaFilled(false);
 		btnConsultas.setBorderPainted(false);
@@ -140,7 +140,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		
 		grid.gridx=0;
 		grid.gridy=0;
-		grid.insets = new Insets(57, 476, 0, 0); // Extrenal Pad (top, left, bottom, right)
+		grid.insets = new Insets(57, 500, 0, 0); // Extrenal Pad (top, left, bottom, right)
 		btnSalir = new JButton("Salir");
 		btnSalir.setOpaque(false);
 //		btnSalir.setContentAreaFilled(false);
@@ -151,6 +151,36 @@ public class ClaseHome extends JFrame implements ActionListener{
 		btnSalir.setBounds(553, 236, 150, 150);
 		panelContenedor.add(btnSalir,grid);
 		panelContenedor.setComponentZOrder(btnSalir, 0);
+		
+		grid.gridx=0;
+		grid.gridy=0;
+		grid.insets = new Insets(285, -335, 0, 0); // Extrenal Pad (top, left, bottom, right)
+		btnPrestamos = new JButton("Préstamos");
+		btnPrestamos.setOpaque(false);
+//		btnPrestamos.setContentAreaFilled(false);
+		btnPrestamos.setBorderPainted(false);
+		btnPrestamos.setPreferredSize(new Dimension(140, 140));
+		btnPrestamos.setBackground(Color.WHITE);
+		btnPrestamos.setFocusable(false);
+		btnPrestamos.setBounds(553, 236, 150, 150);
+		panelContenedor.add(btnPrestamos,grid);
+		panelContenedor.setComponentZOrder(btnPrestamos, 0);
+		
+		
+		grid.gridx=0;
+		grid.gridy=0;
+		grid.insets = new Insets(285, 340, 0, 0); // Extrenal Pad (top, left, bottom, right)
+		btnDevoluciones = new JButton("Devoluciones");
+		btnDevoluciones.setOpaque(false);
+//		btnDevoluciones.setContentAreaFilled(false);
+		btnDevoluciones.setBorderPainted(false);
+		btnDevoluciones.setPreferredSize(new Dimension(140, 140));
+		btnDevoluciones.setBackground(Color.WHITE);
+		btnDevoluciones.setFocusable(false);
+		btnDevoluciones.setBounds(553, 236, 150, 150);
+		panelContenedor.add(btnDevoluciones,grid);
+		panelContenedor.setComponentZOrder(btnDevoluciones, 0);
+		
 		
 		panelHome.add(panelContenedor);
 		
@@ -174,7 +204,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		panelCards.add("Consultas", cc.getContenedor());
 		
 		
-		Registro.recuperarEstadoSistema();
+		Registro.recuperarEstadoSistema(); //Recupera el estado del archivo de texto registrodatos.txt
 		
 		
 		cardlayout.show(panelCards, "Home");

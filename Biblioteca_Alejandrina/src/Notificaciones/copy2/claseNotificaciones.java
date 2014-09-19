@@ -119,7 +119,7 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 		/** The lbl nom autor. */
 		JLabel lblCategoria, lblTitulo, lblAutor;
 		
-		Color bgColorRed = new Color(222, 87, 101),
+		Color bgColorRed = new Color(222,87,101),
 			  bgColorYellow = new Color(219, 165, 49);
 		Color lblColor=null,lblColorAutor=null;
 		

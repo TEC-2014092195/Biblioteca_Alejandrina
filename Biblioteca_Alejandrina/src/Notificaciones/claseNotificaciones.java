@@ -13,11 +13,12 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Hashtable;
 
-
+import plantillas.paneles.*;
 
 
 // TODO: Auto-generated Javadoc
@@ -270,8 +271,21 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 		lblCanFechaPrestamo.setForeground(Color.WHITE);
 		panel.add(lblCanFechaPrestamo,gbc2);
 		
+		
+		
+		
 		v.add(panel);
 		
+		ArticuloAbstracto abs = new ArticuloAbstracto();
+		
+		JPanel panelprueba = new JPanel();
+		panelprueba = (JPanel) abs.getContenedorArticulo("Libro", "Dios no tiene Favoritos Tiene Intimos", "Marcos Brunet", "ZOE", "Descripcion del Articulo Seleccionado", "3", getClass().getResource("/recursos/Libro5.jpg").getPath());
+		
+		v.add(panelprueba);
+		
+		JPanel panelprueba2 = new JPanel();
+		panelprueba2 = (JPanel) abs.getContenedorArticulo("Libro", "Con todas mis fuerzas te alabare", "Marcos Brunet", "ZOE", "Descripcion del Articulo Seleccionado", "5", getClass().getResource("/recursos/Ejemplo3.jpg").getPath());
+		v.add(panelprueba2);
 		
 		v.setVisible(true);
 		Color colorV = new Color(239,239,239);
