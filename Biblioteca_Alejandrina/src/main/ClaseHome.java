@@ -1,5 +1,5 @@
 /**====================================================================================
- * Archivo      : ClaseHome.java » Paquete: Main » Proyecto: Biblioteca_Alejandrina
+ * Archivo      : ClaseHome.java » Paquete: main » Proyecto: Biblioteca_Alejandrina
  * Autores      : Kevin Hernández Rostrán, Jasson Moya Álvarez, 
  *				  Julián Méndez Oconitrillo, José Aguilar Quesada.
  * Curso        : Programación Orientada a Objetos - Instituto Tecnológico de Costa Rica
@@ -8,7 +8,7 @@
  */
 
 
-package Main;
+package main;
 
 
 import java.awt.CardLayout;

@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import Main.ClaseIntroduccion;
+import main.ClaseIntroduccion;
 
 public class Principal extends JFrame implements ActionListener {
 	// ClaseHome Declaracion de variables

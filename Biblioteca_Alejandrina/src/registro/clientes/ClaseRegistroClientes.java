@@ -16,9 +16,9 @@ import java.util.regex.Pattern;
 
 import javax.swing.*;
 
-import Main.ClaseHome;
 import logicaRegistro.Cliente;
 import logicaRegistro.Registro;
+import main.ClaseHome;
 
 
 

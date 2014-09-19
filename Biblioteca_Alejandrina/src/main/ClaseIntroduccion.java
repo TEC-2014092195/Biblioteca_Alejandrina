@@ -7,7 +7,7 @@
  **==================================================================================== 
  */
 
-package Main;
+package main;
 
 import javax.swing.JWindow;  
 import java.awt.Color;

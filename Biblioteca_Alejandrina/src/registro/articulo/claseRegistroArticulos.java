@@ -44,7 +44,7 @@ import javax.swing.filechooser.*;
 
 import logicaRegistro.Articulo;
 import logicaRegistro.Registro;
-import Main.ClaseHome;
+import main.ClaseHome;
 import redimensionar.Imagen;
 
 // TODO: Auto-generated Javadoc

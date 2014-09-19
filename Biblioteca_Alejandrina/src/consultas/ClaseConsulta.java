@@ -28,7 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Main.ClaseHome;
+import main.ClaseHome;
 
 @SuppressWarnings("serial")
 public class ClaseConsulta extends JFrame implements ActionListener{

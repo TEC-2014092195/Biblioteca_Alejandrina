@@ -1,12 +1,12 @@
 /**====================================================================================
- * Archivo      : LogIn.java » Paquete: Main » Proyecto: Biblioteca_Alejandrina JoseManuel
+ * Archivo      : LogIn.java » Paquete: main » Proyecto: Biblioteca_Alejandrina JoseManuel
  * Autores      : José Aguilar Quesada.
  * Curso        : Programación Orientada a Objetos - Instituto Tecnológico de Costa Rica
  * Descripcion  : Control de préstamo de artículos para una Biblioteca
  **==================================================================================== 
  */
 
-package Main;
+package main;
 import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
