@@ -155,28 +155,28 @@ public class Filtro {
 	//Estos métodos generan una lista con los respectivos articulos de cada tipo
 	public void obtLibros(ArrayList<Articulo> lista){
 		for (int i = 0 ; i < lista.size() ; i++){
-			if (lista.get(i).getTipo() == "Libro"){
+			if (lista.get(i).getTipo().equals("Libro")){
 				libros.add(lista.get(i));
 			}
 		}
 	}
 	public void obtRevistas(ArrayList<Articulo> lista){
 		for (int i = 0 ; i < lista.size() ; i++){
-			if (lista.get(i).getTipo() == "Revista"){
+			if (lista.get(i).getTipo().equals("Revista")){
 				revistas.add(lista.get(i));
 			}
 		}
 	}
 	public void obtPeliculas(ArrayList<Articulo> lista){
 		for (int i = 0 ; i < lista.size() ; i++){
-			if (lista.get(i).getTipo() == "Película"){
+			if (lista.get(i).getTipo().equals("Película")){
 				peliculas.add(lista.get(i));
 			}
 		}
 	}
 	public void obtSeries(ArrayList<Articulo> lista){
 		for (int i = 0 ; i < lista.size() ; i++){
-			if (lista.get(i).getTipo() == "Serie"){
+			if (lista.get(i).getTipo().equals("Serie")){
 				series.add(lista.get(i));
 			}
 		}

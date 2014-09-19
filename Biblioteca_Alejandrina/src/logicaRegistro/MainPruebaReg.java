@@ -12,14 +12,14 @@ public class MainPruebaReg {
 	static PrintStream out;
 	
 	public static void main (String[] args) throws IOException {
-		in = new BufferedReader (new InputStreamReader(System.in));
-		out = System.out;
+//		in = new BufferedReader (new InputStreamReader(System.in));
+//		out = System.out;
 		
 //		Se hace el registro de todos los articulos y clientes
-		Registro.leerTxtDeCero();
+//		Registro.leerTxtDeCero();
 //		Prestar un articulo
 		
-		Registro.recuperarEstadoSistema();
+		/*Registro.recuperarEstadoSistema();
 		Cliente cli1 = new Cliente("Kevin","Hernández","Rostrán","22136900","kevinah95@gmail.com","Estudiante");
 		Registro.clientesRegistrados.add(cli1);
 		Registro.guardarEstadoActualSistema();
@@ -27,7 +27,31 @@ public class MainPruebaReg {
 		out.println(Registro.clientesRegistrados.get(Registro.clientesRegistrados.size()-1).toString());
 		System.out.println(Registro.clientesRegistrados.size());
 		
-		Registro.guardarEstadoActualSistema();
+		Registro.guardarEstadoActualSistema();*/
+		
+		Articulo Caso1 = new Articulo( "Libro","Quijote","Miguel de Cervantes","Edit Madrid","16 y algo","Aqui","5", false,5);
+		Articulo Caso2 = new Articulo( "Libro","Quijote2","Miguel de Cervantes","Edit Madrid","16 y algo","Aqui","5", false,5 );
+		Articulo Caso3 = new Articulo( "Libro","Quijote3","Miguel de Cervantes","Edit Madrid","16 y algo","Aqui","5", false,5 );
+		Articulo Caso4 = new Articulo( "Revista","Rev","Miguel de Cervantes","Edit Madrid","16 y algo","Aqui","5" , false,5);
+		Articulo Caso5 = new Articulo( "Revista","Rev","Miguel de Cervantes","Edit Madrid","16 y algo","Aqui","5" , false,5);
+		Articulo Caso6 = new Articulo( "Revista","Rev","Miguel de Cervantes","Edit Madrid","16 y algo","Aqui","5" , false,5);
+		Articulo Caso7 = new Articulo( "Película","Rev","Miguel de Cervantes","Edit Madrid","16 y algo","Aqui","5" , false,5);
+		Registro.articulosRegistrados.add(Caso1);
+		Registro.articulosRegistrados.add(Caso4);
+		Registro.articulosRegistrados.add(Caso3);
+		Registro.articulosRegistrados.add(Caso7);
+		Registro.articulosRegistrados.add(Caso2);
+		Registro.articulosRegistrados.add(Caso5);
+		Registro.articulosRegistrados.add(Caso6);
+		Filtro prueba = new Filtro(Registro.clientesRegistrados,Registro.articulosRegistrados);
+		prueba.obtPeliculas(Registro.articulosRegistrados);
+		prueba.obtLibros(Registro.articulosRegistrados);
+		System.out.println(prueba.libros.size());
+		for (int i = 0 ; i < prueba.libros.size() ; i++){
+			System.out.println(prueba.libros.get(i).toString());
+		}
+		
+		
 		
 		//Registro.clientesRegistrados.get(0).devolver(2);
 		
