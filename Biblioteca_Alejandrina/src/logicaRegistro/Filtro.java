@@ -13,8 +13,8 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Filtro {
-	public ArrayList<Cliente> tempClientes =  new ArrayList<Cliente>();
-	public ArrayList<Articulo> tempArticulos = new ArrayList<Articulo>();
+	public ArrayList<Cliente> tempClientes =  new ArrayList<Cliente>();//Se guardan las copias de los clientes ordenadas por los metodos
+	public ArrayList<Articulo> tempArticulos = new ArrayList<Articulo>();//Se guardan las copias de los articulos ordenadas por los metodos
 	public ArrayList<Articulo> libros = new ArrayList<Articulo>();
 	public ArrayList<Articulo> revistas = new ArrayList<Articulo>();
 	public ArrayList<Articulo> peliculas = new ArrayList<Articulo>();
@@ -36,7 +36,8 @@ public class Filtro {
 	 * Recibe: la lista original con los objetos cliente
 	 * Retorna: una nueva lista con los objetos ordenados de acuerdo al atributo a filtrar 
 	 */
-	public ArrayList<Cliente> sortNombre(ArrayList<Cliente> lista){
+	public void sortNombre(ArrayList<Cliente> lista){
+		tempClientes.clear();
 		tempClientes = lista;
 		Collections.sort(tempClientes, new Comparator<Cliente>(){
 			@Override
@@ -44,9 +45,9 @@ public class Filtro {
 				return p1.getNombre().compareTo(p2.getNombre());
 			}
 	});
-		return tempClientes;
 	}
-	public ArrayList<Cliente> sortApellido1(ArrayList<Cliente> lista){
+	public void sortApellido1(ArrayList<Cliente> lista){
+		tempClientes.clear();
 		tempClientes = lista;
 		Collections.sort(tempClientes, new Comparator<Cliente>(){
 			@Override
@@ -54,9 +55,9 @@ public class Filtro {
 				return p1.getApellido1().compareTo(p2.getApellido1());
 			}
 	});
-		return tempClientes;
 	}
-	public ArrayList<Cliente> sortApellido2(ArrayList<Cliente> lista){
+	public void sortApellido2(ArrayList<Cliente> lista){
+		tempClientes.clear();
 		tempClientes = lista;
 		Collections.sort(tempClientes, new Comparator<Cliente>(){
 			@Override
@@ -64,9 +65,9 @@ public class Filtro {
 				return p1.getApellido2().compareTo(p2.getApellido2());
 			}
 	});
-		return tempClientes;
 	}
-	public ArrayList<Cliente> sortTelefono(ArrayList<Cliente> lista){
+	public void sortTelefono(ArrayList<Cliente> lista){
+		tempClientes.clear();
 		tempClientes = lista;
 		Collections.sort(tempClientes, new Comparator<Cliente>(){
 			@Override
@@ -74,9 +75,9 @@ public class Filtro {
 				return p1.getTelefono().compareTo(p2.getTelefono());
 			}
 	});
-		return tempClientes;
 	}
-	public ArrayList<Cliente> sortCorreo(ArrayList<Cliente> lista){
+	public void sortCorreo(ArrayList<Cliente> lista){
+		tempClientes.clear();
 		tempClientes = lista;
 		Collections.sort(tempClientes, new Comparator<Cliente>(){
 			@Override
@@ -84,9 +85,9 @@ public class Filtro {
 				return p1.getCorreo().compareTo(p2.getCorreo());
 			}
 	});
-		return tempClientes;
 	}
-	public ArrayList<Cliente> sortCategoria(ArrayList<Cliente> lista){
+	public void sortCategoria(ArrayList<Cliente> lista){
+		tempClientes.clear();
 		tempClientes = lista;
 		Collections.sort(tempClientes, new Comparator<Cliente>(){
 			@Override
@@ -94,7 +95,6 @@ public class Filtro {
 				return p1.getCategoria().compareTo(p2.getCategoria());
 			}
 	});
-		return tempClientes;
 	}
 	/**
 	 * 
@@ -102,7 +102,8 @@ public class Filtro {
 	 * Recibe: la lista original con los objetos artículo
 	 * Retorna: una nueva lista con los objetos ordenados de acuerdo al atributo a filtrar 
 	 */
-	public ArrayList<Articulo> sortTitulo(ArrayList<Articulo> lista){
+	public void sortTitulo(ArrayList<Articulo> lista){
+		tempArticulos.clear();
 		tempArticulos = lista;
 		Collections.sort(tempArticulos, new Comparator<Articulo>(){
 			@Override
@@ -110,9 +111,9 @@ public class Filtro {
 				return p1.getTitulo().compareTo(p2.getTitulo());
 			}
 	});
-		return tempArticulos;
 	}
-	public ArrayList<Articulo> sortAutor(ArrayList<Articulo> lista){
+	public void sortAutor(ArrayList<Articulo> lista){
+		tempArticulos.clear();
 		tempArticulos = lista;
 		Collections.sort(tempArticulos, new Comparator<Articulo>(){
 			@Override
@@ -120,9 +121,9 @@ public class Filtro {
 				return p1.getAutor().compareTo(p2.getAutor());
 			}
 	});
-		return tempArticulos;
 	}
-	public ArrayList<Articulo> sortDato1(ArrayList<Articulo> lista){
+	public void sortDato1(ArrayList<Articulo> lista){
+		tempArticulos.clear();
 		tempArticulos = lista;
 		Collections.sort(tempArticulos, new Comparator<Articulo>(){
 			@Override
@@ -130,9 +131,9 @@ public class Filtro {
 				return p1.getDato1().compareTo(p2.getDato1());
 			}
 	});
-		return tempArticulos;
 	}
-	public ArrayList<Articulo> sortDato2(ArrayList<Articulo> lista){
+	public void sortDato2(ArrayList<Articulo> lista){
+		tempArticulos.clear();
 		tempArticulos = lista;
 		Collections.sort(tempArticulos, new Comparator<Articulo>(){
 			@Override
@@ -140,9 +141,9 @@ public class Filtro {
 				return p1.getDato2().compareTo(p2.getDato2());
 			}
 	});
-		return tempArticulos;
 	}
-	public ArrayList<Articulo> sortCalif(ArrayList<Articulo> lista){
+	public void sortCalif(ArrayList<Articulo> lista){
+		tempArticulos.clear();
 		tempArticulos = lista;
 		Collections.sort(tempArticulos, new Comparator<Articulo>(){
 			@Override
@@ -150,7 +151,6 @@ public class Filtro {
 				return p1.getCalif().compareTo(p2.getCalif());
 			}
 	});
-		return tempArticulos;
 	}
 	//Estos métodos generan una lista con los respectivos articulos de cada tipo
 	public void obtLibros(ArrayList<Articulo> lista){
