@@ -27,7 +27,7 @@ import javax.swing.*;
 
 
 
-@SuppressWarnings("serial")
+
 public class LogIn extends JFrame implements ActionListener{
 	// Variables
 	JPanel panel = new JPanel();;
@@ -38,8 +38,8 @@ public class LogIn extends JFrame implements ActionListener{
 	static JTextField userText;
 	JButton logButton, regButton;
 	String usuario,clave;
-	static ArrayList<String> users;
-	private static ArrayList<String> last;
+	static ArrayList<String> users = new ArrayList<String>();
+	private static ArrayList<String> last = new ArrayList<String>();
 	
 	//Fin de Variables
 	
@@ -119,7 +119,8 @@ public class LogIn extends JFrame implements ActionListener{
 			clave = passText.getText();
 			String reg = "Usted está registrado, puede iniciar sesión";
 			String guardar = usuario+clave;
-			users.add(""+guardar);
+			System.out.println(guardar);
+			users.add(guardar);
 			guardarEstado("usuarios.txt");
 			JOptionPane.showMessageDialog(null, reg);
 			limpiarTextos();
@@ -155,7 +156,7 @@ public class LogIn extends JFrame implements ActionListener{
 			}
 			for (int i = 0; i < users.size(); i++) {
 				String objeto = users.get(i);
-				if (last.contains(objeto) == true){
+				if (last.contains(objeto)){
 					wr.write(objeto);
 					bw.newLine();
 				}
@@ -186,6 +187,8 @@ public class LogIn extends JFrame implements ActionListener{
 			br.close();}
 				
 		catch(IOException e){};}
+	
+	
 	
 }
 

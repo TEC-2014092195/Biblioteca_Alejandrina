@@ -4,3 +4,4 @@ Cliente;Kevin;Hernández;Rostrán;22136900;kevinah95@gmail.com;Estudiante;0-;
 Cliente;dasd;fwefwef;wefwe;90583409534;k@o.com;Estudiante;0-;
 Cliente;Jasson;Moya;Alvarez;890214021;Jasc@j.com;Estudiante;0-;
 Cliente;Kevin;Hernández;Rostrán;22136900;kevinah95@gmail.com;Estudiante;0-;
+Cliente;Dayanara;Hernández;R;948203;d@g.com;Familiar;0-;

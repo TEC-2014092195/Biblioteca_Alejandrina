@@ -56,6 +56,8 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		
 		panelContenedor.setLayout(new GridBagLayout());
 		
+		
+		
 		panelGrid.setLayout(new GridBagLayout());
 		panelGrid.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 		panelGrid.setBackground(Color.LIGHT_GRAY);

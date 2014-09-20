@@ -30,7 +30,7 @@ import registro.articulo.claseRegistroArticulos;
 import registro.clientes.ClaseRegistroClientes;
 import consultas.ClaseConsulta; 
 import logicaRegistro.Registro;
-
+import prestamo.articulo.*;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -188,6 +188,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		btnRegistroPersonas.addActionListener(this);
 		btnRegistroArticulos.addActionListener(this);
 		btnConsultas.addActionListener(this);
+		btnPrestamos.addActionListener(this);
 		
 		panelCards.add("Home", panelHome);
 		
@@ -203,11 +204,14 @@ public class ClaseHome extends JFrame implements ActionListener{
 		ClaseConsulta cc = new ClaseConsulta();
 		panelCards.add("Consultas", cc.getContenedor());
 		
+		PrestarArticulo prestamos = new PrestarArticulo();
+		panelCards.add("Prestamos", prestamos.getContenedor());
+		
 		
 		Registro.recuperarEstadoSistema(); //Recupera el estado del archivo de texto registrodatos.txt
 		
 		
-		cardlayout.show(panelCards, "Home");
+		cardlayout.show(panelCards, "LogIn");
 		
 		contentPane.add(panelCards);
 		
@@ -265,6 +269,10 @@ public class ClaseHome extends JFrame implements ActionListener{
 			ventana.repaint();
 		}else if (e.getSource() == btnConsultas){
 			cardlayout.show(panelCards, "Consultas");
+			ventana.revalidate();
+			ventana.repaint();
+		}else if(e.getSource()==btnPrestamos){
+			cardlayout.show(panelCards, "Prestamos");
 			ventana.revalidate();
 			ventana.repaint();
 		}

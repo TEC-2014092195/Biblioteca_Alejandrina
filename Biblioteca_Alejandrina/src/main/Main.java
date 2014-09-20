@@ -14,7 +14,7 @@ public class Main {
 
 	
 	public static void main(String[] args) {
-		//ClaseIntroduccion ci = new ClaseIntroduccion(); //Inicia con la imagen del logotipo (comentado para no atrasar el proceso hasta la versión final)
+//		ClaseIntroduccion ci = new ClaseIntroduccion(); //Inicia con la imagen del logotipo (comentado para no atrasar el proceso hasta la versión final)
 		ClaseHome n = new ClaseHome();
 		n.crearFrame();
 

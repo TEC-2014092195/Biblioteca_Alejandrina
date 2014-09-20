@@ -89,7 +89,9 @@ public class claseNotificaciones extends JFrame implements ActionListener, Mouse
 		scroll = new JScrollPane(panelGeneral, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll.setWheelScrollingEnabled(true);
 		scroll.getVerticalScrollBar().setUnitIncrement(50);
-		scroll.setBorder(BorderFactory.createEmptyBorder(0,0,0,20));
+		scroll.setViewportBorder(BorderFactory.createEmptyBorder());
+//		scroll.setPreferredSize(new Dimension(300,300));
+//		scroll.setBorder(BorderFactory.createEmptyBorder(0,0,0,20));
 		
 		panelContenedor.add(scroll);
 		panelContenedor.setBorder(BorderFactory.createEmptyBorder(20,50,20,50)); // Extrenal Pad (top, left, bottom, right)

@@ -98,12 +98,12 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 lblSApellido.setForeground(colorlbl);
 		 txtSApellido = new JTextField(20);
 		 
-		 lblTelefono = new JLabel("Telefono ");
+		 lblTelefono = new JLabel("Teléfono ");
 		 lblTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
 		 lblTelefono.setForeground(colorlbl);
 		 txtTelefono = new JTextField(20);
 		 
-		 lblCorreo = new JLabel("Correo ");
+		 lblCorreo = new JLabel("Correo Electrónico");
 		 lblCorreo.setHorizontalAlignment(SwingConstants.RIGHT);
 		 lblCorreo.setForeground(colorlbl);
 		 txtCorreo = new JTextField(20);
