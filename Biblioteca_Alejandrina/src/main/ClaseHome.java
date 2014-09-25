@@ -211,7 +211,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		Registro.recuperarEstadoSistema(); //Recupera el estado del archivo de texto registrodatos.txt
 		
 		
-		cardlayout.show(panelCards, "LogIn");
+		cardlayout.show(panelCards, "Home");
 		
 		contentPane.add(panelCards);
 		
