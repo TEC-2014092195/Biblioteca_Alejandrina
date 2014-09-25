@@ -1,7 +1,4 @@
-Libro;Dios no tiene favoritos tiene Íntimos;Marcos Brunet;ZOE;1;C:\Users\Kevin\Desktop\Libro5.jpg;5;false;1;
-Cliente;Kevin;Hernández;Rostrán;22136900;kevinah95@gmail.com;Estudiante;0-;
-Cliente;Kevin;Hernández;Rostrán;22136900;kevinah95@gmail.com;Estudiante;0-;
-Cliente;dasd;fwefwef;wefwe;90583409534;k@o.com;Estudiante;0-;
-Cliente;Jasson;Moya;Alvarez;890214021;Jasc@j.com;Estudiante;0-;
-Cliente;Kevin;Hernández;Rostrán;22136900;kevinah95@gmail.com;Estudiante;0-;
-Cliente;Dayanara;Hernández;R;948203;d@g.com;Familiar;0-;
+Libro;ArtPrueba;Prueba;Prueba;Prueba;C:\Users\Kevin\Desktop\42b59597738e48ec5d49af67a52a529f.jpg;5;true;150;
+Libro;l;l;l;l;C:\Users\Kevin\Desktop\f3255bf5bbb1cb7b1c3b62f0e6439221.jpg;0;true;150;
+Cliente;123;Prueba;ApPrueba;Ap2Prueba;888;prueba@prueba.com;Estudiante;0-;
+Cliente;456;p;p;p;9;p@p.com;Estudiante;0-2-;

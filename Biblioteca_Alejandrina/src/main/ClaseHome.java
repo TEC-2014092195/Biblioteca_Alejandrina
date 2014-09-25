@@ -39,7 +39,7 @@ import prestamo.articulo.*;
 public class ClaseHome extends JFrame implements ActionListener{
 	
 	/** The ventana. */
-	static JFrame ventana = new JFrame();
+	public static JFrame ventana = new JFrame();
 	
 	/** The grid. */
 	static GridBagConstraints grid = new GridBagConstraints(); 
@@ -101,9 +101,9 @@ public class ClaseHome extends JFrame implements ActionListener{
 		btnRegistroPersonas.setPreferredSize(new Dimension(140, 140));
 		btnRegistroPersonas.setBackground(Color.WHITE);
 		btnRegistroPersonas.setFocusable(false);
-		
 		panelContenedor.add(btnRegistroPersonas,grid);
 		panelContenedor.setComponentZOrder(btnRegistroPersonas, 0);
+		
 		
 		
 		
@@ -211,9 +211,10 @@ public class ClaseHome extends JFrame implements ActionListener{
 		Registro.recuperarEstadoSistema(); //Recupera el estado del archivo de texto registrodatos.txt
 		
 		
-		cardlayout.show(panelCards, "LogIn");
+		cardlayout.show(panelCards, "Home");
 		
 		contentPane.add(panelCards);
+		
 		
 		
 		

@@ -363,7 +363,19 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 			if ( verificarDatos() ){
 				
 				guardarDatos();
+				String s = "";
 				
+				s+="Tipo: "+cbTipo.getSelectedItem().toString()+"\n";
+				s+="Dato 1: "+txtDatos[0].getText()+"\n";
+				s+="Dato 2: "+txtDatos[1].getText()+"\n";
+				s+="Dato 3: "+txtDatos[2].getText()+"\n";
+				s+="Dato 4: "+txtDatos[3].getText()+"\n";
+				s+="Imagen: "+dirImagen+"\n";
+				s+="Calificación: "+strCalificacion+"\n";
+				
+				JOptionPane.showMessageDialog(null, s);
+				
+				limpiarDatos();
 				
 			}else{
 				JOptionPane.showMessageDialog(null, "Fatan datos por completar");
@@ -426,7 +438,6 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 		
 		articulo_reg = new Articulo( cbTipo.getSelectedItem().toString() , txtDatos[0].getText(), txtDatos[1].getText(), txtDatos[2].getText(), txtDatos[3].getText(), dirImagen, strCalificacion);
 		Registro.articulosRegistrados.add(articulo_reg);
-		System.out.println(articulo_reg.toString());
 		Registro.guardarEstadoActualSistema();
 		
 	}

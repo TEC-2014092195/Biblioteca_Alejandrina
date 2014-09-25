@@ -87,6 +87,8 @@ public class Articulo extends Registro {
 		msj += "\tDATO 1: "+ getDato1()+"\n";
 		msj += "\tDATO 2: "+ getDato2()+"\n";
 		msj += "\tCalificacion: "+getCalif()+"\n";
+		msj += "\tEstá Prestado: "+isPrestado()+"\n";
+		msj += "\tDias Prestamo: "+getDiasPrestado()+"\n";
 		return msj;
 	}
 }

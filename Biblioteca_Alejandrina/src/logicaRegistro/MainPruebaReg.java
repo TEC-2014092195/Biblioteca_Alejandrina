@@ -17,18 +17,36 @@ public class MainPruebaReg {
 		
 //		Se hace el registro de todos los articulos y clientes
 //		Registro.leerTxtDeCero();
+//		System.out.println("\nClientes registrados");
+//		for (Cliente cliente : Registro.clientesRegistrados) {
+//			System.out.println("");
+//			System.out.print(cliente);
+//			System.out.print("");}
+//		
+//		
+//		System.out.println("\nArtículos disponibles");
+//		//Muestro los artículos sin prestar únicamente
+//		for (Articulo objeto : Registro.articulosRegistrados) {
+//			if (!objeto.isPrestado()){
+//				System.out.print(objeto);
+//				System.out.print("");}}
+		
+	
 //		Prestar un articulo
+		
+//		Registro.guardarEstadoActualSistema();
+		
 		
 		/*Registro.recuperarEstadoSistema();
 		Cliente cli1 = new Cliente("Kevin","Hernández","Rostrán","22136900","kevinah95@gmail.com","Estudiante");
 		Registro.clientesRegistrados.add(cli1);
 		Registro.guardarEstadoActualSistema();
-		//Registro.clientesRegistrados.get(0).prestar(2);
+		Registro.clientesRegistrados.get(0).prestar(2);
 		out.println(Registro.clientesRegistrados.get(Registro.clientesRegistrados.size()-1).toString());
 		System.out.println(Registro.clientesRegistrados.size());
 		
 		Registro.guardarEstadoActualSistema();*/
-		
+		/*
 		Articulo Caso1 = new Articulo( "Libro","Quijote","Miguel de Cervantes","Edit Madrid","16 y algo","Aqui","5", false,5);
 		Articulo Caso2 = new Articulo( "Libro","Quijote2","Miguel de Cervantes","Edit Madrid","16 y algo","Aqui","5", false,5 );
 		Articulo Caso3 = new Articulo( "Libro","Quijote3","Miguel de Cervantes","Edit Madrid","16 y algo","Aqui","5", false,5 );
@@ -51,13 +69,29 @@ public class MainPruebaReg {
 			System.out.println(prueba.libros.get(i).toString());
 		}
 		
-		
+		*/
 		
 		//Registro.clientesRegistrados.get(0).devolver(2);
 		
 		//Aquí elimino todo el sistema, y lo reestablezco
-//		Registro.guardarEstadoActualSistema("pruebaguardado.txt");
-		//Registro.recuperarEstadoSistema("pruebaguardado.txt");
+//		Registro.guardarEstadoActualSistema();
+		
+		//------------------------------------------PruebaK
+		Registro.recuperarEstadoSistema();
+		
+		Registro.articulosRegistrados.get(0).setDiasPrestado(150);
+		
+		Registro.clientesRegistrados.get(1).prestar(1);
+		System.out.println(Registro.clientesRegistrados.get(1).toString());
+		//------------------------------------------Fin PruebaK
+//		Registro.guardarEstadoActualSistema();
+		
+//		System.out.println("\nArtículos disponibles");
+//		//Muestro los artículos sin prestar únicamente
+//		for (Articulo objeto : Registro.articulosRegistrados) {
+//			if (!objeto.isPrestado()){
+//				System.out.print(objeto);
+//				System.out.print("");}}
 		
 //		Cliente caso1 = new Cliente("c","a","Vargas","88888888","soymari@tumail.com","Estudiante");
 //		Cliente caso2 = new Cliente("b","b","Mora","88887777","soyantonio@tumail.com","Familiar");

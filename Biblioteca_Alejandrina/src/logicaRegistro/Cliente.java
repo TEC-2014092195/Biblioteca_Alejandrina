@@ -18,14 +18,16 @@ public class Cliente extends Registro{
 	 */
 	
 	//Constructor para clientes nuevos. 
-	public Cliente(String nNombre,
-				   String nApellido1,
-				   String nApellido2,
-				   String nTelefono,
-			       String nCorreo,
-				   String nCategoria)
+	public Cliente( String pCedula,
+				    String nNombre,
+				    String nApellido1,
+				    String nApellido2,
+				    String nTelefono,
+			        String nCorreo,
+				    String nCategoria )
 							
 	{	cantClientes++;
+		setCedula(pCedula);
 		setPrestamos(new ArrayList<Articulo>());
 		setIdentificadorCliente(cantClientes);
 		setNombre(nNombre);
@@ -36,7 +38,8 @@ public class Cliente extends Registro{
 		setCategoria(nCategoria);	}
 	
 	//Constructor para reestablecer sistema. 
-	public Cliente(String nNombre,
+	public Cliente( String pCedula,
+					String nNombre,
 			   		String nApellido1,
 			   		String nApellido2,
 			   		String nTelefono,
@@ -45,6 +48,7 @@ public class Cliente extends Registro{
 			   		ArrayList<Articulo> nPrestados)
 						
 		{	cantClientes++;
+			setCedula(pCedula);
 			setPrestamos(new ArrayList<Articulo>());
 			setIdentificadorCliente(cantClientes);
 			setNombre(nNombre);
@@ -58,6 +62,8 @@ public class Cliente extends Registro{
 	//Setters y Getters.------------------------------------------------------//
 	public int getCantClientes() {return cantClientes;} //El equivalente al largo de la lista
 	public int getIdentificadorCliente() {return identificadorCliente;}
+	public String getCedula() {return cedula;}
+	public void setCedula(String cedula) {this.cedula = cedula;}
 	public void setIdentificadorCliente(int identificadorCliente) {this.identificadorCliente = identificadorCliente;}
 	public String getNombre() {return nombre;}
 	public void setNombre(String nombre) {this.nombre = nombre;}
@@ -74,10 +80,10 @@ public class Cliente extends Registro{
 	public ArrayList<Articulo> getPrestamos() {return prestamos;}
 	public void setPrestamos(ArrayList<Articulo> prestamos) {this.prestamos = prestamos;}
 	//------------------------------------------------------------------------//
-	public String presentarCategoria(){
-		if ("1".equals(getCategoria())){return "Estudiante";}
-		else if ("2".equals(getCategoria())){return "Colega";}
-		else if ("3".equals(getCategoria())){return "Familiar";}
+	public String presentarCategoria(){ //Cambio hecho para PruebaK
+		if ("Estudiante".equals(getCategoria())){return "Estudiante";}
+		else if ("Colega".equals(getCategoria())){return "Colega";}
+		else if ("Familiar".equals(getCategoria())){return "Familiar";}
 		else {return "Categoría Desconocida";}}
 	
 	public void prestar (int ID){
@@ -88,7 +94,8 @@ public class Cliente extends Registro{
 	
 	private void prestarInterno (Articulo prestamo){
 		prestamo.setPrestado(true);
-		prestamo.setDiasPrestado(1);
+		//Cambio hecho para PruebaK
+//		prestamo.setDiasPrestado(1); 
 		prestamos.add(prestamo);}
 	
 	public void devolver (int ID){
@@ -104,6 +111,7 @@ public class Cliente extends Registro{
 	
 	public String toString (){
 		String msj = "Cliente "+getIdentificadorCliente()+":\n";
+		msj += "Cédula: " + getCedula() + "\n";
 		msj += "Nombre: " + getNombre()+" "+getApellido1()+" "+getApellido2()+"\n";
 		msj += "Teléfono: "+ getTelefono()+"\n";
 		msj += "Correo: "+getCorreo()+"\n";

@@ -14,6 +14,7 @@ public class Registro {
 	//Variables de la clase Clientes. 
 		protected static int cantClientes = 0;
 		protected int identificadorCliente = 0;
+		protected String cedula = null;
 		protected String nombre = null;
 		protected String apellido1 = null;
 		protected String apellido2 = null;
@@ -36,6 +37,8 @@ public class Registro {
 		protected int diasPrestado  = 0;
 		
 		protected static final String dirFile = "Biblioteca_Alejandrina/data/registrodatos.txt";  
+		protected static final String dirFile2 = "Biblioteca_Alejandrina/data/registrodatosdecero.txt"; 
+		
 		
 	public static void verificarArchivo() throws IOException { 
 		File file = new File(dirFile);
@@ -45,7 +48,13 @@ public class Registro {
     	    JOptionPane.showMessageDialog(null, "Directorio CREADO: "+file.getCanonicalPath());
     	} 
 	}
-
+	
+	public static boolean cerrarPasoRepetidos (String nuevaCedula){
+        for (Cliente cliente : clientesRegistrados ){
+        	if ( cliente.getCedula().equals(nuevaCedula)){
+        		return false;}}
+        return true;}
+	
 	/*
 	 * Esta función lee un txt con información nueva para un inicio de programa
 	 * automatizado. 
@@ -64,7 +73,7 @@ public class Registro {
 		}
 		
 		try {
-			archivo = new File (dirFile); 
+			archivo = new File (dirFile2); 
 		    fr = new FileReader (archivo.getAbsolutePath() + java.io.File.separator);
 		    br = new BufferedReader(fr);	 
 		    String linea;
@@ -76,14 +85,14 @@ public class Registro {
 		    	novoEntrada = entrada.split(";");
 		    	if ("Cliente".equals(novoEntrada[0])){
 		    		clientesRegistrados.add(new Cliente(novoEntrada[1],
-		    									novoEntrada[2], novoEntrada[3], 
-		    									novoEntrada[4], novoEntrada[5], 
-		    									novoEntrada[6]));}
+		    								novoEntrada[2], novoEntrada[3], 
+		    								novoEntrada[4], novoEntrada[5], 
+		    								novoEntrada[6], novoEntrada[7]));}
 		    	else {
 		    		articulosRegistrados.add(new Articulo(novoEntrada[0],
-		    								   novoEntrada[1],novoEntrada[2],
-		    								   novoEntrada[3],novoEntrada[4],
-		    								   novoEntrada[5],novoEntrada[6]));}}}
+		    							   novoEntrada[1],novoEntrada[2],
+		    							   novoEntrada[3],novoEntrada[4],
+		    							   novoEntrada[5],novoEntrada[6]));}}}
 		catch(Exception e){
 			e.printStackTrace();}
 		finally{
@@ -138,6 +147,7 @@ public class Registro {
 			for (Cliente cliente : Registro.clientesRegistrados) {
 				String entradaTxt = "";
 				entradaTxt += "Cliente;";
+				entradaTxt += cliente.getCedula() + ";";
 				entradaTxt += cliente.getNombre() + ";";
 				entradaTxt += cliente.getApellido1() + ";";
 				entradaTxt += cliente.getApellido2() + ";";
@@ -195,27 +205,27 @@ public class Registro {
 			    	for (String unidad : reestablecerPrestados) {
 			    		for (Articulo registrados : articulosRegistrados) {
 			    			String ident = Integer.toString(registrados.getIdentificadorObjeto());
-							if (ident.equals(unidad)){
-								Prestados.add(registrados);
-							}}}
+			    			if (ident.equals(unidad)){
+			    				Prestados.add(registrados);
+			    			}}}
 			    	//Invoco el constructor especial
-			    	clientesRegistrados.add(new Cliente(novoEntrada[1],
-			    								novoEntrada[2], novoEntrada[3], 
-			    								novoEntrada[4], novoEntrada[5], 
-			    								novoEntrada[6], Prestados ));}
-			    else {
-			    	//Convierto el string prestado en un boolean.
-			    	boolean Prest = false;
-			    	if (novoEntrada[7].equals("true"))
-			    		Prest = true;
-			    	//Convierto el string de días prestado en un int.
-			    	int Dias = Integer.parseInt(novoEntrada[8]);
+			   	clientesRegistrados.add(new Cliente(novoEntrada[1],
+			   								novoEntrada[2], novoEntrada[3], 
+			   								novoEntrada[4], novoEntrada[5], 
+			   								novoEntrada[6], novoEntrada[7], Prestados ));}
+			   	else {
+			   		//Convierto el string prestado en un boolean.
+			   		boolean Prest = false;
+			   		if (novoEntrada[7].equals("true"))
+			   			Prest = true;
+			   		//Convierto el string de días prestado en un int.
+			   		int Dias = Integer.parseInt(novoEntrada[8]);
 			    	//Invoco el constructor especial. 
-			    	articulosRegistrados.add(new Articulo(novoEntrada[0],
-			    								novoEntrada[1],novoEntrada[2],
-			    								novoEntrada[3],novoEntrada[4],
-			    								novoEntrada[5],novoEntrada[6],
-			    								Prest,Dias));}}}
+			   		articulosRegistrados.add(new Articulo(novoEntrada[0],
+			   								novoEntrada[1],novoEntrada[2],
+			   								novoEntrada[3],novoEntrada[4],
+			   								novoEntrada[5],novoEntrada[6],
+		    								Prest,Dias));}}}
 		catch(Exception e){
 			e.printStackTrace();}
 		finally{
@@ -224,4 +234,6 @@ public class Registro {
 					fr.close();}}
 			catch (Exception e2){ 
 				e2.printStackTrace();}}}
+
+	
 }
