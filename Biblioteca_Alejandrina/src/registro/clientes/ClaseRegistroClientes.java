@@ -46,10 +46,10 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	GridLayout grid;
 	
 	/** The lbl logo. */
-	JLabel lblNombre,lblPApellido,lblSApellido,lblTelefono,lblCorreo,lblCategoria,lblLogo;
+	JLabel lblCedula,lblNombre,lblPApellido,lblSApellido,lblTelefono,lblCorreo,lblCategoria,lblLogo;
 	
 	/** The txt correo. */
-	JTextField txtNombre,txtPApellido,txtSApellido,txtTelefono,txtCorreo;
+	JTextField txtCedula,txtNombre,txtPApellido,txtSApellido,txtTelefono,txtCorreo;
 	
 	/** The cb categoria. */
 	JComboBox cbCategoria;
@@ -62,7 +62,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	
 	Cliente cliente_reg;
 	
-	
+	Color colorlbl = new Color(0,54,43);
 	//-------Fin declaracion variables
 	
 	/**
@@ -82,9 +82,13 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c = new GridBagConstraints();
 		 panel.setLayout(gridbag);
 		 
+		 lblCedula = new JLabel("Cédula ");
+		 lblCedula.setHorizontalAlignment(SwingConstants.RIGHT);
+		 lblCedula.setForeground(colorlbl);
+		 txtCedula = new JTextField(20);
+		 
 		 lblNombre = new JLabel("Nombre ");
 		 lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
-		 Color colorlbl = new Color(0,54,43);
 		 lblNombre.setForeground(colorlbl);
 		 txtNombre = new JTextField(20);
 		 
@@ -128,14 +132,14 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridheight=1;
 		 c.anchor = GridBagConstraints.CENTER;
 		 c.insets = new Insets(10,10,0,10);
-		 panel.add(lblNombre,c);
+		 panel.add(lblCedula,c);
 		 
 		 c.gridx=1;
 		 c.gridy=0;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,0,0,10);
-		 panel.add(txtNombre,c);
+		 panel.add(txtCedula,c);
 		 
 		 
 		 c.gridx=0;
@@ -143,14 +147,14 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,10,0,10);
-		 panel.add(lblPApellido,c);
+		 panel.add(lblNombre,c);
 		 
 		 c.gridx=1;
 		 c.gridy=1;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,0,0,10); // Extrenal Pad (top, left, bottom, right)
-		 panel.add(txtPApellido,c);
+		 panel.add(txtNombre,c);
 		 
 		 
 		 c.gridx=0;
@@ -158,7 +162,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,10,0,10); 
-		 panel.add(lblSApellido,c);
+		 panel.add(lblPApellido,c);
 		 
 		 
 		 c.gridx=1;
@@ -166,7 +170,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,0,0,10); 
-		 panel.add(txtSApellido,c);		 
+		 panel.add(txtPApellido,c);		 
 		 
 		 
 		 c.gridx=0;
@@ -174,7 +178,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,10,0,10);
-		 panel.add(lblTelefono,c);
+		 panel.add(lblSApellido,c);
 		 
 		 
 		 c.gridx=1;
@@ -182,7 +186,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,0,0,10);
-		 panel.add(txtTelefono,c);
+		 panel.add(txtSApellido,c);
 
 		 
 		 c.gridx=0;
@@ -190,7 +194,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,10,0,10);
-		 panel.add(lblCorreo,c);
+		 panel.add(lblTelefono,c);
 		 
 		 
 		 c.gridx=1;
@@ -198,17 +202,31 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,0,0,10);
-		 panel.add(txtCorreo,c);
+		 panel.add(txtTelefono,c);
 		 
 		 c.gridx=0;
 		 c.gridy=5;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,10,0,10); // Extrenal Pad (top, left, bottom, right)
-		 panel.add(lblCategoria,c);
+		 panel.add(lblCorreo,c);
 		 
 		 c.gridx=1;
 		 c.gridy=5;
+		 c.gridwidth=GridBagConstraints.RELATIVE;
+		 c.gridheight=1;
+		 c.insets = new Insets(10,0,0,10);
+		 panel.add(txtCorreo,c);
+		 
+		 c.gridx=0;
+		 c.gridy=6;
+		 c.gridwidth=GridBagConstraints.RELATIVE;
+		 c.gridheight=1;
+		 c.insets = new Insets(10,10,0,10); // Extrenal Pad (top, left, bottom, right)
+		 panel.add(lblCategoria,c);
+		 
+		 c.gridx=1;
+		 c.gridy=6;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.anchor = GridBagConstraints.CENTER;
@@ -219,7 +237,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 
 		 
 		 c.gridx=0;
-		 c.gridy=6;
+		 c.gridy=7;
 		 c.gridwidth=2;
 		 c.gridheight=1;
 		 c.insets = new Insets(10,0,10,10);
@@ -291,27 +309,28 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 			
 			if (verificarDatos()){
 				
-				if (verificarEmail(txtCorreo.getText())){
+				if (verificarEmail()){
 					
 					
-					guardarDatos();
-					
-					String s = "";
-					
-					s+="Nombre: "+txtNombre.getText()+"\n";
-					s+="PrimerApe: "+txtPApellido.getText()+"\n";
-					s+="SegundoApe: "+txtSApellido.getText()+"\n";
-					s+="Telefono: "+txtTelefono.getText()+"\n";
-					s+="Correo: "+txtCorreo.getText()+"\n";
-					s+="Categoria: "+cbCategoria.getSelectedItem()+"\n";
-					
-					JOptionPane.showMessageDialog(null, s);
-					
-					limpiarTextos();
-					
-					
-				}else{
-					JOptionPane.showMessageDialog(null, "La dirección de correo no es válida");
+					if( Registro.cerrarPasoRepetidos( txtCedula.getText() ) ){
+						guardarDatos();
+						
+						String s = "";
+						
+						s+="Nombre: "+txtNombre.getText()+"\n";
+						s+="PrimerApe: "+txtPApellido.getText()+"\n";
+						s+="SegundoApe: "+txtSApellido.getText()+"\n";
+						s+="Telefono: "+txtTelefono.getText()+"\n";
+						s+="Correo: "+txtCorreo.getText()+"\n";
+						s+="Categoria: "+cbCategoria.getSelectedItem()+"\n";
+						
+						JOptionPane.showMessageDialog(null, s);
+						
+						limpiarTextos();
+					}else{
+						JOptionPane.showMessageDialog(null, "El cliente ya está registrado en el sistema.","Error valores duplicados",JOptionPane.ERROR_MESSAGE);
+						limpiarTextos();
+					}
 				}
 			}
 			
@@ -335,7 +354,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	}
 	
 	public void guardarDatos(){
-		cliente_reg = new Cliente(txtNombre.getText(), txtPApellido.getText(), txtSApellido.getText(), txtTelefono.getText(), txtCorreo.getText(), (String) cbCategoria.getSelectedItem());
+		cliente_reg = new Cliente(txtCedula.getText(), txtNombre.getText(), txtPApellido.getText(), txtSApellido.getText(), txtTelefono.getText(), txtCorreo.getText(), (String) cbCategoria.getSelectedItem());
 		Registro.clientesRegistrados.add(cliente_reg);
 		Registro.guardarEstadoActualSistema();
 	}
@@ -344,7 +363,7 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	 * Limpiar textos.
 	 */
 	public void limpiarTextos(){
-//		JTextField txtNombre,txtPApellido,txtSApellido,txtTelefono,txtCorreo;
+		txtCedula.setText("");
 		txtNombre.setText("");
 		txtPApellido.setText("");
 		txtSApellido.setText("");
@@ -354,16 +373,22 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	}
 	
     //http://mirastro.wordpress.com/2012/02/09/validar-direccion-email-con-java/
-	public static boolean verificarEmail (String email) {
+	public boolean verificarEmail () {
 
 	    // Establecer el patron
 	    Pattern p = Pattern.compile("[-\\w\\.]+@[\\.\\w]+\\.\\w+");
 
 	    // Asociar el string al patron
-	    Matcher m = p.matcher(email);
+	    Matcher matchCorreo = p.matcher( txtCorreo.getText() );
 
 	   // Comprobar si encaja
-	   return m.matches();
+	   if ( matchCorreo.matches() ){
+		   return true;
+	   }else{
+		   JOptionPane.showMessageDialog(null, "La dirección de correo no es válida");
+		   return false;
+	   }
+	   
 
 	}
 	

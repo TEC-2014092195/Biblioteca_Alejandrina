@@ -156,7 +156,7 @@ public class LogIn extends JFrame implements ActionListener{
 			}
 			for (int i = 0; i < users.size(); i++) {
 				String objeto = users.get(i);
-				if (last.contains(objeto)){
+				if (last.contains(objeto) == true){
 					wr.write(objeto);
 					bw.newLine();
 				}

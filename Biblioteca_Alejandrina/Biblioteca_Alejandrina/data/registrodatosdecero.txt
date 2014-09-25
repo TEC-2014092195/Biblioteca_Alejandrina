@@ -1,0 +1,5 @@
+Cliente;13145;Kevin;Hernández;Rostrán;22222222;kevin@gmail.com;1;
+Cliente;1345134;Jasson;Moya;Álvarez;88888888;jasson@gmail.com;1;
+Libro;ArtPrueba;Prueba;Prueba;Prueba;C:\Users\Kevin\Desktop\42b59597738e48ec5d49af67a52a529f.jpg;5;
+Pelicula;Transformers;Michael Bay;2012;170min;C:\Users\Kevin\Desktop\42b59597738e48ec5d49af67a52a529f.jpg;1;
+Cliente;26457;Jose Manuel;Aguilar;Quesada;89888888;josemanuel@gmail.com;1;

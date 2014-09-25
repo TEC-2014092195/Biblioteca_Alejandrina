@@ -1,3 +1,0 @@
-Cliente;Kevin;Hernández;Rostrán;22136900;kevinah95@gmail.com;Estudiante;0-;
-Cliente;Kevin;Hernández;Rostrán;22136900;kevinah95@gmail.com;Estudiante;0-;
-Cliente;log;log;lo;g;k@g.com;Estudiante;0-;
