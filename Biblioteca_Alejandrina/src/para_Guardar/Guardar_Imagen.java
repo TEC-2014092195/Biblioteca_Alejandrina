@@ -1,6 +1,8 @@
-import java.io.File;
+package para_Guardar;
 
-import javax.imageio.ImageIO;
+//import java.io.File;
+
+
 
 /**====================================================================================
  * Archivo      : Guardar_Imagen.java » Paquete: para_Guardar » Proyecto: Biblioteca_Alejandrina
