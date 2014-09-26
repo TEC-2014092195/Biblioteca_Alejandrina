@@ -28,6 +28,7 @@ import javax.swing.*;
 
 
 
+@SuppressWarnings("serial")
 public class LogIn extends JFrame implements ActionListener{
 	// Variables
 	JPanel panel = new JPanel();;
@@ -90,6 +91,7 @@ public class LogIn extends JFrame implements ActionListener{
 	
 	public LogIn(){
 		crearWidgets();
+		recuperarEstado("usuarios.txt");
 	}
 	
 	public Container getContenedor(){
@@ -98,14 +100,12 @@ public class LogIn extends JFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==logButton){
-
-			recuperarEstado("usuarios.txt");
 			String valid = "Usuario válido";
 			String invalid = "Usuario no válido";
 			usuario = userText.getText();
 			clave = passText.getText();
 			String comp = usuario+clave;
-			if (revisar(comp) == true){
+			if (users.contains(comp)){
 				JOptionPane.showMessageDialog(null, valid);
 				limpiarTextos();
 			}
@@ -130,19 +130,14 @@ public class LogIn extends JFrame implements ActionListener{
 		userText.setText("");
 		passText.setText("");
 	}
-	//revisa en la lista con los usuarios existe el usuario
-	public boolean revisar(String linea){
-		if (users.contains(linea) == true){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	//Escribe los usuarios que no estaban en el txt 
+
+	/* 
+	 * Recibe una dirección, la cual es el archivo donde quedarán registrados los usuarios
+	 * Se encarga de guardar los nuevos usuarios en el archivo de texto
+	 */
 	public static void guardarEstado (String dirFile) {
 		File archivo = new File(dirFile);
-		last = null;
+		last.clear();
 		try{
 			FileWriter w = new FileWriter(archivo.getAbsolutePath() + java.io.File.separator);
 			BufferedWriter bw = new BufferedWriter(w);
@@ -156,19 +151,23 @@ public class LogIn extends JFrame implements ActionListener{
 			}
 			for (int i = 0; i < users.size(); i++) {
 				String objeto = users.get(i);
-				if (last.contains(objeto) == true){
+				if (last.contains(objeto)== false){
 					wr.write(objeto);
 					bw.newLine();
 				}
 			}
 			wr.close();
 			bw.close();
-			br.close();}
+			br.close();
+			System.out.println("Si se hizo");}
 		
-		catch(IOException e){};
+		catch(IOException e){System.out.println("No se hizo");};
 	}
 
-	//Saca todos los usuarios del TXT y los mete a las lista
+	/*
+	 * Recibe la dirección del archivo de texto con los usuarios
+	 * Se encarga de leer el archivo de texto y cargar los usuarios en un arreglo
+	 */
 	public static void recuperarEstado(String dirFile){
 		users.clear();
 		File archivo = null;
