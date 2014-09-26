@@ -282,9 +282,9 @@ public class PrestarArticulo implements ActionListener {
 //					System.out.println(table.getValueAt(
 //							table.getSelectedRow(),
 //							table.getSelectedColumn()));
-					
+					int indexCliente = table.convertRowIndexToModel(table.getSelectedRow());
 					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
-					PopupArticulos poparticulos = new PopupArticulos(ClaseHome.ventana);
+					PopupArticulos poparticulos = new PopupArticulos(ClaseHome.ventana, indexCliente);
  
 		        }
 		    }

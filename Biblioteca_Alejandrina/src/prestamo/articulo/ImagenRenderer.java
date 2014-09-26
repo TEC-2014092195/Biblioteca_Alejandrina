@@ -40,10 +40,8 @@ public class ImagenRenderer extends JLabel implements TableCellRenderer {
 			
 			BufferedImage imgArticulo = null;
 			try {
-				imgArticulo = Imagen.getImagenRedimensionada((String) value,60,90);
-				this.setIcon(new ImageIcon(imgArticulo));
-				this.setPreferredSize(new Dimension(imgArticulo.getWidth(), imgArticulo.getHeight()));
-				table.getColumnModel().getColumn(5).setMinWidth(imgArticulo.getWidth());
+				imgArticulo = Imagen.getImagenRedimensionada((String) value,80,90);
+				setIcon(new ImageIcon(imgArticulo));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

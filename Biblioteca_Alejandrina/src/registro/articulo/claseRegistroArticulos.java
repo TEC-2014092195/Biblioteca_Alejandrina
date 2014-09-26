@@ -115,6 +115,11 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 	Color colorlbl = new Color(80, 30, 26);
 	
 	Articulo articulo_reg;
+	
+	BufferedImage nueva_imagen = null;
+	File selectedFile = null;
+	private String ex = "";
+	private String preex;
 
 	/**
 	 * Instantiates a new copy ofclase registro articulos.
@@ -362,6 +367,13 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 			
 			if ( verificarDatos() ){
 				
+				File f = new File(dirImagen);
+				try{
+					nueva_imagen = ImageIO.read(f);
+					ImageIO.write(nueva_imagen, ex, new File("Biblioteca_Alejandrina/recursosImagen/"));
+				}
+				catch(Exception r){r.printStackTrace();}//TODO imagen
+				
 				guardarDatos();
 				String s = "";
 				
@@ -544,7 +556,16 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 		int returnValue = fileChooser.showOpenDialog(null);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = fileChooser.getSelectedFile();
-			System.out.println(selectedFile.getPath());
+			//System.out.println(selectedFile.getPath());
+			
+			preex = selectedFile.getName();
+			for(int n=0; n<preex.length(); n++){
+				if((preex.length() - n) <= 3){
+					char c = preex.charAt(n);
+					ex += c;
+				}
+			}
+			
 			String path = selectedFile.getPath();
 			
 			dirImagen = path;

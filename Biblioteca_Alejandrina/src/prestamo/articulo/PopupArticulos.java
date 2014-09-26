@@ -65,9 +65,10 @@ public class PopupArticulos extends JDialog implements ActionListener{
 	JLabel lblTipo,lblTitulo,lblDetalle1,lblDetalle2,lblDetalle3,lblCalificacion;
 	JTextField txtTipo,txtTitulo,txtDetalle1,txtDetalle2,txtDetalle3,txtCalificacion;
 	JButton btnCerrar;
+	int indexCliente;
 
 	
-	public PopupArticulos(JFrame parent) {
+	public PopupArticulos(JFrame parent, int indexCliente) {
 		super(parent,parent.getTitle());
 		Dimension parentSize = parent.getSize(); 
 		Point p = parent.getLocation(); 
@@ -79,6 +80,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		
 		panelContenedor.setLayout(new GridBagLayout());
 		
+		this.indexCliente = indexCliente;
 		crearEncabezadoBusqueda();
 		
 		grid.gridy=0; //Fila
@@ -98,20 +100,6 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		// selection.
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-			
-
-		table.addMouseListener(new MouseAdapter() {
-		    public void mouseClicked(MouseEvent evt) {
-		        
-		        if (evt.getClickCount() == 2) {
-		        	System.out.println(table.getSelectedRow());
-					System.out.println(table.getSelectedColumn());
-					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
- 
-		        }
-		    }
-		});
-		
 		table.getColumn("Imagen").setCellRenderer( new ImagenRenderer() );
 		table.getColumn("Calificación").setCellRenderer( new CalificacionRenderer() );
 		
@@ -126,6 +114,23 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		table.getColumn("Detalle1").setCellRenderer( centerRenderer );
 		table.getColumn("Detalle2").setCellRenderer( centerRenderer );
 		table.getColumn("Detalle3").setCellRenderer( centerRenderer );
+		
+		
+		
+		table.addMouseListener(new MouseAdapter() {
+		    public void mouseClicked(MouseEvent evt) {
+		        
+		        if (evt.getClickCount() == 2) {
+		        	System.out.println(table.getSelectedRow());
+					System.out.println(table.getSelectedColumn());
+					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
+		        	
+		        	//falta asiganrle dias 
+		        	prestarArticulo();
+					dispose();
+		        }
+		    }
+		});
 		
 		
 		JScrollPane scrollPanel = new JScrollPane(table);
@@ -153,6 +158,20 @@ public class PopupArticulos extends JDialog implements ActionListener{
 	    setVisible(true);
 		
 		
+	}
+	
+	public void prestarArticulo(){
+		System.out.println("PopupArticulos");
+    	int indexArticulo = table.convertRowIndexToModel(table.getSelectedRow());
+    	int idArticulo = Registro.articulosRegistrados.get(indexArticulo).getIdentificadorObjeto();
+		System.out.println("Fila:"+indexArticulo);
+		System.out.println(Registro.articulosRegistrados.get(indexArticulo));//.setDiasPrestado());
+		int diasPrestamo=5;
+		Registro.articulosRegistrados.get(indexArticulo).setDiasPrestado(diasPrestamo);
+		
+		Registro.clientesRegistrados.get(indexCliente).prestar(idArticulo); 
+		System.out.println(idArticulo);
+		System.out.println( Registro.clientesRegistrados.get(indexCliente).toString() );
 	}
 	
 	

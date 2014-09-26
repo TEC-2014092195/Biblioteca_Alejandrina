@@ -82,7 +82,9 @@ public class MainPruebaReg {
 		Registro.articulosRegistrados.get(0).setDiasPrestado(150);
 		
 		Registro.clientesRegistrados.get(1).prestar(1);
-		System.out.println(Registro.clientesRegistrados.get(1).toString());
+		System.out.println(Registro.articulosRegistrados.get(1));
+//		System.out.println(Registro.clientesRegistrados.get(1).toString());
+		
 		//------------------------------------------Fin PruebaK
 //		Registro.guardarEstadoActualSistema();
 		

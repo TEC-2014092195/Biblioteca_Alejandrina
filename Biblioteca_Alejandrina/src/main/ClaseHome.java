@@ -29,6 +29,7 @@ import javax.swing.*;
 import registro.articulo.claseRegistroArticulos;
 import registro.clientes.ClaseRegistroClientes;
 import consultas.ClaseConsulta; 
+import consultas.TablaConsultas;
 import logicaRegistro.Registro;
 import prestamo.articulo.*;
 
@@ -208,10 +209,10 @@ public class ClaseHome extends JFrame implements ActionListener{
 		panelCards.add("Prestamos", prestamos.getContenedor());
 		
 		
-		Registro.recuperarEstadoSistema(); //Recupera el estado del archivo de texto registrodatos.txt
 		
 		
-		cardlayout.show(panelCards, "Home");
+		
+		cardlayout.show(panelCards, "LogIn");
 		
 		contentPane.add(panelCards);
 		
@@ -237,7 +238,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 		ventana.setTitle("Biblioteca Alejandrina");
 		ventana.setLayout(new GridLayout());
 		
-		
+		Registro.recuperarEstadoSistema(); //Recupera el estado del archivo de texto registrodatos.txt
 		
 		contentPane = ventana.getContentPane();
 		
@@ -269,6 +270,7 @@ public class ClaseHome extends JFrame implements ActionListener{
 			ventana.revalidate();
 			ventana.repaint();
 		}else if (e.getSource() == btnConsultas){
+			TablaConsultas.llenarTabla();
 			cardlayout.show(panelCards, "Consultas");
 			ventana.revalidate();
 			ventana.repaint();

@@ -394,6 +394,10 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	
 	
 	public boolean verificarDatos(){
+		if (!txtCedula.getText().matches("\\d*") || txtCedula.getText().matches("\\s*")){
+			JOptionPane.showMessageDialog(null, "El número de Cédula solo acepta digitos");
+			return false;
+		}
 		if ( txtNombre.getText().matches("\\s*") ){ //Verifica si tiene espacios en blanco
 			JOptionPane.showMessageDialog(null, "El dato Nombre no ha sido ingresado");
 			return false;

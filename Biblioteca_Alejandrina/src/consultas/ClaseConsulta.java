@@ -25,8 +25,15 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
+
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.text.TabableView;
 
 import main.ClaseHome;
 
@@ -60,6 +67,7 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		
 		panelGrid.setLayout(new GridBagLayout());
 		panelGrid.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+		
 		panelGrid.setBackground(Color.LIGHT_GRAY);
 		
 		grid.gridx=0;
@@ -73,6 +81,37 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		grid.insets = new Insets( 0, 0, 0, 30);
 		strTipoArticulo = new String[] { "Libro","Revista","Película","Serie", "General","Todos" };
 		cbTipoArticulo = new JComboBox<String>(strTipoArticulo);
+		cbTipoArticulo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String tipo = (String) cbTipoArticulo.getSelectedItem();
+				switch (tipo) {
+				case "Libro":
+					filtroTipo();
+					break;
+				case "Revista":
+					filtroTipo();
+					break;
+				case "Película":
+					filtroTipo();
+					break;
+				case "Serie":
+					filtroTipo();
+					break;
+				case "General":
+					filtroTipo();
+					break;
+				case "Todos":
+					filtroTipo();
+//					System.out.println("Prueba Todos");
+					break;
+				default:
+					JOptionPane.showMessageDialog(null, "Opción Inválida");
+					break;
+				}
+				
+			}
+		});
 		panelGrid.add(cbTipoArticulo,grid);
 		
 		
@@ -161,17 +200,30 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		btnGenerarConsulta = new JButton("Generar Consulta");
 		panelGrid.add( btnGenerarConsulta,grid);
 		
+		//-----------------Add tabla
+		grid.gridx=0;
+		grid.gridy=2;
+		grid.gridwidth = 6;
+		grid.fill=GridBagConstraints.HORIZONTAL;
+		TablaConsultas t = new TablaConsultas();
+		panelGrid.add(t,grid);
+		
+		//-----------------
 		
 		
+		
+		//ActionListeners
 		cbTipoArticulo.addActionListener(this);
 		cbTipoConsulta.addActionListener(this);
 		cbTipoFiltro.addActionListener(this);
 		btnGenerarConsulta.addActionListener(this);
 		
-		
+		grid.fill=GridBagConstraints.NONE;
 		grid.gridx=0;
 		grid.gridy=0;
 		panelContenedor.add(panelGrid,grid);
+		
+		
 		
 		btnAtras = new JButton("Atrás");
 		btnAtras.setBackground(Color.DARK_GRAY);
@@ -193,6 +245,30 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 	
 	public Container getContenedor(){
 		return panelFrame;
+	}
+	
+	
+	private void filtroTipo() {
+		
+		RowFilter<DefaultTableModel, Object> rf = null;
+		// If current expression doesn't parse, don't update.
+		try {
+			String itemTipoArticulo = (String)cbTipoArticulo.getSelectedItem();
+			rf = RowFilter.regexFilter(itemTipoArticulo, 0); // (Patron a filtrar, int columna) 
+			
+		} catch (java.util.regex.PatternSyntaxException e) {
+			return;
+		}
+		TablaConsultas.sorter.setRowFilter(rf);
+		String cb =(String)cbTipoArticulo.getSelectedItem(); 
+		
+		if( "Todos".equals(cb)){
+			System.out.println("priint todo");
+			TablaConsultas.sorter.sort();
+			rf = RowFilter.regexFilter("", 0);
+			TablaConsultas.sorter.setRowFilter(rf);
+		}
+		
 	}
 
 
