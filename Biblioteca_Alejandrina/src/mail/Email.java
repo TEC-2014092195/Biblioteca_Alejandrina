@@ -5,9 +5,9 @@ package mail;
  http://sanlegas-blog.blogspot.com/
  */
 import java.util.Properties;
+
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
-
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.Session;
@@ -16,6 +16,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.swing.JOptionPane;
 
 
 
@@ -24,6 +25,20 @@ import javax.mail.internet.MimeMultipart;
  * The Class Email.
  */
 public class Email {
+	private final String clave = "TEC12345";
+	private final String correo = "biblioalejandrinatec@gmail.com";
+	private final String encabezado = "Notificación del sistema de control de préstamos";
+	private final String mensajeAntes = "El sistema de control de préstamos le recuerda que se aproxima "
+									   +"la fecha de entrega del préstamo que usted solicitó.\n"
+									   +"Por favor revise la fecha de devolución que se le indicó";
+	private final String mensajeDia =   "El sistema de control de préstamos le recuerda que hoy es "
+			   						   +"el día de entrega del préstamo que usted solicitó.\n"
+			   						   +"Por favor devuelva el artículo lo más pronto posible.";
+	private final String mensajeDespues ="El sistema de control de préstamos le recuerda que exedió el "
+			   						   +"plazo de entrega del préstamo que usted solicitó.\n"
+			   						   +"Por favor devuelva el artículo lo más pronto posible "
+			   						   +"y evite una multa por retrasos";
+		
     
     /** The usuario correo. */
     String usuarioCorreo;
@@ -46,17 +61,7 @@ public class Email {
     /** The mensaje. */
     String mensaje;
     
-    /**
-     * Instantiates a new email.
-     *
-     * @param usuarioCorreo the usuario correo
-     * @param password the password
-     * @param rutaArchivo the ruta archivo
-     * @param nombreArchivo the nombre archivo
-     * @param destinatario the destinatario
-     * @param asunto the asunto
-     * @param mensaje the mensaje
-     */
+    
     // Crea el objeto Email, recibe el correo remitente y la clave, el correo destino, asunto, mensaje
     // y como opcional se crea un constructor para enviar archivos adjuntos
     public Email(String usuarioCorreo, String password, String rutaArchivo, String nombreArchivo, String destinatario, String asunto,String mensaje) {
@@ -147,16 +152,41 @@ public class Email {
         }        
     }
     
-/*//Ejemplo de como implementar la clase
-      public static void main(String[] args){
-        String clave = "TEC12345"; 
-        Email e = new Email("biblioalejandrinatec@gmail.com",clave,"acejas29@gmail.com","Prueba","Biblioteca Alejandrina le está enviando una notificación"); //no cambiar el primer correo 
-        if (e.sendMail()){
-            System.out.println("El email se mandó correctamente");
-        }
-        else{
-            System.out.println("El email no se mandó correctamente");
-        }
-    }*/
+//Ejemplo de como implementar la clase
+      /*public static void main(String[] args){ 
+        Email e = new Email("","","","","");
+        	e.enviarAntes("jm95aguilar@hotmail.com"); //el parametro que requiere es el destinatario
+        	e.enviarDia("jm95aguilar@hotmail.com");
+        	e.enviarDespues("jm95aguilar@hotmail.com");
+        }*/
+    
+    
+    
+    // Envía un correo alertando que está proxima la fecha de entrega
+    //Los métodos únicamente reciben el correo del destinatario ya que el de la aplicacion es fijo
+    public void enviarAntes(String destinatario){
+    	Email e = new Email(correo,clave,destinatario,encabezado,mensajeAntes);
+    	if (e.sendMail()){
+    		JOptionPane.showMessageDialog(null,"El correo se envió satisfactoriamente", "Ïnforme",0);
+    	}
+    	else{JOptionPane.showMessageDialog(null,"No fue posible enviar el correo", "Ïnforme",0);}
+    }
+    //Envía un correo  alertando que es el día de devolución del artículo
+    public void enviarDia(String destinatario){
+    	Email e = new Email(correo,clave,destinatario,encabezado,mensajeDia);
+    	if (e.sendMail()){
+    		JOptionPane.showMessageDialog(null,"El correo se envió satisfactoriamente", "Ïnforme",0);
+    	}
+    	else{JOptionPane.showMessageDialog(null,"No fue posible enviar el correo", "Ïnforme",0);}
+    }
+  //Envía un correo  alertando que se pasó el día de devolución del artículo
+    public void enviarDespues(String destinatario){
+    	Email e = new Email(correo,clave,destinatario,encabezado,mensajeDespues);
+    	if (e.sendMail()){
+    		JOptionPane.showMessageDialog(null,"El correo se envió satisfactoriamente", "Ïnforme",0);
+    	}
+    	else{JOptionPane.showMessageDialog(null,"No fue posible enviar el correo", "Ïnforme",0);}
+    }
+  }
 
-}
+
