@@ -179,6 +179,8 @@ public class ClaseHome extends JFrame implements ActionListener {
 		Registro.recuperarEstadoSistema();
 
 		
+
+		
 		// Obtener las dimensiones del monitor
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();

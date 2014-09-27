@@ -1,7 +1,5 @@
-Libro;fsdf;sdfsdf;sdfds;fsd;Biblioteca_Alejandrina/recursosImagen/stock-illustration-21382293-retro-badges-set.jpg;0;false;1;
-Película;ver;ver;vrev;rev;Biblioteca_Alejandrina/recursosImagen/f3255bf5bbb1cb7b1c3b62f0e6439221.jpg;0;false;1;
-Libro;dfv;fvd;fvdf;vfdv;Biblioteca_Alejandrina/recursosImagen/42b59597738e48ec5d49af67a52a529f.jpg;3;false;1;
-Revista;grtg;ertg;ertg;retg;Biblioteca_Alejandrina/recursosImagen/Libro0.jpg;0;false;1;
-Libro;bdfgb;fdb;dfgb;fdgb;Biblioteca_Alejandrina/recursosImagen/42b59597738e48ec5d49af67a52a529f.jpg;5;false;1;
-Libro;dfgfdb;fgbd;fgb;fdgbdfg;Biblioteca_Alejandrina/recursosImagen/644546b5b73352b04e1a763ae75a7541.jpg;5;false;1;
+Libro;fsdf;fsd;fsdfsdf;sdfsdf;Biblioteca_Alejandrina/recursosImagen/articulo0.jpg;2;false;1;
+Revista;bd;bdfb;dfb;dfb;Biblioteca_Alejandrina/recursosImagen/articulo1.jpg;3;false;1;
+Revista;xcvx;cvxc;vxcv;dsvsd;Biblioteca_Alejandrina/recursosImagen/articulo2.jpg;3;false;1;
+Libro;v;dfv;fddfbdf;bdfbdf;Biblioteca_Alejandrina/recursosImagen/articulo3.jpg;4;false;1;
 Cliente;123;proof;oip;poipo;4423849023;k@e.com;Estudiante;0-;

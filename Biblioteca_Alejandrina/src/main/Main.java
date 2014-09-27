@@ -9,6 +9,8 @@
 
 package main;
 
+import logicaRegistro.Registro;
+
 
 public class Main {
 
@@ -17,6 +19,7 @@ public class Main {
 //		ClaseIntroduccion ci = new ClaseIntroduccion(); //Inicia con la imagen del logotipo (comentado para no atrasar el proceso hasta la versión final)
 		ClaseHome n = new ClaseHome();
 		n.crearFrame();
+		
 
 	}
 

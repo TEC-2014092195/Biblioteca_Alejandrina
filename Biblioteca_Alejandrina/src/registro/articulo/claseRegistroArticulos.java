@@ -376,8 +376,8 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 				
 					BufferedImage scalaIMG = Imagen.getImagenRedimensionada(dirImagen,100,100);
 					
-					ImageIO.write(scalaIMG, ex, new File( "Biblioteca_Alejandrina/recursosImagen/"+f.getName() ));
-					dirImagen = "Biblioteca_Alejandrina/recursosImagen/"+f.getName();
+					ImageIO.write(scalaIMG, ex, new File( "Biblioteca_Alejandrina/recursosImagen/articulo"+Registro.articulosRegistrados.size()+"."+ex ));
+					dirImagen = "Biblioteca_Alejandrina/recursosImagen/articulo"+Registro.articulosRegistrados.size()+"."+ex;
 				}
 				catch(Exception r){r.printStackTrace();}//TODO imagen
 				
@@ -542,6 +542,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 	public void limpiarDatos() {
 		datosLibro();
 		LimpiarImagen();
+		ex = "";
 	}
 
 	public void LimpiarImagen() {
