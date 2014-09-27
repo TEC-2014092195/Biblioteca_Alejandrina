@@ -16,26 +16,45 @@ public class MainPruebaReg {
 //		out = System.out;
 		
 //		Se hace el registro de todos los articulos y clientes
-//		Registro.leerTxtDeCero();
-//		System.out.println("\nClientes registrados");
-//		for (Cliente cliente : Registro.clientesRegistrados) {
-//			System.out.println("");
-//			System.out.print(cliente);
-//			System.out.print("");}
-//		
-//		
-//		System.out.println("\nArtículos disponibles");
-//		//Muestro los artículos sin prestar únicamente
-//		for (Articulo objeto : Registro.articulosRegistrados) {
-//			if (!objeto.isPrestado()){
-//				System.out.print(objeto);
-//				System.out.print("");}}
+		Registro.leerTxtDeCero();
 		
-	
-//		Prestar un articulo
+		/*Si quiere verse apenas se lee del Txt*/
+		/*
+		System.out.println("\nClientes registrados");
+		for (Cliente cliente : Registro.clientesRegistrados) {
+			System.out.println("");
+			System.out.print(cliente);
+			System.out.print("");}
 		
-//		Registro.guardarEstadoActualSistema();
+		System.out.println("\nArtículos disponibles");
+		//Muestro los artículos sin prestar únicamente
+		for (Articulo objeto : Registro.articulosRegistrados) {
+			if (!objeto.isPrestado()){
+				System.out.print(objeto);
+				System.out.print("");}}
+		/**/
 		
+		Registro.guardarEstadoActualSistema();
+		Registro.recuperarEstadoSistema();
+		Registro.clientesRegistrados.get(0).prestar(1);
+		Registro.clientesRegistrados.get(0).devolver(1);
+		
+		/*Si quiere verse después de reestablecer el sistema.*/
+		
+		System.out.println("\nClientes registrados");
+		for (Cliente cliente : Registro.clientesRegistrados) {
+			System.out.println("");
+			System.out.print(cliente);
+			System.out.print("");}
+		
+		
+		System.out.println("\nArtículos disponibles");
+		//Muestro los artículos sin prestar únicamente
+		for (Articulo objeto : Registro.articulosRegistrados) {
+			if (!objeto.isPrestado()){
+				System.out.print(objeto);
+				System.out.print("");}}
+		/**/
 		
 		/*Registro.recuperarEstadoSistema();
 		Cliente cli1 = new Cliente("Kevin","Hernández","Rostrán","22136900","kevinah95@gmail.com","Estudiante");
@@ -71,29 +90,14 @@ public class MainPruebaReg {
 		
 		*/
 		
-		//Registro.clientesRegistrados.get(0).devolver(2);
-		
 		//Aquí elimino todo el sistema, y lo reestablezco
 //		Registro.guardarEstadoActualSistema();
 		
-		//------------------------------------------PruebaK
-		Registro.recuperarEstadoSistema();
+		//Registro.articulosRegistrados.get(0).setDiasPrestado(150);
 		
-		Registro.articulosRegistrados.get(0).setDiasPrestado(150);
-		
-		Registro.clientesRegistrados.get(1).prestar(1);
-		System.out.println(Registro.articulosRegistrados.get(1));
-//		System.out.println(Registro.clientesRegistrados.get(1).toString());
-		
+		//System.out.println(Registro.clientesRegistrados.get(1).toString());
 		//------------------------------------------Fin PruebaK
 //		Registro.guardarEstadoActualSistema();
-		
-//		System.out.println("\nArtículos disponibles");
-//		//Muestro los artículos sin prestar únicamente
-//		for (Articulo objeto : Registro.articulosRegistrados) {
-//			if (!objeto.isPrestado()){
-//				System.out.print(objeto);
-//				System.out.print("");}}
 		
 //		Cliente caso1 = new Cliente("c","a","Vargas","88888888","soymari@tumail.com","Estudiante");
 //		Cliente caso2 = new Cliente("b","b","Mora","88887777","soyantonio@tumail.com","Familiar");

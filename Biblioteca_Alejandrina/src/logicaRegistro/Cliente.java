@@ -1,6 +1,8 @@
 package logicaRegistro;
 
 import java.util.*;
+import java.text.*;
+
 
 public class Cliente extends Registro{
 	
@@ -59,6 +61,8 @@ public class Cliente extends Registro{
 			setCategoria(nCategoria);
 			for (Articulo prestado : nPrestados) {prestamos.add(prestado);}		}
 	
+	private Date fechaEvento; //Para guardar la fecha del préstamo en cada artículo
+	
 	//Setters y Getters.------------------------------------------------------//
 	public int getCantClientes() {return cantClientes;} //El equivalente al largo de la lista
 	public int getIdentificadorCliente() {return identificadorCliente;}
@@ -79,11 +83,20 @@ public class Cliente extends Registro{
 	public void setCategoria(String categoria) {this.categoria = categoria;}
 	public ArrayList<Articulo> getPrestamos() {return prestamos;}
 	public void setPrestamos(ArrayList<Articulo> prestamos) {this.prestamos = prestamos;}
+	public String getFechaEvento() {
+		SimpleDateFormat mascara = new SimpleDateFormat ("dd/MM/yy");
+		System.out.println(fechaEvento);
+		return mascara.format(fechaEvento);}
+	public void setFechaEvento() {
+		Calendar calendario;
+		calendario = Calendar.getInstance();
+		fechaEvento = (Date) calendario.getTime();}
+	
 	//------------------------------------------------------------------------//
 	public String presentarCategoria(){ //Cambio hecho para PruebaK
-		if ("Estudiante".equals(getCategoria())){return "Estudiante";}
-		else if ("Colega".equals(getCategoria())){return "Colega";}
-		else if ("Familiar".equals(getCategoria())){return "Familiar";}
+		if ("1".equals(getCategoria())){return "Estudiante";}
+		else if ("2".equals(getCategoria())){return "Colega";}
+		else if ("3".equals(getCategoria())){return "Familiar";}
 		else {return "Categoría Desconocida";}}
 	
 	public void prestar (int ID){
@@ -94,8 +107,9 @@ public class Cliente extends Registro{
 	
 	private void prestarInterno (Articulo prestamo){
 		prestamo.setPrestado(true);
-		//Cambio hecho para PruebaK
-//		prestamo.setDiasPrestado(1); 
+		prestamo.setDiasPrestado(1); 
+		setFechaEvento();
+		prestamo.setFechaPrestado(getFechaEvento());
 		prestamos.add(prestamo);}
 	
 	public void devolver (int ID){
@@ -107,6 +121,7 @@ public class Cliente extends Registro{
 	private void devolverInterno (Articulo prestamo){
 		prestamo.setPrestado(false);
 		prestamo.setDiasPrestado(0);
+		prestamo.setFechaDevolucion(getFechaEvento());
 		prestamos.remove(prestamo);}
 	
 	public String toString (){
@@ -123,4 +138,3 @@ public class Cliente extends Registro{
 		return msj;
 	}
 }
-

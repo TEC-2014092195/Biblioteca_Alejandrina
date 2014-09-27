@@ -26,9 +26,11 @@ public class Articulo extends Registro {
 		setDato1(nDato1);
 		setDato2(nDato2);
 		setDirImg(nDirImg);
-		setCalif (nCalif);	
+		setCalif (nCalif);
+		setFechaPrestado("0");
+		setFechaDevolucion("0");
 		setPrestado(false);	
-		setDiasPrestado(1);		}
+		setDiasPrestado(0);		}
 	
 	//Constructor para reestablecer el sistema, recibe el dato de si el objeto
 	//ya fue prestado o no, y si lo fué, cuántos días lleva prestado. 
@@ -39,6 +41,8 @@ public class Articulo extends Registro {
 				String nDato2,
 				String nDirImg,
 				String nCalif,
+				String nFechaPrestado,
+				String nFechaDevolucion,
 				boolean nPrestado,
 				int DiasPrestado) 
 				
@@ -52,6 +56,8 @@ public class Articulo extends Registro {
 		setDirImg(nDirImg);
 		setCalif (nCalif);	
 		setPrestado(nPrestado);	
+		setFechaPrestado(nFechaPrestado);
+		setFechaDevolucion (nFechaDevolucion);
 		setDiasPrestado(DiasPrestado);		}
 	
 	
@@ -77,6 +83,10 @@ public class Articulo extends Registro {
 	public void setPrestado(boolean prestado) {this.prestado = prestado;}
 	public int getDiasPrestado() {return diasPrestado;}
 	public void setDiasPrestado(int diasPrestado) {this.diasPrestado = diasPrestado;}
+	public String getFechaPrestado() {return fechaPrestado;}
+	public void setFechaPrestado(String fechaPrestado) {this.fechaPrestado = fechaPrestado;}
+	public String getFechaDevolucion() {return fechaDevolucion;}
+	public void setFechaDevolucion(String fechaDevolucion) {this.fechaDevolucion = fechaDevolucion;}
 	//------------------------------------------------------------------------------//
 	
 	public String toString (){
@@ -89,6 +99,10 @@ public class Articulo extends Registro {
 		msj += "\tCalificacion: "+getCalif()+"\n";
 		msj += "\tEstá Prestado: "+isPrestado()+"\n";
 		msj += "\tDias Prestamo: "+getDiasPrestado()+"\n";
+		if (!getFechaPrestado().equals("0")) {
+			msj += "\tPrestado por última vez el día: " + getFechaPrestado() + "\n";}
+		if (!getFechaDevolucion().equals("0")) {
+			msj += "\tDevuelto por última vez el día: " + getFechaDevolucion() + "\n";}
 		return msj;
 	}
 }
