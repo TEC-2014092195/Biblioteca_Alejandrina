@@ -33,6 +33,8 @@ public class Registro {
 		protected String dato2 = null;
 		protected String dirImg = null;
 		protected String calif = null;
+		protected String fechaPrestado = null;
+		protected String fechaDevolucion = null;
 		protected boolean prestado = false;
 		protected int diasPrestado  = 0;
 		
@@ -130,6 +132,8 @@ public class Registro {
 				entradaTxt += objeto.getDirImg() + ";";
 				entradaTxt += objeto.getCalif() + ";";
 				entradaTxt += objeto.isPrestado() + ";";
+				entradaTxt += objeto.getFechaPrestado() + ";";
+				entradaTxt += objeto.getFechaDevolucion() + ";";
 				entradaTxt += objeto.getDiasPrestado() + ";";
 				wr.write(entradaTxt);
 				bw.newLine();}
@@ -200,7 +204,7 @@ public class Registro {
 				entrada = linea;
 			    novoEntrada = entrada.split(";");
 			    if ("Cliente".equals(novoEntrada[0])){
-			    	String[] reestablecerPrestados = novoEntrada[7].split("-");
+			    	String[] reestablecerPrestados = novoEntrada[8].split("-");
 			    	ArrayList<Articulo> Prestados = new ArrayList<Articulo>();
 			    	for (String unidad : reestablecerPrestados) {
 			    		for (Articulo registrados : articulosRegistrados) {
@@ -225,6 +229,7 @@ public class Registro {
 			   								novoEntrada[1],novoEntrada[2],
 			   								novoEntrada[3],novoEntrada[4],
 			   								novoEntrada[5],novoEntrada[6],
+			   								novoEntrada[9],novoEntrada[10],
 		    								Prest,Dias));}}}
 		catch(Exception e){
 			e.printStackTrace();}
