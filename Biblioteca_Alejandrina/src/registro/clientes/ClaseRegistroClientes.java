@@ -345,8 +345,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 			
 			ClaseHome home = new ClaseHome();
 			home.getCardLayout().show(home.getPanelCards(), "Home");
-			home.getFrame().revalidate();
-			home.getFrame().repaint();
+			home.ventana.revalidate();
+			home.ventana.repaint();
 			
 			limpiarTextos();
 		}

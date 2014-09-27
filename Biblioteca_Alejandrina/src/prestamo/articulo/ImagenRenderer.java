@@ -38,14 +38,8 @@ public class ImagenRenderer extends JLabel implements TableCellRenderer {
 		
 		
 			
-			BufferedImage imgArticulo = null;
-			try {
-				imgArticulo = Imagen.getImagenRedimensionada((String) value,80,90);
-				setIcon(new ImageIcon(imgArticulo));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+			setIcon(new ImageIcon( (String)value) );
 		
 			
 			setOpaque(true);

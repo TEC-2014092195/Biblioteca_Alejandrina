@@ -91,7 +91,7 @@ public class Imagen {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static BufferedImage scale(BufferedImage src, int width, int height) throws IOException {
-	    BufferedImage dest = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
+	    BufferedImage dest = new BufferedImage(width, height, BufferedImage.OPAQUE);
 	    Graphics2D g = dest.createGraphics();
 	    AffineTransform at = AffineTransform.getScaleInstance(
 	            (double)width/src.getWidth(),

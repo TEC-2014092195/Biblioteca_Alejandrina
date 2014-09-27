@@ -369,8 +369,15 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 				
 				File f = new File(dirImagen);
 				try{
-					nueva_imagen = ImageIO.read(f);
-					ImageIO.write(nueva_imagen, ex, new File("Biblioteca_Alejandrina/recursosImagen/"));
+//					nueva_imagen = ImageIO.read(f);
+//					System.out.println(f.getName());
+//					ImageIO.write(nueva_imagen, ex, new File("Biblioteca_Alejandrina/recursosImagen/Art_0."+ex));
+//					ImageIO.write( nueva_imagen, ex, new File( "Biblioteca_Alejandrina/recursosImagen/"+f.getName() ) );
+				
+					BufferedImage scalaIMG = Imagen.getImagenRedimensionada(dirImagen,100,100);
+					
+					ImageIO.write(scalaIMG, ex, new File( "Biblioteca_Alejandrina/recursosImagen/"+f.getName() ));
+					dirImagen = "Biblioteca_Alejandrina/recursosImagen/"+f.getName();
 				}
 				catch(Exception r){r.printStackTrace();}//TODO imagen
 				
@@ -400,8 +407,8 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 			ClaseHome home = new ClaseHome();
 
 			home.getCardLayout().show(home.getPanelCards(), "Home");
-			home.getFrame().revalidate();
-			home.getFrame().repaint();
+			home.ventana.revalidate();
+			home.ventana.repaint();
 
 		} else {
 			switch (e.getActionCommand()) {

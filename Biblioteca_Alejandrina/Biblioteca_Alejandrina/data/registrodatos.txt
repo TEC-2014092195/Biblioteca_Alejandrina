@@ -1,9 +1,7 @@
-Libro;ArtPrueba;Prueba;Prueba;Prueba;C:\Users\Kevin\Desktop\42b59597738e48ec5d49af67a52a529f.jpg;5;true;150;
-Libro;l;l;l;l;C:\Users\Kevin\Desktop\f3255bf5bbb1cb7b1c3b62f0e6439221.jpg;0;true;150;
-Revista;asdas;cxczxcx;sdcsdc;sdcdsc;C:\Users\Kevin\Desktop\5b6d72237d2f4b43d95810bf2e0dd6af.jpg;3;false;1;
-Libro;fsdf;sdf;df;vxc;C:\Users\Kevin\Google Drive\AVIVANOS.jpg;0;false;1;
-Libro;v;v;v;v;C:\Users\Kevin\Desktop\stock-illustration-21382293-retro-badges-set.jpg;0;false;1;
-Libro;a;a;a;a;C:\Users\Kevin\Desktop\5b6d72237d2f4b43d95810bf2e0dd6af.jpg;0;false;1;
-Película;jklj;drtdtr;drtd;ty;C:\Users\Kevin\Desktop\5b6d72237d2f4b43d95810bf2e0dd6af.jpg;3;false;1;
-Cliente;123;Prueba;ApPrueba;Ap2Prueba;888;prueba@prueba.com;Estudiante;0-;
-Cliente;456;p;p;p;9;p@p.com;Estudiante;0-;
+Libro;fsdf;sdfsdf;sdfds;fsd;Biblioteca_Alejandrina/recursosImagen/stock-illustration-21382293-retro-badges-set.jpg;0;false;1;
+Película;ver;ver;vrev;rev;Biblioteca_Alejandrina/recursosImagen/f3255bf5bbb1cb7b1c3b62f0e6439221.jpg;0;false;1;
+Libro;dfv;fvd;fvdf;vfdv;Biblioteca_Alejandrina/recursosImagen/42b59597738e48ec5d49af67a52a529f.jpg;3;false;1;
+Revista;grtg;ertg;ertg;retg;Biblioteca_Alejandrina/recursosImagen/Libro0.jpg;0;false;1;
+Libro;bdfgb;fdb;dfgb;fdgb;Biblioteca_Alejandrina/recursosImagen/42b59597738e48ec5d49af67a52a529f.jpg;5;false;1;
+Libro;dfgfdb;fgbd;fgb;fdgbdfg;Biblioteca_Alejandrina/recursosImagen/644546b5b73352b04e1a763ae75a7541.jpg;5;false;1;
+Cliente;123;proof;oip;poipo;4423849023;k@e.com;Estudiante;0-;
