@@ -48,6 +48,7 @@ import javax.swing.table.TableRowSorter;
 
 import prestamo.articulo.CalificacionRenderer;
 import prestamo.articulo.ImagenRenderer;
+import tiempo.Tiempo;
 import logicaRegistro.Articulo;
 import logicaRegistro.Filtro;
 import logicaRegistro.Registro;
@@ -60,7 +61,7 @@ public class TablaArticulos extends JPanel implements ActionListener{
 	public static DefaultTableModel modelo;
 	static GridBagConstraints grid = new GridBagConstraints();
 	static Calendar calFechaPrestamo = Calendar.getInstance();
-	static SimpleDateFormat format= new SimpleDateFormat("dd-MMM-yyyy");
+	static SimpleDateFormat format= new SimpleDateFormat("dd;MM;yyyy");
 	public TablaArticulos() {
 			
 		llenarTabla();
@@ -157,58 +158,14 @@ public class TablaArticulos extends JPanel implements ActionListener{
                 
                 JLabel label = new JLabel();
                 int modelRow = table.convertRowIndexToModel(row);
-                String type = (String)table.getModel().getValueAt(modelRow, 10); //Obtener Valor 
-                //----------------------------
-                SimpleDateFormat format= new SimpleDateFormat("dd-MMM-yyyy");
-	        	Calendar cal1 = new GregorianCalendar();
-                Calendar cal2 = new GregorianCalendar();
-	        	Calendar fechahoy = Calendar.getInstance();
-	        	cal1.setTime(fechahoy.getTime());       
-	        	int diaspasados=0;
-                try {
-                	if (!"0".equals(type)){
-                		cal2.setTime(format.parse(""+type));
-                	}else{
-                		label.setText(type);
-                	}
-					
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+                String type = (String)table.getModel().getValueAt(modelRow, 9); //Obtener Valor 
                 
-                if(format.format(cal1.getTime()).equals(format.format(cal2.getTime()))){
-                	//cerodias de diferencia
-                }else{
-                	int diferencia =daysBetween(cal1.getTime(),cal2.getTime());
-                	if (diferencia>=0){
-                		diferencia+=1;
-                		
-                		pane.setBackground(Color.RED);
-    					label.setText(type);
-    					label.setForeground(Color.WHITE);
-    					
-                		diaspasados=diferencia;
-                		
-                		
-                	}else{
-                		pane.setBackground(Color.GREEN);
-    					label.setText(type);
-    					label.setForeground(Color.WHITE);
-                		
-                		diaspasados=diferencia;
-                	}
-                }
-
-	        	//------------------------------
                 
 				
-				if(column==10){
-					pane.add(label);
-				}else{
+				
 					label.setText((String)value);
 					pane.add(label);
-				}
+				
                 
                 return pane;
             }

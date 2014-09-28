@@ -17,6 +17,9 @@ import javax.swing.border.Border;
 
 import javax.swing.table.DefaultTableModel;
 
+import main.ClaseHome;
+import controles.PopupControles;
+
 import java.awt.*;
 
 
@@ -36,11 +39,24 @@ public class Notificaciones{
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
 		double height = screenSize.getHeight();
+		
 
 		// Asigna las propiedades de la ventana.
 		popupNotificacion.setSize((int) width - 300, (int) height - 50);
 		popupNotificacion.setLocationRelativeTo(null);
-		
+		popupNotificacion.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		    	SwingUtilities.invokeLater(new Runnable() {
+			         public void run() {
+			        	PopupControles pcontroles = new PopupControles();
+						ClaseHome n = new ClaseHome();
+						n.crearFrame();
+			         }
+			      });
+		    	
+		    }
+		});
 		
 		
 		popupNotificacion.add(tabla);

@@ -1,2 +1,2 @@
-Libro;fsdfsd;fdsf;dsfds;fsd;Biblioteca_Alejandrina/recursosImagen/articulo0.jpg;0;true;28/Setiembre/2014;08-oct-2014;1;1;
-Cliente;645645;uuiouoi;u;uoi;456;uoi@g.com;Estudiante;0-1-;
+Libro;tret;ret;ert;ret;Biblioteca_Alejandrina/recursosImagen/articulo0.jpg;2;true;28/Setiembre/2014;28/Setiembre/2014;1;1;
+Cliente;4234;wqr;wqrqw;qwr;5435;j@k.com;Estudiante;0-1-;

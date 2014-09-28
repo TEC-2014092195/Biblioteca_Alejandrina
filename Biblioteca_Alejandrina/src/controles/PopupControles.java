@@ -9,6 +9,8 @@
 
 package controles;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -28,7 +30,13 @@ public class PopupControles extends JFrame{
 	JTextField txtDefinir;
 	JButton btnDefinir;
 	public PopupControles() {
-		setSize(500, 500);
+		// Obtener las dimensiones del monitor
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		double width = screenSize.getWidth();
+		double height = screenSize.getHeight();
+		
+		setLocation((int)width-400, (int) height-300);
+		setSize(350, 200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		crearControles();
@@ -53,9 +61,10 @@ public class PopupControles extends JFrame{
 				Tiempo.calcularFechaReal();
 				if (txtDefinir.getText().matches("\\d*") && !"".equals(txtDefinir.getText())){
 					dias = Integer.parseInt(txtDefinir.getText());
+										
+					Tiempo.simularCambioDia(dias);
 					Tiempo.setContadorDias(dias);
-					Tiempo.calcularFechaSistema();
-					JOptionPane.showMessageDialog(null, Tiempo.getFechaReal());
+					JOptionPane.showMessageDialog(null, Tiempo.getContadorDias());
 				}
 				
 				

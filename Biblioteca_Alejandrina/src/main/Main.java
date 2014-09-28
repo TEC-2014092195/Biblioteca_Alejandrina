@@ -9,6 +9,13 @@
 
 package main;
 
+import java.awt.EventQueue;
+import java.lang.reflect.InvocationTargetException;
+
+import javax.swing.SwingUtilities;
+
+import Notificaciones.Notificaciones;
+import controles.PopupControles;
 import tiempo.Tiempo;
 import logicaRegistro.Registro;
 
@@ -22,10 +29,15 @@ public class Main {
 		
 		Tiempo.calcularFechaReal(); 
 //		ClaseIntroduccion ci = new ClaseIntroduccion(); //Inicia con la imagen del logotipo (comentado para no atrasar el proceso hasta la versión final)
+		SwingUtilities.invokeLater(new Runnable() {
+	         public void run() {
+	        	 Notificaciones notif = new Notificaciones();
+	         }
+	      });
+	                	
+
 		
 		
-		ClaseHome n = new ClaseHome();
-		n.crearFrame();
 		
 	}
 

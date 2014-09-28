@@ -309,14 +309,14 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		grid.fill = GridBagConstraints.HORIZONTAL;
 		Calendar cal = Calendar.getInstance();
         Date date = cal.getTime();
-		SimpleDateFormat format= new SimpleDateFormat("dd-MMM-yyyy");
+		SimpleDateFormat format= new SimpleDateFormat("dd;MM;yyyy");
 		dateEditor.addChangeListener(new ChangeListener() {
 			
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				
 				Date fechaelegida = (Date) ((JSpinner) e.getSource()).getValue();
-				SimpleDateFormat format= new SimpleDateFormat("dd-MMM-yyyy");
+				SimpleDateFormat format= new SimpleDateFormat("dd;MM;yyyy");
                 
                 Calendar cal1 = new GregorianCalendar();
                 Calendar cal2 = new GregorianCalendar();
