@@ -39,6 +39,7 @@ import javax.swing.table.TableRowSorter;
 
 import prestamo.articulo.CalificacionRenderer;
 import prestamo.articulo.ImagenRenderer;
+import tiempo.Tiempo;
 import logicaRegistro.Articulo;
 import logicaRegistro.Registro;
 
