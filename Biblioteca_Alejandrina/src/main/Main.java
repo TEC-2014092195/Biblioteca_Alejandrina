@@ -9,6 +9,7 @@
 
 package main;
 
+import tiempo.Tiempo;
 import logicaRegistro.Registro;
 
 
@@ -19,7 +20,7 @@ public class Main {
 		// Recupera el estado del archivo de texto "Biblioteca_Alejandrina/data/registrodatos.txt".
 		Registro.recuperarEstadoSistema();
 		
-		
+		Tiempo.calcularFechaReal(); 
 //		ClaseIntroduccion ci = new ClaseIntroduccion(); //Inicia con la imagen del logotipo (comentado para no atrasar el proceso hasta la versión final)
 		
 		

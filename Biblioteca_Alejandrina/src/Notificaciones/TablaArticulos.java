@@ -120,8 +120,7 @@ public class TablaArticulos extends JPanel implements ActionListener{
 		    public void mouseClicked(MouseEvent evt) {
 		        
 		        if (evt.getClickCount() == 2) {
-		        	int row =table.getSelectedRow();
-		        	int column = table.getSelectedColumn();
+		        	
 		        	
 		        	
 	                	
