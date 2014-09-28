@@ -37,6 +37,7 @@ public class Registro {
 		protected String fechaDevolucion = null;
 		protected boolean prestado = false;
 		protected int diasPrestado  = 0;
+		protected int vecesPrestado = 0;
 		
 		protected static final String dirFile = "Biblioteca_Alejandrina/data/registrodatos.txt";  
 		protected static final String dirFile2 = "Biblioteca_Alejandrina/data/registrodatosdecero.txt"; 
@@ -135,6 +136,7 @@ public class Registro {
 				entradaTxt += objeto.getFechaPrestado() + ";";
 				entradaTxt += objeto.getFechaDevolucion() + ";";
 				entradaTxt += objeto.getDiasPrestado() + ";";
+				entradaTxt += objeto.getVecesPrestado() + ";";
 				wr.write(entradaTxt);
 				bw.newLine();}
 			
@@ -224,13 +226,14 @@ public class Registro {
 			   			Prest = true;
 			   		//Convierto el string de días prestado en un int.
 			   		int Dias = Integer.parseInt(novoEntrada[10]);
+			   		int VecesP = Integer.parseInt(novoEntrada[11]);
 			    	//Invoco el constructor especial. 
 			   		articulosRegistrados.add(new Articulo(novoEntrada[0],
 			   								novoEntrada[1],novoEntrada[2],
 			   								novoEntrada[3],novoEntrada[4],
 			   								novoEntrada[5],novoEntrada[6],
 			   								novoEntrada[8],novoEntrada[9],
-		    								Prest,Dias));}}}
+		    								Prest,Dias,VecesP));}}}
 		catch(Exception e){
 			e.printStackTrace();}
 		finally{

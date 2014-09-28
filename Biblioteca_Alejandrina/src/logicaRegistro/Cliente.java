@@ -1,8 +1,8 @@
 package logicaRegistro;
 
 import java.util.*;
-import java.text.*;
 
+import tiempo.Tiempo;
 
 public class Cliente extends Registro{
 	
@@ -61,7 +61,7 @@ public class Cliente extends Registro{
 			setCategoria(nCategoria);
 			for (Articulo prestado : nPrestados) {prestamos.add(prestado);}		}
 	
-	private Date fechaEvento; //Para guardar la fecha del préstamo en cada artículo
+	private String fechaEvento; //Para guardar la fecha del préstamo en cada artículo
 	
 	//Setters y Getters.------------------------------------------------------//
 	public int getCantClientes() {return cantClientes;} //El equivalente al largo de la lista
@@ -83,14 +83,11 @@ public class Cliente extends Registro{
 	public void setCategoria(String categoria) {this.categoria = categoria;}
 	public ArrayList<Articulo> getPrestamos() {return prestamos;}
 	public void setPrestamos(ArrayList<Articulo> prestamos) {this.prestamos = prestamos;}
-//	public String getFechaEvento() {
-//		SimpleDateFormat mascara = new SimpleDateFormat ("dd/MM/yy");
-//		System.out.println(fechaEvento);
-//		return mascara.format(fechaEvento);}
-//	public void setFechaEvento() {
-//		Calendar calendario;
-//		calendario = Calendar.getInstance();
-//		fechaEvento = (Date) calendario.getTime();}
+	//Llamo a la clase ancestral de la clase tiempo.
+	public String getFechaEvento() {
+		return fechaEvento;} 
+	public void setFechaEvento() {
+		fechaEvento = Tiempo.fechaSistema();}
 	
 	//------------------------------------------------------------------------//
 	public String presentarCategoria(){ //Cambio hecho para PruebaK
@@ -107,9 +104,10 @@ public class Cliente extends Registro{
 	
 	private void prestarInterno (Articulo prestamo){
 		prestamo.setPrestado(true);
-//		prestamo.setDiasPrestado(1); 
-//		setFechaEvento();
-//		prestamo.setFechaPrestado(getFechaEvento());
+		prestamo.setDiasPrestado(1); 
+		prestamo.setVecesPrestado(prestamo.getVecesPrestado()+1);
+		setFechaEvento();
+		prestamo.setFechaPrestado(getFechaEvento());
 		prestamos.add(prestamo);}
 	
 	public void devolver (int ID){
@@ -121,7 +119,7 @@ public class Cliente extends Registro{
 	private void devolverInterno (Articulo prestamo){
 		prestamo.setPrestado(false);
 		prestamo.setDiasPrestado(0);
-//		prestamo.setFechaDevolucion(getFechaEvento());
+		prestamo.setFechaDevolucion(getFechaEvento());
 		prestamos.remove(prestamo);}
 	
 	public String toString (){
