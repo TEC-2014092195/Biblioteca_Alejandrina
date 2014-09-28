@@ -357,7 +357,7 @@ public class claseRegistroArticulos extends JFrame implements ActionListener {
 			panelContenedor.repaint();
 
 		} else if (e.getSource() == btnImagenArticulo) {
-
+			ex="";
 			ElegirImagen();
 
 			panelContenedor.revalidate();

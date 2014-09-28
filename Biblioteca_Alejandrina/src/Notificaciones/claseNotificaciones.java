@@ -60,7 +60,7 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 	/** The bandera. */
 	boolean flag=false,bandera=false;
 	
-	/** The j. */
+	/** The dateEditor. */
 	JPanel j;
 	
 	/** The panel. */

@@ -11,6 +11,7 @@ package logicaRegistro;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.function.Predicate;
 
 public class Filtro {
 	public ArrayList<Cliente> tempClientes =  new ArrayList<Cliente>();//Se guardan las copias de los clientes ordenadas por los metodos
@@ -145,12 +146,9 @@ public class Filtro {
 	public void sortCalif(ArrayList<Articulo> lista){
 		tempArticulos.clear();
 		tempArticulos = lista;
-		Collections.sort(tempArticulos, new Comparator<Articulo>(){
-			@Override
-			public int compare(Articulo p1, Articulo p2){
-				return p1.getCalif().compareTo(p2.getCalif());
-			}
-	});
+		
+		
+		
 	}
 	//Estos métodos generan una lista con los respectivos articulos de cada tipo
 	public void obtLibros(ArrayList<Articulo> lista){

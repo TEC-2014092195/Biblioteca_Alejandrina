@@ -20,7 +20,6 @@ public class Main {
 		ClaseHome n = new ClaseHome();
 		n.crearFrame();
 		
-
 	}
 
 }

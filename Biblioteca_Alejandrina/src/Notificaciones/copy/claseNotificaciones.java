@@ -52,7 +52,7 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 	/** The flag. */
 	boolean flag=false;
 	
-	/** The j. */
+	/** The dateEditor. */
 	JPanel j;
 	
 	/** The paises. */
@@ -137,7 +137,7 @@ public class claseNotificaciones extends JFrame implements ActionListener{
 		
 		j.add(btn2,gbc);
 		
-		//j.setBackground(Color.GRAY);
+		//dateEditor.setBackground(Color.GRAY);
 		
 		
 		lbl.setText("Kevin");

@@ -107,9 +107,9 @@ public class Cliente extends Registro{
 	
 	private void prestarInterno (Articulo prestamo){
 		prestamo.setPrestado(true);
-		prestamo.setDiasPrestado(1); 
-		setFechaEvento();
-		prestamo.setFechaPrestado(getFechaEvento());
+//		prestamo.setDiasPrestado(1); 
+//		setFechaEvento();
+//		prestamo.setFechaPrestado(getFechaEvento());
 		prestamos.add(prestamo);}
 	
 	public void devolver (int ID){

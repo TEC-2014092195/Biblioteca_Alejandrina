@@ -223,13 +223,13 @@ public class Registro {
 			   		if (novoEntrada[7].equals("true"))
 			   			Prest = true;
 			   		//Convierto el string de días prestado en un int.
-			   		int Dias = Integer.parseInt(novoEntrada[8]);
+			   		int Dias = Integer.parseInt(novoEntrada[10]);
 			    	//Invoco el constructor especial. 
 			   		articulosRegistrados.add(new Articulo(novoEntrada[0],
 			   								novoEntrada[1],novoEntrada[2],
 			   								novoEntrada[3],novoEntrada[4],
 			   								novoEntrada[5],novoEntrada[6],
-			   								novoEntrada[9],novoEntrada[10],
+			   								novoEntrada[8],novoEntrada[9],
 		    								Prest,Dias));}}}
 		catch(Exception e){
 			e.printStackTrace();}

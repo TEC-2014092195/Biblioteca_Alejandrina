@@ -52,7 +52,7 @@ public class TablaConsultas extends JPanel implements ActionListener{
 		
 		
 		String col[] = { "Tipo", "Título", "Detalle1", "Detalle2", "Detalle3",
-				"Imagen", "Calificación", "ifPrestado", "Dias Prestamo" };
+				"Imagen", "Calificación", "ifPrestado", "Dias Prestamo", "Prestado", "Devolucion" };
 		modelo = new DefaultTableModel(col, 0){
 			public boolean isCellEditable(int row, int column)  
 		    {  
@@ -72,9 +72,11 @@ public class TablaConsultas extends JPanel implements ActionListener{
 			   String calificacion = Registro.articulosRegistrados.get(i).getCalif();
 			   String ifprestado = String.valueOf(Registro.articulosRegistrados.get(i).isPrestado());
 			   String diasprestado = String.valueOf(Registro.articulosRegistrados.get(i).getDiasPrestado());
+			   String fechaprestamo = String.valueOf(Registro.articulosRegistrados.get(i).getFechaPrestado());
+			   String fechadevolucion = String.valueOf(Registro.articulosRegistrados.get(i).getFechaDevolucion());
 			   
 			   Object[] data = {tipo, titulo, detalle1, detalle2, detalle3, imagen, 
-			                               calificacion, ifprestado, diasprestado};
+			                               calificacion, ifprestado, diasprestado, fechaprestamo, fechadevolucion};
 
 			   modelo.addRow(data);
 
