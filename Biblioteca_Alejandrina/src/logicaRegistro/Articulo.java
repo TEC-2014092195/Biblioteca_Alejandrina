@@ -97,7 +97,7 @@ public class Articulo extends Registro {
 	
 	public void aumentarDiasPrestado (int dias) {
 		for (Articulo objeto : Registro.articulosRegistrados) {
-			if (!objeto.isPrestado()){
+			if (objeto.isPrestado()){
 				setDiasPrestado(getDiasPrestado()+ dias );}}}
 	
 	public String toString (){
