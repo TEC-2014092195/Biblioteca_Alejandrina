@@ -9,12 +9,15 @@
 
 package Notificaciones;
 
+import logicaRegistro.Registro;
+
 
 public class ventanaNotificaciones {
 
 	
 	public static void main(String[] args) {
-		claseNotificaciones vn = new claseNotificaciones();
+		Registro.recuperarEstadoSistema();
+		Notificaciones vn = new Notificaciones();
 
 	}
 

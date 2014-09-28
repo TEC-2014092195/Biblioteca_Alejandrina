@@ -1,9 +1,6 @@
-Libro;Dios no tiene Favoritos;Marcos Brunet;ZOE;1era;Biblioteca_Alejandrina/recursosImagen/articulo0.jpg;5;true;27-sep-2014;27-sep-2014;0;
-Libro;fsfds;fds;fsdf;dsfsd;Biblioteca_Alejandrina/recursosImagen/articulo1.jpg;3;true;27-sep-2014;27-sep-2014;0;
-Libro;jdkasjdasoidi;oijiojiojio;j;ji;Biblioteca_Alejandrina/recursosImagen/articulo2.jpg;3;true;28-sep-2014;07-oct-2014;9;
-Revista;fsdfsdf;dsfsd;dsfsdf;sdf;Biblioteca_Alejandrina/recursosImagen/articulo3.jpg;3;true;27-sep-2014;27-sep-2014;0;
-Libro;asd;asd;asd;asf;Biblioteca_Alejandrina/recursosImagen/articulo4.jpg;0;false;27-sep-2014;01-oct-2014;0;
-Libro;asdas;das;casc;casc;Biblioteca_Alejandrina/recursosImagen/articulo5.PNG;0;false;0;0;0;
-Libro;sfdsd;dsfg;dfgds;fg;Biblioteca_Alejandrina/recursosImagen/articulo6.jpg;0;false;0;0;0;
-Libro;wqjqwuequwoieuqwioeuwqioe;uiouiouiouiouiouiouiouio;uiouoiuouiouoiuiouiouiouiouiodusioduaoisudoisaudoisaudiouasio;uiouiouiououiouiouiouiouiouiouoiuiouiouio;Biblioteca_Alejandrina/recursosImagen/articulo7.jpg;3;false;0;0;0;
-Cliente;115980000;Kevin;Hernández;Rostrán;84609090;kevinah95@gmail.com;Estudiante;0-3-;
+Libro;kajsdas;jijioio;huyiu;yi;Biblioteca_Alejandrina/recursosImagen/articulo0.PNG;3;true;28-sep-2014;08-oct-2014;10;
+Película;vx;cvxzvxz;xv;xvz;Biblioteca_Alejandrina/recursosImagen/articulo1.jpg;4;true;28-sep-2014;18-oct-2014;20;
+Serie;xzvA;FASF;ASFAS;D;Biblioteca_Alejandrina/recursosImagen/articulo2.jpg;4;true;28-sep-2014;02-oct-2014;4;
+Serie;lpskojaoifasfjoi;uiouiouiouio;o;yoiy;Biblioteca_Alejandrina/recursosImagen/articulo3.jpg;2;false;0;0;0;
+Serie;vzxcvxzc;vxczv;bfbdfsdfg;ewrgwerhewh;Biblioteca_Alejandrina/recursosImagen/articulo4.jpg;3;true;28-sep-2014;30-sep-2014;2;
+Cliente;115980000;Kevin;Hernández;Rostrán;84609090;kevinah95@gmail.com;Estudiante;0-1-3-5-2-;

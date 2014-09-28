@@ -16,7 +16,13 @@ public class Main {
 
 	
 	public static void main(String[] args) {
+		// Recupera el estado del archivo de texto "Biblioteca_Alejandrina/data/registrodatos.txt".
+		Registro.recuperarEstadoSistema();
+		
+		
 //		ClaseIntroduccion ci = new ClaseIntroduccion(); //Inicia con la imagen del logotipo (comentado para no atrasar el proceso hasta la versión final)
+		
+		
 		ClaseHome n = new ClaseHome();
 		n.crearFrame();
 		

@@ -7,22 +7,30 @@
  **==================================================================================== 
  */
 
-package prestamo.articulo;
+package Notificaciones;
 
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -30,6 +38,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -40,17 +49,18 @@ import javax.swing.table.TableRowSorter;
 import prestamo.articulo.CalificacionRenderer;
 import prestamo.articulo.ImagenRenderer;
 import logicaRegistro.Articulo;
+import logicaRegistro.Filtro;
 import logicaRegistro.Registro;
 
 public class TablaArticulos extends JPanel implements ActionListener{
 
 	static JTable table;
 	static JPanel panelContenedor = new JPanel();
-//	static TableRowSorter<ModeloTabla> sorter;
 	static TableRowSorter<DefaultTableModel> sorter;
 	public static DefaultTableModel modelo;
 	static GridBagConstraints grid = new GridBagConstraints();
-	
+	static Calendar calFechaPrestamo = Calendar.getInstance();
+	static SimpleDateFormat format= new SimpleDateFormat("dd-MMM-yyyy");
 	public TablaArticulos() {
 			
 		llenarTabla();
@@ -73,8 +83,10 @@ public class TablaArticulos extends JPanel implements ActionListener{
 			public boolean isCellEditable(int row, int column)  
 		    {  
 		        // only columns 0 and 1 are editable  
-		        return column > 8;  
+		        return column > 10;  
 		    }  
+			
+			
 		};
 		table = new JTable(modelo);
 		
@@ -100,7 +112,7 @@ public class TablaArticulos extends JPanel implements ActionListener{
 		sorter = new TableRowSorter<DefaultTableModel>(modelo);
 		//-----------------------------fin llenado
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		table.setPreferredScrollableViewportSize(new Dimension(900, 400));
+		table.setPreferredScrollableViewportSize(new Dimension(900, 600));
 		table.setRowSorter(sorter);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
@@ -108,17 +120,16 @@ public class TablaArticulos extends JPanel implements ActionListener{
 		    public void mouseClicked(MouseEvent evt) {
 		        
 		        if (evt.getClickCount() == 2) {
-
-					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
-		        	if (PopupArticulos.diasprestamo <=0){
-		        		JOptionPane.showMessageDialog(null, "La cantidad de días no puede ser inferior a 1","Biblioteca Alejandrina",2);
-		        	}else{
-		        		prestarArticulo();
-		        		PopupArticulos.ventanaPopup.dispose();
-		        	}
- 
+		        	int row =table.getSelectedRow();
+		        	int column = table.getSelectedColumn();
+		        	
+		        	
+	                	
+		        	
+		        		
 		        }
 		    }
+		    
 		});
 		
 		table.getColumn("Imagen").setCellRenderer( new ImagenRenderer() );
@@ -135,17 +146,77 @@ public class TablaArticulos extends JPanel implements ActionListener{
 		for (int i=0;i<table.getColumnCount();i++){
 			table.getColumnModel().getColumn(i).setPreferredWidth(150);
 		}
-		NormalCellRenderer normal = new NormalCellRenderer();
-		table.getColumn("Tipo").setCellRenderer( normal );
-		table.getColumn("Título").setCellRenderer( normal );
-		table.getColumn("Detalle1").setCellRenderer( normal );
-		table.getColumn("Detalle2").setCellRenderer( normal );
-		table.getColumn("Detalle3").setCellRenderer( normal );
-		table.getColumn("ifPrestado").setCellRenderer( normal );
-		table.getColumn("Dias Prestamo").setCellRenderer( normal );
-		table.getColumn("Fecha Prestamo").setCellRenderer( normal );
-		table.getColumn("Fecha Devolucion").setCellRenderer( normal );
 		
+		
+		table.setDefaultRenderer(Object.class, new TableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table,
+                    Object value, boolean isSelected, boolean hasFocus,
+                    int row, int column) {
+            	
+                JPanel pane = new JPanel(new GridBagLayout());
+                
+                JLabel label = new JLabel();
+                int modelRow = table.convertRowIndexToModel(row);
+                String type = (String)table.getModel().getValueAt(modelRow, 10); //Obtener Valor 
+                //----------------------------
+                SimpleDateFormat format= new SimpleDateFormat("dd-MMM-yyyy");
+	        	Calendar cal1 = new GregorianCalendar();
+                Calendar cal2 = new GregorianCalendar();
+	        	Calendar fechahoy = Calendar.getInstance();
+	        	cal1.setTime(fechahoy.getTime());       
+	        	int diaspasados=0;
+                try {
+                	if (!"0".equals(type)){
+                		cal2.setTime(format.parse(""+type));
+                	}else{
+                		label.setText(type);
+                	}
+					
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                
+                if(format.format(cal1.getTime()).equals(format.format(cal2.getTime()))){
+                	//cerodias de diferencia
+                }else{
+                	int diferencia =daysBetween(cal1.getTime(),cal2.getTime());
+                	if (diferencia>=0){
+                		diferencia+=1;
+                		
+                		pane.setBackground(Color.RED);
+    					label.setText(type);
+    					label.setForeground(Color.WHITE);
+    					
+                		diaspasados=diferencia;
+                		
+                		
+                	}else{
+                		pane.setBackground(Color.GREEN);
+    					label.setText(type);
+    					label.setForeground(Color.WHITE);
+                		
+                		diaspasados=diferencia;
+                	}
+                }
+
+	        	//------------------------------
+                
+				
+				if(column==10){
+					pane.add(label);
+				}else{
+					label.setText((String)value);
+					pane.add(label);
+				}
+                
+                return pane;
+            }
+            public int daysBetween(Date d1, Date d2){
+				 return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+			}
+        });
 		
 		JScrollPane scrollPanel = new JScrollPane(table,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		// -----------------------------------------------------Fin Tabla-----
@@ -153,23 +224,6 @@ public class TablaArticulos extends JPanel implements ActionListener{
 		panelContenedor.add(scrollPanel,grid);
 	}
 	
-	public static void prestarArticulo(){
-    	int indexArticulo = table.convertRowIndexToModel(table.getSelectedRow());
-    	int idArticulo = Registro.articulosRegistrados.get(indexArticulo).getIdentificadorObjeto();
-    	
-		System.out.println("Fila:"+indexArticulo);
-		
-		Registro.articulosRegistrados.get(indexArticulo).setDiasPrestado(PopupArticulos.diasprestamo);
-		Registro.articulosRegistrados.get(indexArticulo).setFechaPrestado(PopupArticulos.fechaPrestamo);
-		Registro.articulosRegistrados.get(indexArticulo).setFechaDevolucion(PopupArticulos.fechaDevolucion);
-		Registro.articulosRegistrados.get(indexArticulo).setPrestado(true);
-		
-		Registro.clientesRegistrados.get(PopupArticulos.indexCliente).prestar(idArticulo);
-		
-		JOptionPane.showMessageDialog(null, Registro.clientesRegistrados.get(PopupArticulos.indexCliente).toString(),"Biblioteca Alejandrina",1);
-		Registro.guardarEstadoActualSistema();
-		
-	}
 	
 	public static class NormalCellRenderer extends JLabel implements TableCellRenderer {
 		
@@ -179,12 +233,14 @@ public class TablaArticulos extends JPanel implements ActionListener{
 
 			
 				
+				
+				
 				setToolTipText("<html><p>"+(String)value+"</p></html>");
 				setHorizontalAlignment(SwingConstants.CENTER);
 				setText((String)value);
 				setForeground(Color.WHITE);
 				setOpaque(true);
-				setBackground(Color.DARK_GRAY);
+//				setBackground(Color.DARK_GRAY);
 		  
 			
 		   
@@ -192,6 +248,12 @@ public class TablaArticulos extends JPanel implements ActionListener{
 
 		}
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

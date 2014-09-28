@@ -1,5 +1,5 @@
 /**====================================================================================
- * Archivo      : claseNotificaciones.java » Paquete: Notificaciones » Proyecto: Biblioteca_Alejandrina
+ * Archivo      : Notificaciones.java » Paquete: Notificaciones » Proyecto: Biblioteca_Alejandrina
  * Autores      : Kevin Hernández Rostrán, Jasson Moya Álvarez, 
  *				  Julián Méndez Oconitrillo, José Aguilar Quesada.
  * Curso        : Programación Orientada a Objetos - Instituto Tecnológico de Costa Rica
@@ -24,7 +24,7 @@ import java.util.Hashtable;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class claseNotificaciones.
+ * The Class Notificaciones.
  */
 public class claseNotificaciones extends JFrame implements ActionListener{
 	

@@ -176,13 +176,7 @@ public class ClaseHome extends JFrame implements ActionListener {
      *  
      */
 	public void crearFrame() {
-		
-		// Recupera el estado del archivo de texto "Biblioteca_Alejandrina/data/registrodatos.txt".
-		Registro.recuperarEstadoSistema();
-
-		
-
-		
+						
 		// Obtener las dimensiones del monitor
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		double width = screenSize.getWidth();
