@@ -1,6 +1,2 @@
-Libro;kajsdas;jijioio;huyiu;yi;Biblioteca_Alejandrina/recursosImagen/articulo0.PNG;3;true;28-sep-2014;08-oct-2014;10;
-Película;vx;cvxzvxz;xv;xvz;Biblioteca_Alejandrina/recursosImagen/articulo1.jpg;4;true;28-sep-2014;18-oct-2014;20;
-Serie;xzvA;FASF;ASFAS;D;Biblioteca_Alejandrina/recursosImagen/articulo2.jpg;4;true;28-sep-2014;02-oct-2014;4;
-Serie;lpskojaoifasfjoi;uiouiouiouio;o;yoiy;Biblioteca_Alejandrina/recursosImagen/articulo3.jpg;2;false;0;0;0;
-Serie;vzxcvxzc;vxczv;bfbdfsdfg;ewrgwerhewh;Biblioteca_Alejandrina/recursosImagen/articulo4.jpg;3;true;28-sep-2014;30-sep-2014;2;
-Cliente;115980000;Kevin;Hernández;Rostrán;84609090;kevinah95@gmail.com;Estudiante;0-1-3-5-2-;
+Libro;fsdfsd;fdsf;dsfds;fsd;Biblioteca_Alejandrina/recursosImagen/articulo0.jpg;0;true;0//0;08-oct-2014;1;3;
+Cliente;645645;uuiouoi;u;uoi;456;uoi@g.com;Estudiante;0-1-;
