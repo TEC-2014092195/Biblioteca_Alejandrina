@@ -30,7 +30,8 @@ public class Articulo extends Registro {
 		setFechaPrestado("0");
 		setFechaDevolucion("0");
 		setPrestado(false);	
-		setDiasPrestado(0);		}
+		setDiasPrestado(0);
+		setVecesPrestado(0);}
 	
 	//Constructor para reestablecer el sistema, recibe el dato de si el objeto
 	//ya fue prestado o no, y si lo fué, cuántos días lleva prestado. 
@@ -44,7 +45,8 @@ public class Articulo extends Registro {
 				String nFechaPrestado,
 				String nFechaDevolucion,
 				boolean nPrestado,
-				int DiasPrestado) 
+				int nDiasPrestado,
+				int nVecesPrestado) 
 				
 	{	cantObjetos++;
 		setIdentificadorObjeto(cantObjetos);
@@ -58,7 +60,8 @@ public class Articulo extends Registro {
 		setPrestado(nPrestado);	
 		setFechaPrestado(nFechaPrestado);
 		setFechaDevolucion (nFechaDevolucion);
-		setDiasPrestado(DiasPrestado);		}
+		setDiasPrestado(nDiasPrestado);
+		setDiasPrestado(nVecesPrestado);}
 	
 	
 	//Getters y Setters-----------------------------------------------------------//
@@ -87,7 +90,15 @@ public class Articulo extends Registro {
 	public void setFechaPrestado(String fechaPrestado) {this.fechaPrestado = fechaPrestado;}
 	public String getFechaDevolucion() {return fechaDevolucion;}
 	public void setFechaDevolucion(String fechaDevolucion) {this.fechaDevolucion = fechaDevolucion;}
+	public int getVecesPrestado() {return vecesPrestado;}
+	public void setVecesPrestado(int vecesPrestado) {this.vecesPrestado = vecesPrestado;}
+
 	//------------------------------------------------------------------------------//
+	
+	public void aumentarDiasPrestado (int dias) {
+		for (Articulo objeto : Registro.articulosRegistrados) {
+			if (!objeto.isPrestado()){
+				setDiasPrestado(getDiasPrestado()+ dias );}}}
 	
 	public String toString (){
 		String msj = "    Objeto "+getIdentificadorObjeto()+":\n";
@@ -99,6 +110,7 @@ public class Articulo extends Registro {
 		msj += "\tCalificacion: "+getCalif()+"\n";
 		msj += "\tEstá Prestado: "+isPrestado()+"\n";
 		msj += "\tDias Prestamo: "+getDiasPrestado()+"\n";
+		msj += "\tHa sido prestado: "+getVecesPrestado()+" veces. \n";
 		if (!getFechaPrestado().equals("0")) {
 			msj += "\tPrestado por última vez el día: " + getFechaPrestado() + "\n";}
 		if (!getFechaDevolucion().equals("0")) {
