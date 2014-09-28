@@ -49,6 +49,7 @@ public class ImagenRenderer extends JLabel implements TableCellRenderer {
 			
 			table.setRowHeight(130);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
+			
 			table.setRowMargin(2);
 
 	       

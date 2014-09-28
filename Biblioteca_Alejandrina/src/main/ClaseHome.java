@@ -28,6 +28,7 @@ import registro.articulo.claseRegistroArticulos;
 import registro.clientes.ClaseRegistroClientes;
 import consultas.ClaseConsulta;
 import consultas.TablaConsultas;
+import devolucion.articulo.DevolverArticulo;
 import logicaRegistro.Registro;
 import prestamo.articulo.*;
 
@@ -162,6 +163,7 @@ public class ClaseHome extends JFrame implements ActionListener {
 		btnRegistroArticulos.addActionListener(this);
 		btnConsultas.addActionListener(this);
 		btnPrestamos.addActionListener(this);
+		btnDevoluciones.addActionListener(this);
 
 	}
 
@@ -243,6 +245,11 @@ public class ClaseHome extends JFrame implements ActionListener {
 		// Agrega a panelCards el contenedor de la clase PrestarArticulo y le asigna name="Prestamos"
 		panelCards.add("Prestamos", prestamos.getContenedor());
 		
+		DevolverArticulo devoluciones = new DevolverArticulo();
+		// Agrega a panelCards el contenedor de la clase DevolverArticulo y le asigna name="Devoluciones"
+		panelCards.add("Devoluciones", devoluciones.getContenedor());
+		
+		
 		// Define el panel que se desea mostrar del panelCards con el name asignado anticipadamente 
 		cardlayout.show(panelCards, "Home");
 	}
@@ -276,6 +283,11 @@ public class ClaseHome extends JFrame implements ActionListener {
 			
 			//Mostrar en cardlayout "Prestamos"
 			cardlayout.show(panelCards, "Prestamos");
+			ventana.revalidate();
+			ventana.repaint();
+		}else if (e.getSource() == btnDevoluciones){
+			//Mostrar en cardlayout "Devoluciones"
+			cardlayout.show(panelCards, "Devoluciones");
 			ventana.revalidate();
 			ventana.repaint();
 		}

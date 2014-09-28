@@ -7,7 +7,7 @@
  **==================================================================================== 
  */
 
-package prestamo.articulo;
+package devolucion.articulo;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -25,6 +25,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -42,7 +43,7 @@ import javax.swing.table.TableRowSorter;
 import main.ClaseHome;
 import logicaRegistro.*;
 
-public class PrestarArticulo implements ActionListener {
+public class DevolverArticulo implements ActionListener {
 
 	JPanel panelGrilla;
 	JPanel panelContenedor;
@@ -63,7 +64,7 @@ public class PrestarArticulo implements ActionListener {
 
 	GridBagConstraints grid = new GridBagConstraints();
 
-	public PrestarArticulo() {
+	public DevolverArticulo() {
 
 		panelFrame = new JPanel();
 		panelFrame.setLayout(new GridBagLayout());
@@ -272,19 +273,17 @@ public class PrestarArticulo implements ActionListener {
 		    public void mouseClicked(MouseEvent evt) {
 		        
 		        if (evt.getClickCount() == 2) {
-		        	System.out.println(table.getSelectedRow());
-					System.out.println(table.getSelectedColumn());
-//					for (int i =0;i<table.getColumnCount();i++){
-//						System.out.print(table.getValueAt(
-//								table.getSelectedRow(),
-//								i));
-//					}
-//					System.out.println(table.getValueAt(
-//							table.getSelectedRow(),
-//							table.getSelectedColumn()));
+		        	
+
 					int indexCliente = table.convertRowIndexToModel(table.getSelectedRow());
-					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
-					PopupArticulos poparticulos = new PopupArticulos(ClaseHome.ventana, indexCliente);
+//					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
+					
+					if (Registro.clientesRegistrados.get(indexCliente).getPrestamos().size()==0){
+						JOptionPane.showMessageDialog(null, "El Cliente no dispone de artículos prestados");
+					}else{
+						PopupArticulos poparticulos = new PopupArticulos(ClaseHome.ventana, indexCliente);
+					}
+					
  
 		        }
 		    }

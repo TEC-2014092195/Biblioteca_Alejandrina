@@ -1,6 +1,9 @@
 Libro;Dios no tiene Favoritos;Marcos Brunet;ZOE;1era;Biblioteca_Alejandrina/recursosImagen/articulo0.jpg;5;true;27-sep-2014;27-sep-2014;0;
 Libro;fsfds;fds;fsdf;dsfsd;Biblioteca_Alejandrina/recursosImagen/articulo1.jpg;3;true;27-sep-2014;27-sep-2014;0;
-Libro;jdkasjdasoidi;oijiojiojio;j;ji;Biblioteca_Alejandrina/recursosImagen/articulo2.jpg;3;false;0;0;0;
-Revista;fsdfsdf;dsfsd;dsfsdf;sdf;Biblioteca_Alejandrina/recursosImagen/articulo3.jpg;3;false;0;0;0;
-Libro;asd;asd;asd;asf;Biblioteca_Alejandrina/recursosImagen/articulo4.jpg;0;false;0;0;0;
-Cliente;115980000;Kevin;Hernández;Rostrán;84609090;kevinah95@gmail.com;Estudiante;0-1-1-2-1-1-1-1-1-1-1-2-1-1-;
+Libro;jdkasjdasoidi;oijiojiojio;j;ji;Biblioteca_Alejandrina/recursosImagen/articulo2.jpg;3;true;28-sep-2014;07-oct-2014;9;
+Revista;fsdfsdf;dsfsd;dsfsdf;sdf;Biblioteca_Alejandrina/recursosImagen/articulo3.jpg;3;true;27-sep-2014;27-sep-2014;0;
+Libro;asd;asd;asd;asf;Biblioteca_Alejandrina/recursosImagen/articulo4.jpg;0;false;27-sep-2014;01-oct-2014;0;
+Libro;asdas;das;casc;casc;Biblioteca_Alejandrina/recursosImagen/articulo5.PNG;0;false;0;0;0;
+Libro;sfdsd;dsfg;dfgds;fg;Biblioteca_Alejandrina/recursosImagen/articulo6.jpg;0;false;0;0;0;
+Libro;wqjqwuequwoieuqwioeuwqioe;uiouiouiouiouiouiouiouio;uiouoiuouiouoiuiouiouiouiouiodusioduaoisudoisaudoisaudiouasio;uiouiouiououiouiouiouiouiouiouoiuiouiouio;Biblioteca_Alejandrina/recursosImagen/articulo7.jpg;3;false;0;0;0;
+Cliente;115980000;Kevin;Hernández;Rostrán;84609090;kevinah95@gmail.com;Estudiante;0-3-;

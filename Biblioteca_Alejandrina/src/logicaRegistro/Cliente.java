@@ -83,14 +83,14 @@ public class Cliente extends Registro{
 	public void setCategoria(String categoria) {this.categoria = categoria;}
 	public ArrayList<Articulo> getPrestamos() {return prestamos;}
 	public void setPrestamos(ArrayList<Articulo> prestamos) {this.prestamos = prestamos;}
-	public String getFechaEvento() {
-		SimpleDateFormat mascara = new SimpleDateFormat ("dd/MM/yy");
-		System.out.println(fechaEvento);
-		return mascara.format(fechaEvento);}
-	public void setFechaEvento() {
-		Calendar calendario;
-		calendario = Calendar.getInstance();
-		fechaEvento = (Date) calendario.getTime();}
+//	public String getFechaEvento() {
+//		SimpleDateFormat mascara = new SimpleDateFormat ("dd/MM/yy");
+//		System.out.println(fechaEvento);
+//		return mascara.format(fechaEvento);}
+//	public void setFechaEvento() {
+//		Calendar calendario;
+//		calendario = Calendar.getInstance();
+//		fechaEvento = (Date) calendario.getTime();}
 	
 	//------------------------------------------------------------------------//
 	public String presentarCategoria(){ //Cambio hecho para PruebaK
@@ -121,7 +121,7 @@ public class Cliente extends Registro{
 	private void devolverInterno (Articulo prestamo){
 		prestamo.setPrestado(false);
 		prestamo.setDiasPrestado(0);
-		prestamo.setFechaDevolucion(getFechaEvento());
+//		prestamo.setFechaDevolucion(getFechaEvento());
 		prestamos.remove(prestamo);}
 	
 	public String toString (){

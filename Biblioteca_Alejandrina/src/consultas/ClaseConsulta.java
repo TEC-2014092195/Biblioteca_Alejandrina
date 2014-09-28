@@ -204,7 +204,7 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		grid.gridx=0;
 		grid.gridy=2;
 		grid.gridwidth = 6;
-		grid.fill=GridBagConstraints.HORIZONTAL;
+		grid.fill=GridBagConstraints.BOTH;
 		TablaConsultas t = new TablaConsultas();
 		panelGrid.add(t,grid);
 		

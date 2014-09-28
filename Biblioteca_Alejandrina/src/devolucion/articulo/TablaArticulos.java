@@ -7,7 +7,7 @@
  **==================================================================================== 
  */
 
-package consultas;
+package devolucion.articulo;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -25,6 +25,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -41,7 +42,7 @@ import prestamo.articulo.ImagenRenderer;
 import logicaRegistro.Articulo;
 import logicaRegistro.Registro;
 
-public class TablaConsultas extends JPanel{
+public class TablaArticulos extends JPanel implements ActionListener{
 
 	static JTable table;
 	static JPanel panelContenedor = new JPanel();
@@ -50,7 +51,7 @@ public class TablaConsultas extends JPanel{
 	public static DefaultTableModel modelo;
 	static GridBagConstraints grid = new GridBagConstraints();
 	
-	public TablaConsultas() {
+	public TablaArticulos() {
 			
 		llenarTabla();
 		add(panelContenedor);
@@ -67,7 +68,7 @@ public class TablaConsultas extends JPanel{
 		// -----------------------------------------------------Tabla-----
 			
 		String col[] = { "Tipo", "Título", "Detalle1", "Detalle2", "Detalle3",
-				"Imagen", "Calificación", "ifPrestado", "Dias Prestamo", "Fecha Prestamo", "Fehca Devolucion" };
+				"Imagen", "Calificación", "ifPrestado", "Dias Prestamo", "Fecha Prestamo", "Fecha Devolucion" };
 		modelo = new DefaultTableModel(col, 0){
 			public boolean isCellEditable(int row, int column)  
 		    {  
@@ -77,18 +78,18 @@ public class TablaConsultas extends JPanel{
 		};
 		table = new JTable(modelo);
 		
-		for (int i = 0; i < Registro.articulosRegistrados.size(); i++){
-			   String tipo = Registro.articulosRegistrados.get(i).getTipo();
-			   String titulo = Registro.articulosRegistrados.get(i).getTitulo();
-			   String detalle1 = Registro.articulosRegistrados.get(i).getAutor();
-			   String detalle2 = Registro.articulosRegistrados.get(i).getDato1();
-			   String detalle3 = Registro.articulosRegistrados.get(i).getDato2();
-			   String imagen = Registro.articulosRegistrados.get(i).getDirImg();
-			   String calificacion = Registro.articulosRegistrados.get(i).getCalif();
-			   String ifprestado = String.valueOf(Registro.articulosRegistrados.get(i).isPrestado());
-			   String diasprestado = String.valueOf(Registro.articulosRegistrados.get(i).getDiasPrestado());
-			   String fechaprestamo = String.valueOf(Registro.articulosRegistrados.get(i).getFechaPrestado());
-			   String fechadevolucion = String.valueOf(Registro.articulosRegistrados.get(i).getFechaDevolucion());
+		for (int i = 0; i < Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().size(); i++){
+			   String tipo = Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).getTipo();
+			   String titulo = Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).getTitulo();
+			   String detalle1 = Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).getAutor();
+			   String detalle2 = Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).getDato1();
+			   String detalle3 = Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).getDato2();
+			   String imagen = Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).getDirImg();
+			   String calificacion = Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).getCalif();
+			   String ifprestado = String.valueOf(Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).isPrestado());
+			   String diasprestado = String.valueOf(Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).getDiasPrestado());
+			   String fechaprestamo = String.valueOf(Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).getFechaPrestado());
+			   String fechadevolucion = String.valueOf(Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(i).getFechaDevolucion());
 			   
 			   Object[] data = {tipo, titulo, detalle1, detalle2, detalle3, imagen, 
 			                               calificacion, ifprestado, diasprestado, fechaprestamo, fechadevolucion};
@@ -109,7 +110,7 @@ public class TablaConsultas extends JPanel{
 		        if (evt.getClickCount() == 2) {
 
 					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
-		        	
+					devolverArticulo();
  
 		        }
 		    }
@@ -138,13 +139,26 @@ public class TablaConsultas extends JPanel{
 		table.getColumn("ifPrestado").setCellRenderer( normal );
 		table.getColumn("Dias Prestamo").setCellRenderer( normal );
 		table.getColumn("Fecha Prestamo").setCellRenderer( normal );
-		table.getColumn("Fehca Devolucion").setCellRenderer( normal );
+		table.getColumn("Fecha Devolucion").setCellRenderer( normal );
 		
 		
 		JScrollPane scrollPanel = new JScrollPane(table,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		// -----------------------------------------------------Fin Tabla-----
 		grid.fill=GridBagConstraints.BOTH;
 		panelContenedor.add(scrollPanel,grid);
+	}
+	
+	public static void devolverArticulo(){
+    	int indexArticulo = table.convertRowIndexToModel(table.getSelectedRow());
+    	int idArticulo = Registro.clientesRegistrados.get(PopupArticulos.indexCliente).getPrestamos().get(indexArticulo).getIdentificadorObjeto();
+    					
+		Registro.clientesRegistrados.get(PopupArticulos.indexCliente).devolver(idArticulo);		
+		
+		JOptionPane.showMessageDialog(null, Registro.clientesRegistrados.get(PopupArticulos.indexCliente).toString(),"Biblioteca Alejandrina",1);
+		Registro.guardarEstadoActualSistema();
+		
+		PopupArticulos.ventanaPopup.dispose();
+		
 	}
 	
 	public static class NormalCellRenderer extends JLabel implements TableCellRenderer {
@@ -171,6 +185,9 @@ public class TablaConsultas extends JPanel{
 	
 	
 	
-	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
 
 }

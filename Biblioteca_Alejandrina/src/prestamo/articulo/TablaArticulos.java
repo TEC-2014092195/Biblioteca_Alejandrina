@@ -7,7 +7,7 @@
  **==================================================================================== 
  */
 
-package consultas;
+package prestamo.articulo;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -25,6 +25,7 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -41,7 +42,7 @@ import prestamo.articulo.ImagenRenderer;
 import logicaRegistro.Articulo;
 import logicaRegistro.Registro;
 
-public class TablaConsultas extends JPanel{
+public class TablaArticulos extends JPanel implements ActionListener{
 
 	static JTable table;
 	static JPanel panelContenedor = new JPanel();
@@ -50,7 +51,7 @@ public class TablaConsultas extends JPanel{
 	public static DefaultTableModel modelo;
 	static GridBagConstraints grid = new GridBagConstraints();
 	
-	public TablaConsultas() {
+	public TablaArticulos() {
 			
 		llenarTabla();
 		add(panelContenedor);
@@ -67,7 +68,7 @@ public class TablaConsultas extends JPanel{
 		// -----------------------------------------------------Tabla-----
 			
 		String col[] = { "Tipo", "Título", "Detalle1", "Detalle2", "Detalle3",
-				"Imagen", "Calificación", "ifPrestado", "Dias Prestamo", "Fecha Prestamo", "Fehca Devolucion" };
+				"Imagen", "Calificación", "ifPrestado", "Dias Prestamo", "Fecha Prestamo", "Fecha Devolucion" };
 		modelo = new DefaultTableModel(col, 0){
 			public boolean isCellEditable(int row, int column)  
 		    {  
@@ -109,7 +110,12 @@ public class TablaConsultas extends JPanel{
 		        if (evt.getClickCount() == 2) {
 
 					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
-		        	
+		        	if (PopupArticulos.diasprestamo <=0){
+		        		JOptionPane.showMessageDialog(null, "La cantidad de días no puede ser inferior a 1","Biblioteca Alejandrina",2);
+		        	}else{
+		        		prestarArticulo();
+		        		PopupArticulos.ventanaPopup.dispose();
+		        	}
  
 		        }
 		    }
@@ -138,13 +144,40 @@ public class TablaConsultas extends JPanel{
 		table.getColumn("ifPrestado").setCellRenderer( normal );
 		table.getColumn("Dias Prestamo").setCellRenderer( normal );
 		table.getColumn("Fecha Prestamo").setCellRenderer( normal );
-		table.getColumn("Fehca Devolucion").setCellRenderer( normal );
+		table.getColumn("Fecha Devolucion").setCellRenderer( normal );
 		
 		
 		JScrollPane scrollPanel = new JScrollPane(table,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		// -----------------------------------------------------Fin Tabla-----
 		grid.fill=GridBagConstraints.BOTH;
 		panelContenedor.add(scrollPanel,grid);
+	}
+	
+	public static void prestarArticulo(){
+    	int indexArticulo = table.convertRowIndexToModel(table.getSelectedRow());
+    	int idArticulo = Registro.articulosRegistrados.get(indexArticulo).getIdentificadorObjeto();
+    	
+		System.out.println("Fila:"+indexArticulo);
+		
+//		System.out.println("dias prestamo"+diasprestamo);
+//		System.out.println("Fechaprestamo"+fechaPrestamo);
+//		System.out.println("fechadevo"+fechaDevolucion);
+//		Muestro los artículos sin prestar únicamente
+		
+		
+		
+		Registro.articulosRegistrados.get(indexArticulo).setDiasPrestado(PopupArticulos.diasprestamo);
+		Registro.articulosRegistrados.get(indexArticulo).setFechaPrestado(PopupArticulos.fechaPrestamo);
+		Registro.articulosRegistrados.get(indexArticulo).setFechaDevolucion(PopupArticulos.fechaDevolucion);
+		Registro.articulosRegistrados.get(indexArticulo).setPrestado(true);
+		
+//		System.out.println(Registro.articulosRegistrados.get(indexArticulo));
+		
+		Registro.clientesRegistrados.get(PopupArticulos.indexCliente).prestar(idArticulo);
+//		System.out.println( Registro.clientesRegistrados.get(PopupArticulos.indexCliente).toString() );
+		JOptionPane.showMessageDialog(null, Registro.clientesRegistrados.get(PopupArticulos.indexCliente).toString(),"Biblioteca Alejandrina",1);
+		Registro.guardarEstadoActualSistema();
+		
 	}
 	
 	public static class NormalCellRenderer extends JLabel implements TableCellRenderer {
@@ -171,6 +204,9 @@ public class TablaConsultas extends JPanel{
 	
 	
 	
-	
+	public void actionPerformed(ActionEvent e) {
+		
+		
+	}
 
 }
