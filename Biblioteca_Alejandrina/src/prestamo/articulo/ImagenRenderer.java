@@ -25,40 +25,32 @@ import javax.swing.table.TableCellRenderer;
 
 import redimensionar.*;
 
+
+/**
+ * The Class ImagenRenderer. Clase para el formato de calificación
+ */
 public class ImagenRenderer extends JLabel implements TableCellRenderer {
 	
-
-
-	
+	/**
+	 * Implementación de Component para crear la celda de la imagen
+	 * 
+	 * @return JLabel que implementa TableCellRenderer
+	 */
 	public Component getTableCellRendererComponent(JTable table, Object value,
 			boolean isSelected, boolean hasFocus, int row, int column) {
 
-		
-		
-		
-		
-			
-			
+			//Pone la imagen como ícono de la celda
 			setIcon(new ImageIcon( (String)value) );
 		
-			
+			//Configura la celda
 			setOpaque(true);
 			setBackground(Color.DARK_GRAY);
-			
-			
-			
 			table.setRowHeight(130);
 			this.setHorizontalAlignment(SwingConstants.CENTER);
 			
 			table.setRowMargin(2);
-
-	       
-	  
-		
 	   
 	       return this;
 
-//		setToolTipText("RGB value: " + newIconImage.g + ", "
-//				+ newIconImage.getGreen() + ", " + newIconImage.getBlue());
 	}
 }

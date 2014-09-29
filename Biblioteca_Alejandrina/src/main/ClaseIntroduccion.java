@@ -15,11 +15,18 @@ import java.awt.Graphics;
 import java.awt.Image; 
 import java.awt.Toolkit; 
 
-//http://mrbool.com/how-to-make-a-splash-screen-with-java/25090
+/**
+ * Clase Introducción
+ */
 
 public class ClaseIntroduccion extends JWindow { 
+	//Imágenes para la introducción
 	Image img=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/recursos/Logo.jpg"));
 	Image img2=Toolkit.getDefaultToolkit().getImage(getClass().getResource("/recursos/load.gif"));
+	
+	/**
+	 * COnstructor de la clase CaseIntroducción
+	 */
 	public ClaseIntroduccion() { 
 		try { 
 			setSize(800,600); 
@@ -36,6 +43,9 @@ public class ClaseIntroduccion extends JWindow {
 		
 	} 
 	
+	/**
+	 * Implementación de paint
+	 */
 	public void paint(Graphics g) { //paint( Graphics g ) es automaticamente llamado al iniciar el programa
 		g.drawImage(img,0,0,this);
 		g.drawImage(img2,550,520,this);

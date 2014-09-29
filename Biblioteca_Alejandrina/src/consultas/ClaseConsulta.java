@@ -38,7 +38,13 @@ import javax.swing.text.TabableView;
 import main.ClaseHome;
 
 @SuppressWarnings("serial")
+
+/**
+ * La clase Consulta
+ */
 public class ClaseConsulta extends JFrame implements ActionListener{
+	
+	//Páneles de la clase
 	JPanel panelContenedor = new JPanel(); 
 	JPanel panelGrid = new JPanel();
 	JPanel panelFrame = new JPanel();
@@ -59,6 +65,9 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 	
 	GridBagConstraints grid = new GridBagConstraints();
 	
+	/**
+	 * Constructor de la Clsae Consulta
+	 */
 	public ClaseConsulta() {
 		
 		panelContenedor.setLayout(new GridBagLayout());
@@ -130,6 +139,7 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		cbTipoConsulta = new JComboBox<String>(strTipoConsulta);
 		cbTipoConsulta.addActionListener(new ActionListener() {
 			@Override
+			//Implementaciónde actionPerformed
 			public void actionPerformed(ActionEvent e) {
 				String tipo = (String) cbTipoConsulta.getSelectedItem();
 				switch (tipo) {
@@ -207,16 +217,8 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		panelGrid.add( lblMeses2,grid);
 		
 		ocultarConsultaPersonalizado();
-		
-//		grid.gridx=4;
-//		grid.gridy=1;
-//		grid.gridwidth = 2;
-//		grid.insets = new Insets( 10, 0, 0, 0);
-//		grid.anchor = GridBagConstraints.CENTER;
-//		btnGenerarConsulta = new JButton("Generar Consulta");
-//		panelGrid.add( btnGenerarConsulta,grid);
-		
-		//-----------------Add tabla
+				
+		//Add tabla
 		grid.gridx=0;
 		grid.gridy=2;
 		grid.gridwidth = 6;
@@ -232,7 +234,6 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		cbTipoArticulo.addActionListener(this);
 		cbTipoConsulta.addActionListener(this);
 
-//		btnGenerarConsulta.addActionListener(this);
 		
 		grid.fill=GridBagConstraints.NONE;
 		grid.gridx=0;
@@ -267,10 +268,9 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 	private void filtroTipo() {
 		
 		RowFilter<DefaultTableModel, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
 			String itemTipoArticulo = (String)cbTipoArticulo.getSelectedItem();
-			rf = RowFilter.regexFilter(itemTipoArticulo, 0); // (Patron a filtrar, int columna) 
+			rf = RowFilter.regexFilter(itemTipoArticulo, 0); 
 			
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
@@ -290,10 +290,9 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 	private void filtroArtPrestado() {
 		
 		RowFilter<DefaultTableModel, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
 			
-			rf = RowFilter.regexFilter("true", 7); // (Patron a filtrar, int columna) 
+			rf = RowFilter.regexFilter("true", 7); 
 			
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
@@ -305,10 +304,9 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 	private void filtroArtNoPrestado() {
 		
 		RowFilter<DefaultTableModel, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
 			
-			rf = RowFilter.regexFilter("false", 7); // (Patron a filtrar, int columna) 
+			rf = RowFilter.regexFilter("false", 7); 
 			
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;

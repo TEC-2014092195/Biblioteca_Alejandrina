@@ -22,9 +22,11 @@ import javax.swing.JOptionPane;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Email.
+ * The Class Email. Maneja los eventos que suceden con enviar Email
  */
 public class Email {
+	
+	//Strings para los mensajes que se dan al cliente
 	private final String clave = "TEC12345";
 	private final String correo = "biblioalejandrinatec@gmail.com";
 	private final String encabezado = "Notificación del sistema de control de préstamos";
@@ -40,30 +42,31 @@ public class Email {
 			   						   +"y evite una multa por retrasos";
 		
     
-    /** The usuario correo. */
+    //El correo del usuario
     String usuarioCorreo;
     
-    /** The password. */
+    //La clave del usuario
     String password;
     
-    /** The ruta archivo. */
+    //La ruta del archivo
     String rutaArchivo;
     
-    /** The nombre archivo. */
+    //El nombre del archivo
     String nombreArchivo;
     
-    /** The destinatario. */
+    //El correo del destinatario
     String destinatario;
     
-    /** The asunto. */
+    //El String de asunto
     String asunto;
     
-    /** The mensaje. */
+    ///String para el mensaje
     String mensaje;
     
-    
-    // Crea el objeto Email, recibe el correo remitente y la clave, el correo destino, asunto, mensaje
-    // y como opcional se crea un constructor para enviar archivos adjuntos
+    /**
+    *Crea el objeto Email, recibe el correo remitente y la clave, el correo destino, asunto, mensaje
+    *y como opcional se crea un constructor para enviar archivos adjuntos
+    */
     public Email(String usuarioCorreo, String password, String rutaArchivo, String nombreArchivo, String destinatario, String asunto,String mensaje) {
         this.usuarioCorreo = usuarioCorreo;
         this.password = password;
@@ -75,33 +78,21 @@ public class Email {
     }
     
     /**
-     * Instantiates a new email.
-     *
-     * @param usuarioCorre the usuario corre
-     * @param password the password
-     * @param destinatario the destinatario
-     * @param mensaje the mensaje
+     * Clase Email para crear un email
      */
     public Email(String usuarioCorre,String password,String destinatario,String mensaje){
         this(usuarioCorre,password,"","",destinatario,"",mensaje);
     }
     
     /**
-     * Instantiates a new email.
-     *
-     * @param usuarioCorre the usuario corre
-     * @param password the password
-     * @param destinatario the destinatario
-     * @param asunto the asunto
-     * @param mensaje the mensaje
+     * Sobreescritura del método Email. Incluye asunto extra
      */
     public Email(String usuarioCorre,String password,String destinatario,String asunto,String mensaje){
         this(usuarioCorre,password,"","",destinatario,asunto,mensaje);
     }    
 
     /**
-     * Send mail.
-     *
+     * Envía un Email
      * @return true, if successful
      */
     public boolean sendMail(){
@@ -152,35 +143,35 @@ public class Email {
         }        
     }
     
-//Ejemplo de como implementar la clase
-      /*public static void main(String[] args){ 
-        Email e = new Email("","","","","");
-        	e.enviarAntes("jm95aguilar@hotmail.com"); //el parametro que requiere es el destinatario
-        	e.enviarDia("jm95aguilar@hotmail.com");
-        	e.enviarDespues("jm95aguilar@hotmail.com");
-        }*/
-    
-    
-    
-    // Envía un correo alertando que está proxima la fecha de entrega
-    //Los métodos únicamente reciben el correo del destinatario ya que el de la aplicacion es fijo
+    /**
+    *Envía un correo alertando que está proxima la fecha de entrega
+    *Los métodos únicamente reciben el correo del destinatario ya que el de la aplicacion es fijo
+    */
     public void enviarAntes(String destinatario){
+    	//Se instancia un nuevo Email
     	Email e = new Email(correo,clave,destinatario,encabezado,mensajeAntes);
     	if (e.sendMail()){
     		JOptionPane.showMessageDialog(null,"El correo se envió satisfactoriamente", "Ïnforme",0);
     	}
     	else{JOptionPane.showMessageDialog(null,"No fue posible enviar el correo", "Ïnforme",0);}
     }
-    //Envía un correo  alertando que es el día de devolución del artículo
+    
+    /**
+    *Envía un correo  alertando que es el día de devolución del artículo
+    */
     public void enviarDia(String destinatario){
+    	//Se instancia un nuevo Email
     	Email e = new Email(correo,clave,destinatario,encabezado,mensajeDia);
     	if (e.sendMail()){
     		JOptionPane.showMessageDialog(null,"El correo se envió satisfactoriamente", "Ïnforme",0);
     	}
     	else{JOptionPane.showMessageDialog(null,"No fue posible enviar el correo", "Ïnforme",0);}
     }
-  //Envía un correo  alertando que se pasó el día de devolución del artículo
+    /**
+    *Envía un correo  alertando que se pasó el día de devolución del artículo
+    */
     public void enviarDespues(String destinatario){
+    	//Se instancia un nuevo Email
     	Email e = new Email(correo,clave,destinatario,encabezado,mensajeDespues);
     	if (e.sendMail()){
     		JOptionPane.showMessageDialog(null,"El correo se envió satisfactoriamente", "Ïnforme",0);

@@ -42,35 +42,53 @@ import javax.swing.table.TableRowSorter;
 import main.ClaseHome;
 import logicaRegistro.*;
 
+/**
+ * Clase PrestarArticulo para prestar artículos
+ */
 public class PrestarArticulo implements ActionListener {
 
+	//Páneles para la clase
 	JPanel panelGrilla;
 	JPanel panelContenedor;
 	JPanel panelFrame;
-
+	
+	//Etiqueta para los datos
 	JLabel lblCedula,lblNombre, lblPApellido, lblSApellido, lblTelefono, lblCorreo,
 			lblCategoria;
+	
+	//Campo de texto para los datos
 	JTextField txtCedula,txtNombre, txtPApellido, txtSApellido, txtTelefono, txtCorreo,
 			txtCategoria;
 
+	//Tabla
 	JTable table;
 
+	//El scroll panel
 	JScrollPane scrollPanel;
 
+	//Ordenador de la tabla
 	TableRowSorter<ModeloTabla> sorter;
 
+	//botón para devolverse
 	JButton btnAtras;
 
+	//El grid
 	GridBagConstraints grid = new GridBagConstraints();
 
+	/**
+	 * Constructor de la clase PrestarArticulo
+	 */
 	public PrestarArticulo() {
 
+		//Páneles para la clase
 		panelFrame = new JPanel();
 		panelFrame.setLayout(new GridBagLayout());
 
+		//Panel contenedor
 		panelContenedor = new JPanel();
 		panelGrilla = new JPanel();
 
+		//Configuración para el filtro
 		panelGrilla.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		panelGrilla.setLayout(new GridBagLayout());
 		TitledBorder title;
@@ -79,18 +97,21 @@ public class PrestarArticulo implements ActionListener {
 		title.setBorder(BorderFactory.createEtchedBorder());
 		panelGrilla.setBorder(title);
 		
-		
-		grid.gridy = 0; // fila
-		grid.gridx = 0; // columna
+
+		//Grid en x=0 y y=0
+		//Agregar los objetos a los páneles
+		grid.gridy = 0; 
+		grid.gridx = 0; 
 		grid.anchor = GridBagConstraints.LINE_END;
 		lblNombre = new JLabel("Cédula:");
 		lblNombre.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		panelGrilla.add(lblNombre, grid);
 		
-		grid.gridy = 0; // fila
-		grid.gridx = 1; // columna
+		grid.gridy = 0; 
+		grid.gridx = 1; 
 		grid.anchor = GridBagConstraints.LINE_START;
 		txtCedula = new JTextField(15);
+		//Crear Filtro por cédulas
 		txtCedula.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroCedula();
@@ -107,8 +128,8 @@ public class PrestarArticulo implements ActionListener {
 		panelGrilla.add(txtCedula, grid);
 		
 
-		grid.gridy = 0; // fila
-		grid.gridx = 2; // columna
+		grid.gridy = 0; 
+		grid.gridx = 2; 
 		grid.anchor = GridBagConstraints.LINE_END;
 		grid.gridwidth = 1;
 		lblNombre = new JLabel("Nombre:");
@@ -118,6 +139,7 @@ public class PrestarArticulo implements ActionListener {
 		grid.gridy = 0; // fila
 		grid.gridx = 3; // columna
 		txtNombre = new JTextField(15);
+		//Crear Filtro por Nombre
 		txtNombre.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroNombre();
@@ -133,15 +155,16 @@ public class PrestarArticulo implements ActionListener {
 		});
 		panelGrilla.add(txtNombre, grid);
 
-		grid.gridy = 0; // fila
-		grid.gridx = 4; // columna
+		grid.gridy = 0; 
+		grid.gridx = 4; 
 		lblPApellido = new JLabel("Primer Apellido:");
 		lblPApellido.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		panelGrilla.add(lblPApellido, grid);
 
-		grid.gridy = 0; // fila
-		grid.gridx = 5; // columna
+		grid.gridy = 0; 
+		grid.gridx = 5; 
 		txtPApellido = new JTextField(15);
+		//Crear Filtro por cédulas
 		txtPApellido.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroPApellido();
@@ -157,15 +180,16 @@ public class PrestarArticulo implements ActionListener {
 		});
 		panelGrilla.add(txtPApellido, grid);
 
-		grid.gridy = 1; // fila
-		grid.gridx = 0; // columna
+		grid.gridy = 1; 
+		grid.gridx = 0; 
 		lblSApellido = new JLabel("Segundo Apellido:");
 		lblSApellido.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		panelGrilla.add(lblSApellido, grid);
 
-		grid.gridy = 1; // fila
-		grid.gridx = 1; // columna
+		grid.gridy = 1; 
+		grid.gridx = 1; 
 		txtSApellido = new JTextField(15);
+		//Crear Filtro por cédulas
 		txtSApellido.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroSApellido();
@@ -181,15 +205,16 @@ public class PrestarArticulo implements ActionListener {
 		});
 		panelGrilla.add(txtSApellido, grid);
 
-		grid.gridy = 1; // fila
-		grid.gridx = 2; // columna
+		grid.gridy = 1; 
+		grid.gridx = 2;
 		lblTelefono = new JLabel("Teléfono:");
 		lblTelefono.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		panelGrilla.add(lblTelefono, grid);
 
-		grid.gridy = 1; // fila
-		grid.gridx = 3; // columna
+		grid.gridy = 1; 
+		grid.gridx = 3; 
 		txtTelefono = new JTextField(15);
+		//Crear Filtro por Teléfono
 		txtTelefono.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroTelefono();
@@ -205,15 +230,16 @@ public class PrestarArticulo implements ActionListener {
 		});
 		panelGrilla.add(txtTelefono, grid);
 
-		grid.gridy = 1; // fila
-		grid.gridx = 4; // columna
+		grid.gridy = 1; 
+		grid.gridx = 4; 
 		lblCorreo = new JLabel("Correo Electrónico:");
 		lblCorreo.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		panelGrilla.add(lblCorreo, grid);
 
-		grid.gridy = 1; // fila
-		grid.gridx = 5; // columna
+		grid.gridy = 1; 
+		grid.gridx = 5; 
 		txtCorreo = new JTextField(15);
+		//Crear Filtro por Correo
 		txtCorreo.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroCorreo();
@@ -229,15 +255,16 @@ public class PrestarArticulo implements ActionListener {
 		});
 		panelGrilla.add(txtCorreo, grid);
 
-		grid.gridy = 2; // fila
-		grid.gridx = 0; // columna
+		grid.gridy = 2; 
+		grid.gridx = 0; 
 		lblCategoria = new JLabel("Categoría:");
 		lblCategoria.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		panelGrilla.add(lblCategoria, grid);
 
-		grid.gridy = 2; // fila
-		grid.gridx = 1; // columna
+		grid.gridy = 2; 
+		grid.gridx = 1; 
 		txtCategoria = new JTextField(15);
+		//Crear Filtro por Categoría
 		txtCategoria.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroCategoria();
@@ -253,7 +280,7 @@ public class PrestarArticulo implements ActionListener {
 		});
 		panelGrilla.add(txtCategoria, grid);
 
-		// -----------------------------------------------------Tabla-----
+		// Tabla
 
 		ModeloTabla modelo = new ModeloTabla(Registro.clientesRegistrados);
 		sorter = new TableRowSorter<ModeloTabla>(modelo);
@@ -261,13 +288,10 @@ public class PrestarArticulo implements ActionListener {
 		table.setRowSorter(sorter);
 		table.setPreferredScrollableViewportSize(new Dimension(500, 500));
 		table.setFillsViewportHeight(true);
-
-		// For the purposes of this example, better to have a single
-		// selection.
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 			
-
+		//Se agrega el evento de apretar el mouse
 		table.addMouseListener(new MouseAdapter() {
 		    public void mouseClicked(MouseEvent evt) {
 		        
@@ -286,28 +310,29 @@ public class PrestarArticulo implements ActionListener {
 		
 		JScrollPane scrollPanel = new JScrollPane(table);
 
-		// ---------------------------------------Add Tabla
-		grid.gridy = 3; // fila
-		grid.gridx = 0; // columna
+		// Add Tabla
+		grid.gridy = 3; 
+		grid.gridx = 0; 
 		grid.gridwidth = 6;
 		grid.anchor = GridBagConstraints.CENTER;
 		grid.fill = GridBagConstraints.BOTH;
-		// grid.ipady=5;
+		
 
 		panelGrilla.add(scrollPanel, grid);
 
 		panelContenedor.add(panelGrilla);
 
-		grid.gridy = 0; // fila
-		grid.gridx = 0; // columna
+		grid.gridy = 0; 
+		grid.gridx = 0; 
 		grid.gridwidth = 1;
-		// grid.anchor=GridBagConstraints.LINE_END;
 		panelFrame.add(panelContenedor, grid);
 
-		grid.gridy = 1; // fila
-		grid.gridx = 0; // columna
+		grid.gridy = 1; 
+		grid.gridx = 0; 
 		grid.anchor = GridBagConstraints.LINE_END;
 		grid.fill = GridBagConstraints.NONE;
+		
+		//Se hace el botón de atrás y se agrega
 		btnAtras = new JButton("Atrás");
 		btnAtras.setBackground(Color.DARK_GRAY);
 		btnAtras.setForeground(Color.WHITE);
@@ -317,17 +342,13 @@ public class PrestarArticulo implements ActionListener {
 
 	}
 	
+	/**
+	 * Filtro para la Cédula
+	 */
 	private void filtroCedula() {
 		RowFilter<ModeloTabla, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
-			rf = RowFilter.regexFilter(txtCedula.getText(), 0); // (Patron a
-																// filtrar, int
-																// columna en la
-																// que quiero
-																// buscar) TODO
-																// patron para
-																// buscar
+			rf = RowFilter.regexFilter(txtCedula.getText(), 0); 
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
@@ -335,148 +356,120 @@ public class PrestarArticulo implements ActionListener {
 	}
 
 	
+	/**
+	 * Filtro para la Nombre
+	 */
 	private void filtroNombre() {
 		RowFilter<ModeloTabla, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
-			rf = RowFilter.regexFilter(txtNombre.getText(), 1); // (Patron a
-																// filtrar, int
-																// columna en la
-																// que quiero
-																// buscar) TODO
-																// patron para
-																// buscar
+			rf = RowFilter.regexFilter(txtNombre.getText(), 1); 
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
 		sorter.setRowFilter(rf);
 	}
 
+	/**
+	 * Filtro para la Apellido
+	 */
 	private void filtroPApellido() {
 		RowFilter<ModeloTabla, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
-			rf = RowFilter.regexFilter(txtPApellido.getText(), 2); // (Patron a
-																	// filtrar,
-																	// int
-																	// columna
-																	// en la que
-																	// quiero
-																	// buscar)
-																	// TODO
-																	// patron
-																	// para
-																	// buscar
+			rf = RowFilter.regexFilter(txtPApellido.getText(), 2);
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
 		sorter.setRowFilter(rf);
 	}
 
+	/**
+	 * Filtro para la Segundo Apellido
+	 */
 	private void filtroSApellido() {
 		RowFilter<ModeloTabla, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
-			rf = RowFilter.regexFilter(txtSApellido.getText(), 3); // (Patron a
-																	// filtrar,
-																	// int
-																	// columna
-																	// en la que
-																	// quiero
-																	// buscar)
-																	// TODO
-																	// patron
-																	// para
-																	// buscar
+			rf = RowFilter.regexFilter(txtSApellido.getText(), 3); 
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
 		sorter.setRowFilter(rf);
 	}
 
+	/**
+	 * Filtro para la Teléfono
+	 */
 	private void filtroTelefono() {
 		RowFilter<ModeloTabla, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
-			rf = RowFilter.regexFilter(txtTelefono.getText(), 4); // (Patron a
-																	// filtrar,
-																	// int
-																	// columna
-																	// en la que
-																	// quiero
-																	// buscar)
-																	// TODO
-																	// patron
-																	// para
-																	// buscar
+			rf = RowFilter.regexFilter(txtTelefono.getText(), 4); 
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
 		sorter.setRowFilter(rf);
 	}
 
+	/**
+	 * Filtro para la Correo
+	 */
 	private void filtroCorreo() {
 		RowFilter<ModeloTabla, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
-			rf = RowFilter.regexFilter(txtCorreo.getText(), 5); // (Patron a
-																// filtrar, int
-																// columna en la
-																// que quiero
-																// buscar) TODO
-																// patron para
-																// buscar
+			rf = RowFilter.regexFilter(txtCorreo.getText(), 5); 
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
 		sorter.setRowFilter(rf);
 	}
 
+	/**
+	 * Filtro para la Categoría
+	 */
 	private void filtroCategoria() {
 		RowFilter<ModeloTabla, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
-			rf = RowFilter.regexFilter(txtCategoria.getText(), 6); // (Patron a
-																	// filtrar,
-																	// int
-																	// columna
-																	// en la que
-																	// quiero
-																	// buscar)
-																	// TODO
-																	// patron
-																	// para
-																	// buscar
+			rf = RowFilter.regexFilter(txtCategoria.getText(), 6); 
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
 		sorter.setRowFilter(rf);
 	}
 
+	/**
+	 * ModeloTabla, para hacer el modelo de la tabla
+	 */
 	@SuppressWarnings("serial")
 	class ModeloTabla extends AbstractTableModel {
+		
+		//String para los datos
 		private String[] columnNames = { "Cédula","Nombre", "Primer Apellido",
 				"Segundo Apellido", "Teléfono", "Correo Electrónico",
 				"Categoría" };
+		
+		//ListString para los datos
 		private List<Cliente> data = new ArrayList();
 
+		//Modelo de la tabla
 		public ModeloTabla(List<Cliente> list) {
 			this.data = list;
 		}
 
+		//Int conseguir la columna
 		public int getColumnCount() {
 			return columnNames.length;
 
 		}
 
+		//Int conseguir la columna
 		public int getRowCount() {
 			return data.size();
 		}
 
+		//String conseguir la columna
 		public String getColumnName(int col) {
 			return columnNames[col];
 		}
 
+		//Instancia de Object
 		public Object getValueAt(int rowIndex, int columnIndex) {
 			Cliente si = data.get(rowIndex);
 			switch (columnIndex) {
@@ -498,10 +491,12 @@ public class PrestarArticulo implements ActionListener {
 			return null;
 		}
 
+		//Clase para obtener las columnas
 		public Class getColumnClass(int c) {
 			return getValueAt(0, c).getClass();
 		}
 
+		//Para poner las celdas no editables
 		public boolean isCellEditable(int row, int col) {
 
 			if (col < 6) {
@@ -511,6 +506,7 @@ public class PrestarArticulo implements ActionListener {
 			}
 		}
 
+		//Setear los valores
 		public void setValueAt(Object value, int row, int col) {
 
 			Cliente si = data.get(row);
@@ -536,8 +532,12 @@ public class PrestarArticulo implements ActionListener {
 
 	}
 
-	// TODO ActionListener()
+	/**
+	 * Implementación de actionPerformed
+	 */
 	public void actionPerformed(ActionEvent e) {
+		
+		//Condicional de botón Atras
 		if (e.getSource() == btnAtras) {
 			ClaseHome home = new ClaseHome();
 

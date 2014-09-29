@@ -25,32 +25,52 @@ import java.util.*;
 import javax.swing.*;
 
 
-
-
-
+/**
+ * La Clase LogIn, maneja el login del sistema
+ */
 @SuppressWarnings("serial")
 public class LogIn extends JFrame implements ActionListener{
-	// Variables
-	JPanel panel = new JPanel();;
-	JPanel frame = new JPanel();;
+	
+	//Páneles para los objetos
+	JPanel panel = new JPanel();
+	JPanel frame = new JPanel();
+	
+	//Etiquetas para el usuario y el pass
 	JLabel userLabel,passLabel;
+	
+	//Grid nuevo
 	GridBagConstraints grid = new GridBagConstraints();
+	
+	//Campos de texto para el usuario y el pass
 	static JTextField passText;
 	static JTextField userText;
+	
+	//Botón para entrar
 	JButton logButton, regButton;
+	
+	//String de usuario y clave
 	String usuario,clave;
+	
+	//ArrayLists para usuarios y para último
 	static ArrayList<String> users = new ArrayList<String>();
 	private static ArrayList<String> last = new ArrayList<String>();
 	
-	//Fin de Variables
 	
-	
+	/**
+	 * Método crearWidgets para poner los objetos en un panel y en la ventana
+	 */
 	public void crearWidgets() {
-		
+		 
+		//Se crear el layout
 		panel.setLayout(new GridBagLayout());
+		
+		//Se inician los grid en x=0 y y=0
+		//Se agragn al panel los objetos creados
 		grid.gridx = 0;
 		grid.gridy = 0;
-		grid.insets = new Insets(0,0,10,10); // Extrenal Pad (top, left, bottom, right)
+		
+		// Insets (top, left, bottom, right)
+		grid.insets = new Insets(0,0,10,10); 
 		grid.anchor = GridBagConstraints.FIRST_LINE_END;
 		userLabel = new JLabel("Usuario:");
 		panel.add( userLabel, grid );
@@ -83,22 +103,40 @@ public class LogIn extends JFrame implements ActionListener{
 		regButton = new JButton("Registrar");
 		panel.add(regButton, grid);
 		
+		//Se agragan los actionListener a los botones
 		logButton.addActionListener(this);
 		regButton.addActionListener(this);
 	}
 	
 	
-	
+	/**
+	 * Constructor de la clase LogIn
+	 * 
+	 * @see #recuperarEstado(String)
+	 */
 	public LogIn(){
 		crearWidgets();
 		recuperarEstado("usuarios.txt");
 	}
 	
+	/**
+	 * Método Container, para obtener el contenedor
+	 * 
+	 * @return panel
+	 */
 	public Container getContenedor(){
 		return panel;
 	}
 	
+	
+	/**
+	 * Implementación del método actionPerformed, para las acciones de los objetos
+	 * 
+	 * @see #guardarEstado(String)
+	 */
 	public void actionPerformed(ActionEvent e) {
+		
+		//Condicional para el botón de log
 		if(e.getSource()==logButton){
 			String valid = "Usuario válido";
 			String invalid = "Usuario no válido";
@@ -111,10 +149,13 @@ public class LogIn extends JFrame implements ActionListener{
 				ClaseHome.cardlayout.show(ClaseHome.panelCards, "Home" );
 			}
 			else{
+				//Excepción por si lo que ingresó no es correcto 
 				JOptionPane.showMessageDialog(null, invalid);
 				limpiarTextos();
 			}
 		}
+		
+		//Condicional para el botón de registro
 		else if(e.getSource()==regButton){
 			usuario = userText.getText();
 			clave = passText.getText();
@@ -122,11 +163,17 @@ public class LogIn extends JFrame implements ActionListener{
 			String guardar = usuario+clave;
 			System.out.println(guardar);
 			users.add(guardar);
+			
+			//Guarda el estado del sistema
 			guardarEstado("usuarios.txt");
 			JOptionPane.showMessageDialog(null, reg);
 			limpiarTextos();
 		}
 	}
+	
+	/**
+	 * Método limpiarTextos, para limpiar los campos de texto
+	 */
 	public void limpiarTextos(){
 		userText.setText("");
 		passText.setText("");
@@ -137,9 +184,13 @@ public class LogIn extends JFrame implements ActionListener{
 	 * Se encarga de guardar los nuevos usuarios en el archivo de texto
 	 */
 	public static void guardarEstado (String dirFile) {
+		
+		//Se crea un nuevo archivo
 		File archivo = new File(dirFile);
 		last.clear();
 		try{
+			
+			//Escribe sobre el archivo lo nuevo del usuario registrado
 			FileWriter w = new FileWriter(archivo.getAbsolutePath() + java.io.File.separator);
 			BufferedWriter bw = new BufferedWriter(w);
 			PrintWriter wr = new PrintWriter(bw);
@@ -157,6 +208,8 @@ public class LogIn extends JFrame implements ActionListener{
 					bw.newLine();
 				}
 			}
+			
+			//Cierra los archivos
 			wr.close();
 			bw.close();
 			br.close();
@@ -171,11 +224,15 @@ public class LogIn extends JFrame implements ActionListener{
 	 */
 	public static void recuperarEstado(String dirFile){
 		users.clear();
+		
+		//Crea archivos para leer
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
 		
 		try {
+			
+			//Lee los archivos
 			archivo = new File (dirFile); 
 			fr = new FileReader (archivo.getAbsolutePath() + java.io.File.separator);
 			br = new BufferedReader(fr);	 
@@ -183,6 +240,8 @@ public class LogIn extends JFrame implements ActionListener{
 			while((linea=br.readLine()) != null){
 				users.add(linea);
 			}
+			
+			//Cierra los archivos
 			fr.close();
 			br.close();}
 				

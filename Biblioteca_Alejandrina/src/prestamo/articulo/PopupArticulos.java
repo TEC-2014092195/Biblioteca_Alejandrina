@@ -73,27 +73,53 @@ import main.ClaseHome;
 
 
 
-
+/**
+ * The Class PopupArticulos. Clase para la ventana que muestra los artículos para prestar
+ */
 public class PopupArticulos extends JDialog implements ActionListener{
 	
 		
-	
+	//Panel para la Grilla
 	JPanel panelGrilla = new JPanel();
+	
+	//Panel para contener todo
 	JPanel panelContenedor = new JPanel();
+	
+	//Grid para los label
 	GridBagConstraints grid = new GridBagConstraints();
+	
+	//Etiquetas para los detalles de préstamo
 	JLabel lblTipo,lblTitulo,lblDetalle1,lblDetalle2,lblDetalle3,lblCalificacion,lblSelFecha,lblDias,lblTotalDias;
+	
+	//Cuadros de texto para los detalles de préstamo 
 	JTextField txtTipo,txtTitulo,txtDetalle1,txtDetalle2,txtDetalle3,txtCalificacion;
+	
+	//Spinner para elegir la fecha
 	JSpinnerDateEditor dateEditor = new JSpinnerDateEditor();
+	
+	//Botón para cerrar
 	JButton btnCerrar;
+	
+	//Enteros para saber el cliente y los días de préstamo
 	static int indexCliente=0;
 	static int diasprestamo=0;
+	
+	//Strings para fecha de préstamo y fecha de devolución
 	static String fechaPrestamo="";
 	static String fechaDevolucion="";
+	
+	//Tabla para los artículos
 	TablaArticulos tabla = new TablaArticulos();
+	
+	//Dialog (Ventana), para el popup
 	static JDialog ventanaPopup = new JDialog();
 
-	
+	/**
+	 * Constructor de la clase PopupArticulos
+	 */
 	public PopupArticulos(JFrame parent, int indexCliente) {
+		
+		//Configuración de la ventana popup (Dialog)
 		ventanaPopup = new JDialog(parent,parent.getTitle());
 		Dimension parentSize = parent.getSize(); 
 		Point p = parent.getLocation(); 
@@ -103,25 +129,35 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		ventanaPopup.setResizable(false);
 		ventanaPopup.setLayout(new GridBagLayout());
 		
+		//Layout del panel contenedor
 		panelContenedor.setLayout(new GridBagLayout());
 		
 		this.indexCliente = indexCliente;
 		crearEncabezadoBusqueda();
 		
+		//Inicio del grid en x=0 y y=0
 		grid.gridy=0; //Fila
 		grid.gridx=0; //Columna
+		
+		//Se agrega al panel contenedor el panel Grilla
 		panelContenedor.add(panelGrilla,grid);
 		
 				
-				
+		//Configurar y agregar la tabla al panel contenedor
 		grid.gridy=1;
 		panelContenedor.add(tabla,grid);
+		
+		//Instancia de la clase filtroPrestado
 		filtroPrestado();
 		
+		//Se agrega el panel contenedor a la ventana popup
 		ventanaPopup.add(panelContenedor);
 		
+		//Se configuran otros aspectos del grid
 		grid.fill=GridBagConstraints.NONE;
 		grid.anchor=GridBagConstraints.EAST;
+		
+		//Configuración del botón Cerrar
 		btnCerrar = new JButton("Cerrar");
 		btnCerrar.setBackground(Color.DARK_GRAY);
 		btnCerrar.setForeground(Color.WHITE);
@@ -132,16 +168,20 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		ventanaPopup.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		ventanaPopup.pack(); 
 	    
+		//Se hace visible la ventana
 		ventanaPopup.setVisible(true);
-		
 		
 	}
 	
 	
 	
 	
-	
+	/**
+	 * Implementación de la clase actionPerformed
+	 */
 	public void actionPerformed(ActionEvent e) {
+		
+		//Condicional para la acción de Cerrar
 		if (e.getSource()==btnCerrar){
 			ventanaPopup.dispose();
 		}
@@ -149,11 +189,24 @@ public class PopupArticulos extends JDialog implements ActionListener{
 	}	
 	
 	
+	/**
+	 * El método crearEncabezadoBusqueda, crea todos los objetos para el encabezado superior de la ventana
+	 * 
+	 * @see #filtroTipo()
+	 * @see #filtroCalificacion()
+	 * @see #filtroDetalle1()
+	 * @see #filtroDetalle2()
+	 * @see #filtroDetalle3()
+	 * @see #filtroTitulo()
+	 */
 	public void crearEncabezadoBusqueda(){
 		
+		//Se asigna el Layout al panelGrilla
 		panelGrilla.setLayout(new GridBagLayout());
 
 		Border borde =  BorderFactory.createEmptyBorder(5, 5, 5, 5);
+		
+		//Se crean todas las etiquetas para los espacios del filtro
 		lblTipo = new JLabel("Tipo:");
 		lblTitulo = new JLabel("Título:");
 		lblDetalle1 = new JLabel("Detalle1:");
@@ -164,6 +217,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		lblDias = new JLabel("Total de días:");
 		lblTotalDias = new JLabel("0");
 		
+		//Se crean todos los campos de texto para los espacios del filtro
 		txtTipo = new JTextField(15);
 		txtTitulo = new JTextField(15);
 		txtDetalle1 = new JTextField(15);
@@ -171,6 +225,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		txtDetalle3 = new JTextField(15);
 		txtCalificacion = new JTextField(15);
 
+		//Se asignan todos los bordes a las etiquetas
 		lblTipo.setBorder(borde);
 		lblTitulo.setBorder(borde);
 		lblDetalle1.setBorder(borde);
@@ -180,6 +235,8 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		lblSelFecha.setBorder(borde);
 		lblDias.setBorder(borde);
 		
+		
+		//Se crea el campo de texto para el filtro según el tipo
 		txtTipo.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroTipo();
@@ -194,6 +251,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 			}
 		});
 		
+		//Se crea el campo de texto para el filtro según el título
 		txtTitulo.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroTitulo();
@@ -208,6 +266,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 			}
 		});
 		
+		//Se crea el campo de texto para el filtro según el Detalle1
 		txtDetalle1.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroDetalle1();
@@ -222,6 +281,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 			}
 		});
 		
+		//Se crea el campo de texto para el filtro según el Detalle2
 		txtDetalle2.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroDetalle2();
@@ -236,6 +296,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 			}
 		});
 		
+		//Se crea el campo de texto para el filtro según el Detalle3
 		txtDetalle3.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroDetalle3();
@@ -250,6 +311,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 			}
 		});
 		
+		//Se crea el campo de texto para el filtro según la calificación
 		txtCalificacion.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {
 				filtroCalificacion();
@@ -264,8 +326,10 @@ public class PopupArticulos extends JDialog implements ActionListener{
 			}
 		});
 
-		grid.gridy=0; //Fila
-		grid.gridx=0; //Columna
+		//Se ponen los grid x=0 y y=0
+		//Se configura las posiciones de todos los objetos para el filtro 
+		grid.gridy=0; 
+		grid.gridx=0; 
 		grid.anchor=GridBagConstraints.LINE_END;
 		panelGrilla.add( lblTipo,grid );
 		grid.gridx=1;
@@ -372,39 +436,48 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		
 	}
 	
+	/**
+	 * El método filtroTipo hace el filtro por tipo
+	 */
 	private void filtroTipo() {
 		RowFilter<DefaultTableModel, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
-			rf = RowFilter.regexFilter(txtTipo.getText(), 0); // (Patron a filtrar, int columna) 
+			rf = RowFilter.regexFilter(txtTipo.getText(), 0);
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
 		TablaArticulos.sorter.setRowFilter(rf);
 	}
 	
+	/**
+	 * El método filtroTitulo hace el filtro por título
+	 */
 	private void filtroTitulo() {
 		RowFilter<DefaultTableModel, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
-			rf = RowFilter.regexFilter(txtTitulo.getText(), 1); // (Patron a filtrar, int columna) 
+			rf = RowFilter.regexFilter(txtTitulo.getText(), 1);  
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
 		TablaArticulos.sorter.setRowFilter(rf);
 	}
 	
+	/**
+	 * El método filtroDetalle1 hace el filtro por Detalle1
+	 */
 	private void filtroDetalle1() {
 		RowFilter<DefaultTableModel, Object> rf = null;
-		// If current expression doesn't parse, don't update.
 		try {
-			rf = RowFilter.regexFilter(txtDetalle1.getText(), 2); // (Patron a filtrar, int columna) 
+			rf = RowFilter.regexFilter(txtDetalle1.getText(), 2); 
 		} catch (java.util.regex.PatternSyntaxException e) {
 			return;
 		}
 		TablaArticulos.sorter.setRowFilter(rf);
 	}
 	
+	/**
+	 * El método filtroDetalle2 hace el filtro por Detalle2
+	 */
 	private void filtroDetalle2() {
 		RowFilter<DefaultTableModel, Object> rf = null;
 		// If current expression doesn't parse, don't update.
@@ -416,6 +489,9 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		TablaArticulos.sorter.setRowFilter(rf);
 	}
 	
+	/**
+	 * El método filtroDetalle3 hace el filtro por Detalle3
+	 */
 	private void filtroDetalle3() {
 		RowFilter<DefaultTableModel, Object> rf = null;
 		// If current expression doesn't parse, don't update.
@@ -427,6 +503,9 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		TablaArticulos.sorter.setRowFilter(rf);
 	}
 	
+	/**
+	 * El método filtroCalificacion hace el filtro por Calificación
+	 */
 	private void filtroCalificacion() {
 		RowFilter<DefaultTableModel, Object> rf = null;
 		// If current expression doesn't parse, don't update.
@@ -438,6 +517,9 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		TablaArticulos.sorter.setRowFilter(rf);
 	}
 	
+	/**
+	 * El método filtroPrestado hace el filtro por el estado de Prestado
+	 */
 	private void filtroPrestado() {
 		RowFilter<DefaultTableModel, Object> rf = null;
 		// If current expression doesn't parse, don't update.

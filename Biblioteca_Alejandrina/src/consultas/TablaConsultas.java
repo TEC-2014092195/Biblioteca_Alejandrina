@@ -41,6 +41,8 @@ import prestamo.articulo.ImagenRenderer;
 import logicaRegistro.Articulo;
 import logicaRegistro.Registro;
 
+
+
 public class TablaConsultas extends JPanel{
 
 	static JTable table;
@@ -64,8 +66,7 @@ public class TablaConsultas extends JPanel{
 		panelContenedor.removeAll();
 		
 		
-		// -----------------------------------------------------Tabla-----
-			
+		//Tabla			
 		String col[] = { "Tipo", "Título", "Detalle1", "Detalle2", "Detalle3",
 				"Imagen", "Calificación", "ifPrestado", "Dias Prestamo", "Fecha Prestamo", "Fehca Devolucion" };
 		modelo = new DefaultTableModel(col, 0){

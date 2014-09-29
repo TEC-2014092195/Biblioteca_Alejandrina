@@ -19,20 +19,31 @@ import javax.swing.SwingConstants;
 import javax.swing.table.TableCellRenderer;
 
 
+/**
+ * The Class CalificacionRenderer. Clase para el formato de calificación, que es por celdas
+ */
 public class CalificacionRenderer extends JLabel implements TableCellRenderer {
 	
 	
+	/**
+	 * Implementación de Component, para la celda de las estrellas
+	 * 
+	 * @return Jlabel implementa TableCellRenderer
+	 */
 	public Component getTableCellRendererComponent(JTable table, Object value,
 			boolean isSelected, boolean hasFocus, int row, int column) {
 
-		
+			//Asigna la imagen correspondiente a la celda de calificación
 			this.setIcon(new ImageIcon(getClass().getResource(
 					"/recursos/"+((String)value)+"estrellas.png")));
 			
+			//Asigna la aliniación horizontal
 			this.setHorizontalAlignment(SwingConstants.CENTER);
 			
+			//Asigna el texto
 			this.setToolTipText("Calificación: "+((String)value));
 
+			//Configuración de la celda
 			setOpaque(true);
 			setBackground(Color.DARK_GRAY);
 	  

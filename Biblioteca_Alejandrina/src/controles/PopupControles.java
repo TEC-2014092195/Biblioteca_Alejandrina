@@ -27,12 +27,21 @@ import logicaRegistro.Registro;
 import mail.Email;
 import tiempo.Tiempo;
 
+
+/**
+ * Clase PopupControles
+ */
 public class PopupControles extends JFrame{
 
+	//Páneles de la clase
 	JPanel panelContenedor = new JPanel();
 	JLabel lblDefinir;
 	JTextField txtDefinir;
 	JButton btnDefinir;
+	
+	/**
+	 * Constructor de la clase PopupControles
+	 */
 	public PopupControles() {
 		// Obtener las dimensiones del monitor
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -51,7 +60,9 @@ public class PopupControles extends JFrame{
 	}
 	
 	
-	
+	/**
+	 * Crear controles
+	 */
 	public void crearControles(){
 		lblDefinir = new JLabel("Simular paso días:");
 		txtDefinir = new JTextField(10);
@@ -86,6 +97,10 @@ public class PopupControles extends JFrame{
 		
 	}
 	
+	/**
+	 * EnviarCorreos
+	 * @param limiteDias
+	 */
 	void enviarCorreos(int limiteDias){
 		for (Cliente clie : Registro.clientesRegistrados){
 			for (Articulo art : clie.getPrestamos()){

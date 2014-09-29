@@ -3,6 +3,10 @@ package tiempo;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * La Clase Tiempo, maneja el tiempo simulado que usa el sistema
+ */
+
 public class Tiempo {
 	
 	//Generación de un calendario ficticio para la aplicación
@@ -19,11 +23,15 @@ public class Tiempo {
 	private static String mesMuestraSistema = "";
 	private static Date fechaReal;
 	
-	//Los días que se sumarán
+	/**
+	*Los días que se sumarán
+	*/
 	public static int getContadorDias() {return contadorDias;}
 	public static void setContadorDias(int contadorDias) {Tiempo.contadorDias = contadorDias;}
 	
-	//La fecha real, con tiempo. 
+	/**
+	*La fecha real, con tiempo. 
+	*/
 	public static String getFechaReal() {
 		SimpleDateFormat mascara = new SimpleDateFormat ("dd;MM;yyyy");
 		return mascara.format(fechaReal);}
@@ -32,7 +40,9 @@ public class Tiempo {
 		calendario = Calendar.getInstance();
 		fechaReal = (Date) calendario.getTime();}
 	
-	//Para hacer las simulaciones
+	/**
+	*Para hacer las simulaciones
+	*/
 	public static void simularCambioDia () {
 		setContadorDias(getContadorDias() + 1);
 		calcularFechaSistema();}
@@ -40,7 +50,9 @@ public class Tiempo {
 		setContadorDias(getContadorDias() + cantDias);
 		calcularFechaSistema();}
 	
-	//Auxiliar para determinar si un año es bisiesto o no
+	/**
+	*Auxiliar para determinar si un año es bisiesto o no
+	*/
 	public static boolean isBisiesto (int año) {
 		int cont = 0;
 		while ( cont < año ){
@@ -49,8 +61,10 @@ public class Tiempo {
 				return true; }}
 		return false;}
 	
-	//El cálculo de cómo queda la nueva fecha del sistema.
-	//Primero, obtengo la fecha real y la descompongo
+	/**
+	*El cálculo de cómo queda la nueva fecha del sistema.
+	*Primero, obtengo la fecha real y la descompongo
+	*/
 	public static void calcularFechaReal () {
 			setFechaReal();
 			String[] descomposiciónFecha = getFechaReal().split(";");
@@ -130,7 +144,12 @@ public class Tiempo {
 							", Año del sistema: "+añoSistema);*/
 		setContadorDias(0);} //Finalizado el proceso, reseteo el contador de días
 	
-	public static String fechaSistema () { //Retorna la fecha del sistema cada vez, tomando en cuenta los cambios
+	/**
+	 * Retorna la fecha del sistema cada vez, tomando en cuenta los cambios
+	 * 
+	 * @return msg
+	 */
+	public static String fechaSistema () { 
 		String msg = diaSistema + "/" +
 					 mesMuestraSistema + "/" +
 					 añoSistema;
