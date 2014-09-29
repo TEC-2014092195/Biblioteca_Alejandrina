@@ -46,6 +46,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
 
+import controles.PopupControles;
 import prestamo.articulo.CalificacionRenderer;
 import prestamo.articulo.ImagenRenderer;
 import tiempo.Tiempo;
@@ -158,13 +159,22 @@ public class TablaArticulos extends JPanel implements ActionListener{
                 
                 JLabel label = new JLabel();
                 int modelRow = table.convertRowIndexToModel(row);
-                String type = (String)table.getModel().getValueAt(modelRow, 9); //Obtener Valor 
+                String type = (String)table.getModel().getValueAt(modelRow, 10); //Obtener Valor
                 
-                
+                int diasPrestados = Integer.parseInt(type);
+                if (PopupControles.diasToleranciaN == 0 && PopupControles.diasToleranciaM == 0 ){
+                	pane.setBackground(Color.DARK_GRAY);
+                }else if (diasPrestados < PopupControles.diasToleranciaN && diasPrestados < PopupControles.diasToleranciaM ){
+                	pane.setBackground(Color.GREEN);
+                }else if (diasPrestados >= PopupControles.diasToleranciaN && diasPrestados < PopupControles.diasToleranciaM ){
+                	pane.setBackground(Color.YELLOW);
+                }else if (diasPrestados >= PopupControles.diasToleranciaM ){
+                	pane.setBackground(Color.RED);
+                }
 				
 				
-					label.setText((String)value);
-					pane.add(label);
+				label.setText((String)value);
+				pane.add(label);
 				
                 
                 return pane;

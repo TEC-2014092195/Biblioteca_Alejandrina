@@ -47,9 +47,6 @@ import javax.swing.table.DefaultTableModel;
 
 
 
-import com.toedter.calendar.JSpinnerDateEditor;
-
-
 
 
 
@@ -64,7 +61,6 @@ public class PopupArticulos extends JDialog implements ActionListener{
 	GridBagConstraints grid = new GridBagConstraints();
 	JLabel lblTipo,lblTitulo,lblDetalle1,lblDetalle2,lblDetalle3,lblCalificacion,lblSelFecha;
 	JTextField txtTipo,txtTitulo,txtDetalle1,txtDetalle2,txtDetalle3,txtCalificacion;
-	JSpinnerDateEditor dateEditor = new JSpinnerDateEditor();
 	JButton btnCerrar;
 	static int indexCliente=0;
 	

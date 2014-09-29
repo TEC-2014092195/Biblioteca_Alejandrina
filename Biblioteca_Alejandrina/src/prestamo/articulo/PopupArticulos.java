@@ -59,8 +59,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JSpinnerDateEditor;
 
 import consultas.TablaConsultas;
 import prestamo.articulo.PrestarArticulo.ModeloTabla;
@@ -83,7 +81,6 @@ public class PopupArticulos extends JDialog implements ActionListener{
 	GridBagConstraints grid = new GridBagConstraints();
 	JLabel lblTipo,lblTitulo,lblDetalle1,lblDetalle2,lblDetalle3,lblCalificacion,lblSelFecha,lblDias,lblTotalDias;
 	JTextField txtTipo,txtTitulo,txtDetalle1,txtDetalle2,txtDetalle3,txtCalificacion;
-	JSpinnerDateEditor dateEditor = new JSpinnerDateEditor();
 	JButton btnCerrar;
 	static int indexCliente=0;
 	static int diasprestamo=0;
