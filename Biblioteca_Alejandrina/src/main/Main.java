@@ -28,7 +28,7 @@ public class Main {
 		Registro.recuperarEstadoSistema();
 		
 		Tiempo.calcularFechaReal(); 
-//		ClaseIntroduccion ci = new ClaseIntroduccion(); //Inicia con la imagen del logotipo (comentado para no atrasar el proceso hasta la versión final)
+		ClaseIntroduccion ci = new ClaseIntroduccion(); //Inicia con la imagen del logotipo (comentado para no atrasar el proceso hasta la versión final)
 		SwingUtilities.invokeLater(new Runnable() {
 	         public void run() {
 	        	 Notificaciones notif = new Notificaciones();

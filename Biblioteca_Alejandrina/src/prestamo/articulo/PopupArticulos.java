@@ -298,73 +298,73 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		panelGrilla.add( txtCalificacion,grid );
 		
 		
-		grid.gridx = 5;
-		grid.gridwidth=2;
-		panelGrilla.add(lblSelFecha,grid);
-		
-		
-		
-		grid.gridx = 7;
-		grid.gridwidth=1;
-		grid.fill = GridBagConstraints.HORIZONTAL;
-		Calendar cal = Calendar.getInstance();
-        Date date = cal.getTime();
-		SimpleDateFormat format= new SimpleDateFormat("dd;MM;yyyy");
-		dateEditor.addChangeListener(new ChangeListener() {
-			
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				
-				Date fechaelegida = (Date) ((JSpinner) e.getSource()).getValue();
-				SimpleDateFormat format= new SimpleDateFormat("dd;MM;yyyy");
-                
-                Calendar cal1 = new GregorianCalendar();
-                Calendar cal2 = new GregorianCalendar();
-                Calendar fechahoy = Calendar.getInstance();
-                cal1.setTime(fechahoy.getTime());         
-                cal2.setTime(fechaelegida);
-                if(format.format(cal1.getTime()).equals(format.format(cal2.getTime()))){
-                	lblTotalDias.setText(""+0);
-                	diasprestamo=0;
-                }else{
-                	int diferencia =daysBetween(cal1.getTime(),cal2.getTime());
-                	if (diferencia>=0){
-                		diferencia+=1;
-                		lblTotalDias.setText(""+diferencia);
-                		diasprestamo=diferencia;
-                	}else{
-                		
-                		lblTotalDias.setText(""+diferencia);
-                		diasprestamo=diferencia;
-                	}
-                }
-                fechaPrestamo = format.format(cal1.getTime());
-                fechaDevolucion = format.format(cal2.getTime());
-
-			}
-			
-			public int daysBetween(Date d1, Date d2){
-				 return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
-			}
-		});
-		
-		format = ((JSpinner.DateEditor) dateEditor.getEditor()).getFormat();
-        format.applyPattern("dd-MMM-yyyy");
-        dateEditor.setValue(date);
-        fechaPrestamo = format.format(date);
-        fechaDevolucion = format.format(date);
-		panelGrilla.add(dateEditor,grid);
-		
-		
-		grid.gridy = 2; //Fila
-		grid.gridx = 6; //Columna
-		grid.fill = GridBagConstraints.NONE;
-		panelGrilla.add(lblDias,grid);
-		
-		
-		grid.gridx = 7;
-		grid.anchor = GridBagConstraints.WEST;
-		panelGrilla.add(lblTotalDias,grid);
+//		grid.gridx = 5;
+//		grid.gridwidth=2;
+//		panelGrilla.add(lblSelFecha,grid);
+//		
+//		
+//		
+//		grid.gridx = 7;
+//		grid.gridwidth=1;
+//		grid.fill = GridBagConstraints.HORIZONTAL;
+//		Calendar cal = Calendar.getInstance();
+//        Date date = cal.getTime();
+//		SimpleDateFormat format= new SimpleDateFormat("dd;MM;yyyy");
+//		dateEditor.addChangeListener(new ChangeListener() {
+//			
+//			@Override
+//			public void stateChanged(ChangeEvent e) {
+//				
+//				Date fechaelegida = (Date) ((JSpinner) e.getSource()).getValue();
+//				SimpleDateFormat format= new SimpleDateFormat("dd;MM;yyyy");
+//                
+//                Calendar cal1 = new GregorianCalendar();
+//                Calendar cal2 = new GregorianCalendar();
+//                Calendar fechahoy = Calendar.getInstance();
+//                cal1.setTime(fechahoy.getTime());         
+//                cal2.setTime(fechaelegida);
+//                if(format.format(cal1.getTime()).equals(format.format(cal2.getTime()))){
+//                	lblTotalDias.setText(""+0);
+//                	diasprestamo=0;
+//                }else{
+//                	int diferencia =daysBetween(cal1.getTime(),cal2.getTime());
+//                	if (diferencia>=0){
+//                		diferencia+=1;
+//                		lblTotalDias.setText(""+diferencia);
+//                		diasprestamo=diferencia;
+//                	}else{
+//                		
+//                		lblTotalDias.setText(""+diferencia);
+//                		diasprestamo=diferencia;
+//                	}
+//                }
+//                fechaPrestamo = format.format(cal1.getTime());
+//                fechaDevolucion = format.format(cal2.getTime());
+//
+//			}
+//			
+//			public int daysBetween(Date d1, Date d2){
+//				 return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+//			}
+//		});
+//		
+//		format = ((JSpinner.DateEditor) dateEditor.getEditor()).getFormat();
+//        format.applyPattern("dd-MMM-yyyy");
+//        dateEditor.setValue(date);
+//        fechaPrestamo = format.format(date);
+//        fechaDevolucion = format.format(date);
+//		panelGrilla.add(dateEditor,grid);
+//		
+//		
+//		grid.gridy = 2; //Fila
+//		grid.gridx = 6; //Columna
+//		grid.fill = GridBagConstraints.NONE;
+//		panelGrilla.add(lblDias,grid);
+//		
+//		
+//		grid.gridx = 7;
+//		grid.anchor = GridBagConstraints.WEST;
+//		panelGrilla.add(lblTotalDias,grid);
 		
 		
 		

@@ -128,23 +128,39 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		grid.insets = new Insets( 0, 0, 0, 30);
 		strTipoConsulta = new String[] { "Artículo","Artículos Prestados","Artículos No Prestados","Más Prestados","Personalizado" };
 		cbTipoConsulta = new JComboBox<String>(strTipoConsulta);
+		cbTipoConsulta.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String tipo = (String) cbTipoConsulta.getSelectedItem();
+				switch (tipo) {
+				case "Artículo":
+					filtroTipo();
+					break;
+				case "Artículos Prestados":
+					filtroArtPrestado();
+					break;
+				case "Artículos No Prestados":
+					filtroArtNoPrestado();
+					break;
+				case "Más Prestados":
+					filtroTipo();
+					break;
+				case "Personalizado":
+					filtroTipo();
+					break;
+				default:
+					JOptionPane.showMessageDialog(null, "Opción Inválida");
+					break;
+				}
+				
+			}
+		});
 		panelGrid.add(cbTipoConsulta,grid);
 		
 		
-		grid.gridx=4;
-		grid.gridy=0;
-		grid.insets = new Insets( 0, 0, 0, 10);
-		JLabel lblOrdenarPor = new JLabel("Filtrar Por: ");
-		panelGrid.add(lblOrdenarPor,grid);
-		
-		grid.gridx=5;
-		grid.gridy=0;
-		grid.insets = new Insets( 0, 0, 0, 0);
-		strTipoFiltro = new String[] { "Título","Autor","Editorial" };
-		cbTipoFiltro = new JComboBox<String>(strTipoFiltro);
-		panelGrid.add(cbTipoFiltro,grid);
 		
 		
+				
 		grid.gridx=0;
 		grid.gridy=1;
 		grid.insets = new Insets( 10, 0, 0, 10);
@@ -192,13 +208,13 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		
 		ocultarConsultaPersonalizado();
 		
-		grid.gridx=4;
-		grid.gridy=1;
-		grid.gridwidth = 2;
-		grid.insets = new Insets( 10, 0, 0, 0);
-		grid.anchor = GridBagConstraints.CENTER;
-		btnGenerarConsulta = new JButton("Generar Consulta");
-		panelGrid.add( btnGenerarConsulta,grid);
+//		grid.gridx=4;
+//		grid.gridy=1;
+//		grid.gridwidth = 2;
+//		grid.insets = new Insets( 10, 0, 0, 0);
+//		grid.anchor = GridBagConstraints.CENTER;
+//		btnGenerarConsulta = new JButton("Generar Consulta");
+//		panelGrid.add( btnGenerarConsulta,grid);
 		
 		//-----------------Add tabla
 		grid.gridx=0;
@@ -215,8 +231,8 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 		//ActionListeners
 		cbTipoArticulo.addActionListener(this);
 		cbTipoConsulta.addActionListener(this);
-		cbTipoFiltro.addActionListener(this);
-		btnGenerarConsulta.addActionListener(this);
+
+//		btnGenerarConsulta.addActionListener(this);
 		
 		grid.fill=GridBagConstraints.NONE;
 		grid.gridx=0;
@@ -269,6 +285,36 @@ public class ClaseConsulta extends JFrame implements ActionListener{
 			TablaConsultas.sorter.setRowFilter(rf);
 		}
 		
+	}
+	
+	private void filtroArtPrestado() {
+		
+		RowFilter<DefaultTableModel, Object> rf = null;
+		// If current expression doesn't parse, don't update.
+		try {
+			
+			rf = RowFilter.regexFilter("true", 7); // (Patron a filtrar, int columna) 
+			
+		} catch (java.util.regex.PatternSyntaxException e) {
+			return;
+		}
+		TablaConsultas.sorter.setRowFilter(rf);
+						
+	}
+	
+	private void filtroArtNoPrestado() {
+		
+		RowFilter<DefaultTableModel, Object> rf = null;
+		// If current expression doesn't parse, don't update.
+		try {
+			
+			rf = RowFilter.regexFilter("false", 7); // (Patron a filtrar, int columna) 
+			
+		} catch (java.util.regex.PatternSyntaxException e) {
+			return;
+		}
+		TablaConsultas.sorter.setRowFilter(rf);
+						
 	}
 
 

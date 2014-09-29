@@ -27,7 +27,7 @@ public class ClaseIntroduccion extends JWindow {
 			setBackground(new Color(1.0f,1.0f,1.0f,0.5f));
 			
 			setVisible(true);
-			Thread.sleep(2500); 
+			Thread.sleep(2000); 
 			dispose(); 
 			
 		}catch(Exception exception) { 

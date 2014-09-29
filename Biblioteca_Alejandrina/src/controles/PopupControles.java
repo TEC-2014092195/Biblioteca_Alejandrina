@@ -21,6 +21,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import logicaRegistro.Articulo;
+import logicaRegistro.Cliente;
+import logicaRegistro.Registro;
+import mail.Email;
 import tiempo.Tiempo;
 
 public class PopupControles extends JFrame{
@@ -49,8 +53,8 @@ public class PopupControles extends JFrame{
 	
 	
 	public void crearControles(){
-		lblDefinir = new JLabel("Defina Fecha:");
-		txtDefinir = new JTextField(15);
+		lblDefinir = new JLabel("Simular paso días:");
+		txtDefinir = new JTextField(10);
 		btnDefinir = new JButton("Definir");
 		
 		btnDefinir.addActionListener(new ActionListener() {
@@ -62,9 +66,12 @@ public class PopupControles extends JFrame{
 				if (txtDefinir.getText().matches("\\d*") && !"".equals(txtDefinir.getText())){
 					dias = Integer.parseInt(txtDefinir.getText());
 										
-					Tiempo.simularCambioDia(dias);
-					Tiempo.setContadorDias(dias);
-					JOptionPane.showMessageDialog(null, Tiempo.getContadorDias());
+					if (dias>0){
+						Tiempo.simularCambioDia(dias);
+						Registro.articulosRegistrados.get(0).aumentarDiasPrestado(dias);
+						enviarCorreos(dias);
+					}
+					
 				}
 				
 				
@@ -77,6 +84,22 @@ public class PopupControles extends JFrame{
 		
 		
 		
+	}
+	
+	void enviarCorreos(int limiteDias){
+		for (Cliente clie : Registro.clientesRegistrados){
+			for (Articulo art : clie.getPrestamos()){
+				if (art.getDiasPrestado() > limiteDias){
+					Email e = new Email("","","","","");
+					e.enviarDespues(clie.getCorreo());
+				}
+				else if (art.getDiasPrestado() == limiteDias){
+					Email e = new Email("","","","","");
+					e.enviarDia(clie.getCorreo());
+				}
+			}
+			
+		}
 	}
 	
 	public static void main(String[] args){

@@ -21,7 +21,7 @@ public class Registro {
 		protected String telefono = null;
 		protected String correo = null; 
 		protected String categoria = null;
-		protected ArrayList<Articulo> prestamos;
+		 ArrayList<Articulo> prestamos;
 		
 	//Variables de la clase Objetos.
 		protected static int cantObjetos = 0;

@@ -140,7 +140,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		lblDetalle2 = new JLabel("Detalle2:");
 		lblDetalle3 = new JLabel("Detalle3:");
 		lblCalificacion = new JLabel("Calificación:");
-		lblSelFecha = new JLabel("Fecha de Hoy:");
+		
 		
 		
 		txtTipo = new JTextField(15);
@@ -156,7 +156,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		lblDetalle2.setBorder(borde);
 		lblDetalle3.setBorder(borde);
 		lblCalificacion.setBorder(borde);
-		lblSelFecha.setBorder(borde);
+
 		
 		
 		txtTipo.getDocument().addDocumentListener(new DocumentListener() {
@@ -277,9 +277,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		panelGrilla.add( txtCalificacion,grid );
 		
 		
-		grid.gridx = 5;
-		grid.gridwidth=2;
-		panelGrilla.add(lblSelFecha,grid);
+		
 
 		
 		

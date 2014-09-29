@@ -111,12 +111,9 @@ public class TablaArticulos extends JPanel implements ActionListener{
 		        if (evt.getClickCount() == 2) {
 
 					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
-//		        	if (PopupArticulos.diasprestamo <=0){
-//		        		JOptionPane.showMessageDialog(null, "La cantidad de días no puede ser inferior a 1","Biblioteca Alejandrina",2);
-//		        	}else{
+
 		        		prestarArticulo();
 		        		PopupArticulos.ventanaPopup.dispose();
-//		        	}
  
 		        }
 		    }
@@ -159,11 +156,7 @@ public class TablaArticulos extends JPanel implements ActionListener{
     	int idArticulo = Registro.articulosRegistrados.get(indexArticulo).getIdentificadorObjeto();
     	
 		System.out.println("Fila:"+indexArticulo);
-		
-		
-		
-		
-		
+
 		
 		Registro.clientesRegistrados.get(PopupArticulos.indexCliente).prestar(idArticulo);
 		
