@@ -31,6 +31,7 @@ public class Main {
 		ClaseIntroduccion ci = new ClaseIntroduccion(); //Inicia con la imagen del logotipo (comentado para no atrasar el proceso hasta la versión final)
 		SwingUtilities.invokeLater(new Runnable() {
 	         public void run() {
+	        	 PopupControles pcontroles = new PopupControles();
 	        	 Notificaciones notif = new Notificaciones();
 	         }
 	      });

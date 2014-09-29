@@ -49,7 +49,7 @@ public class Notificaciones{
 		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
 		    	SwingUtilities.invokeLater(new Runnable() {
 			         public void run() {
-			        	PopupControles pcontroles = new PopupControles();
+			        	
 						ClaseHome n = new ClaseHome();
 						n.crearFrame();
 			         }

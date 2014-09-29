@@ -59,8 +59,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JSpinnerDateEditor;
 
 import consultas.TablaConsultas;
 import prestamo.articulo.PrestarArticulo.ModeloTabla;
@@ -93,11 +91,13 @@ public class PopupArticulos extends JDialog implements ActionListener{
 	
 	//Cuadros de texto para los detalles de préstamo 
 	JTextField txtTipo,txtTitulo,txtDetalle1,txtDetalle2,txtDetalle3,txtCalificacion;
+
 	
 	//Spinner para elegir la fecha
-	JSpinnerDateEditor dateEditor = new JSpinnerDateEditor();
+	//JSpinnerDateEditor dateEditor = new JSpinnerDateEditor();
 	
 	//Botón para cerrar
+
 	JButton btnCerrar;
 	
 	//Enteros para saber el cliente y los días de préstamo

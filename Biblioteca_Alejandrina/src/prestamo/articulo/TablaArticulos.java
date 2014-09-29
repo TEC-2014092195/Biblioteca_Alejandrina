@@ -160,7 +160,7 @@ public class TablaArticulos extends JPanel implements ActionListener{
 		
 		Registro.clientesRegistrados.get(PopupArticulos.indexCliente).prestar(idArticulo);
 		
-		JOptionPane.showMessageDialog(null, Registro.clientesRegistrados.get(PopupArticulos.indexCliente).toString(),"Biblioteca Alejandrina",1);
+		JOptionPane.showMessageDialog(null, "El Artículo ha sido prestado satisfactoriamente","Biblioteca Alejandrina",1);
 		Registro.guardarEstadoActualSistema();
 		
 	}

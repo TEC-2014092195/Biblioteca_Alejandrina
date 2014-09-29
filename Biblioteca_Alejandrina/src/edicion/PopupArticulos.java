@@ -7,7 +7,7 @@
  **==================================================================================== 
  */
 
-package devolucion.articulo;
+package edicion;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -62,14 +62,14 @@ public class PopupArticulos extends JDialog implements ActionListener{
 	JLabel lblTipo,lblTitulo,lblDetalle1,lblDetalle2,lblDetalle3,lblCalificacion,lblSelFecha;
 	JTextField txtTipo,txtTitulo,txtDetalle1,txtDetalle2,txtDetalle3,txtCalificacion;
 	JButton btnCerrar;
-	static int indexCliente=0;
+	
 	
 	static String fechaDevolucion="";
 	TablaArticulos tabla = new TablaArticulos();
 	static JDialog ventanaPopup = new JDialog();
 
 	
-	public PopupArticulos(JFrame parent, int indexCliente) {
+	public PopupArticulos(JFrame parent) {
 		ventanaPopup = new JDialog(parent,parent.getTitle());
 		Dimension parentSize = parent.getSize(); 
 		Point p = parent.getLocation(); 
@@ -81,7 +81,7 @@ public class PopupArticulos extends JDialog implements ActionListener{
 		
 		panelContenedor.setLayout(new GridBagLayout());
 		
-		this.indexCliente = indexCliente;
+		
 		crearEncabezadoBusqueda();
 		
 		grid.gridy=0; //Fila
@@ -92,7 +92,6 @@ public class PopupArticulos extends JDialog implements ActionListener{
 				
 		grid.gridy=1;
 		panelContenedor.add(tabla,grid);
-		filtroDevolucion();
 		
 		ventanaPopup.add(panelContenedor);
 		

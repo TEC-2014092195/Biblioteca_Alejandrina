@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Notificaciones.TablaArticulos;
 import logicaRegistro.Articulo;
 import logicaRegistro.Cliente;
 import logicaRegistro.Registro;
@@ -38,10 +39,21 @@ public class PopupControles extends JFrame{
 	JLabel lblDefinir;
 	JTextField txtDefinir;
 	JButton btnDefinir;
+
 	
 	/**
 	 * Constructor de la clase PopupControles
 	 */
+
+	JLabel lblToleranciaN;
+	JTextField txtToleranciaN;
+	
+	JLabel lblToleranciaM;
+	JTextField txtToleranciaM;
+	JButton btnTolerancia;
+	public static int diasToleranciaN = 0;
+	public static int diasToleranciaM = 0;
+
 	public PopupControles() {
 		// Obtener las dimensiones del monitor
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -49,12 +61,12 @@ public class PopupControles extends JFrame{
 		double height = screenSize.getHeight();
 		
 		setLocation((int)width-400, (int) height-300);
-		setSize(350, 200);
+		setSize(190, 250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		setResizable(false);
 		crearControles();
 		
-		
+		setAlwaysOnTop(true);
 		add(panelContenedor);
 		setVisible(true);
 	}
@@ -66,7 +78,7 @@ public class PopupControles extends JFrame{
 	public void crearControles(){
 		lblDefinir = new JLabel("Simular paso días:");
 		txtDefinir = new JTextField(10);
-		btnDefinir = new JButton("Definir");
+		btnDefinir = new JButton("Definir Días");
 		
 		btnDefinir.addActionListener(new ActionListener() {
 			
@@ -81,8 +93,12 @@ public class PopupControles extends JFrame{
 						Tiempo.simularCambioDia(dias);
 						Registro.articulosRegistrados.get(0).aumentarDiasPrestado(dias);
 						enviarCorreos(dias);
+					}else{
+						JOptionPane.showMessageDialog(null, "Los días deben ser mayores a cero");
 					}
 					
+				}else{
+					JOptionPane.showMessageDialog(null, "Los valores no pueden ser nulos y solo acepta números");
 				}
 				
 				
@@ -92,6 +108,52 @@ public class PopupControles extends JFrame{
 		panelContenedor.add(lblDefinir);
 		panelContenedor.add(txtDefinir);
 		panelContenedor.add(btnDefinir);
+		
+		lblToleranciaN = new JLabel("Simular Tolerancia (n días):");
+		txtToleranciaN= new JTextField(10);
+		
+		
+		panelContenedor.add(lblToleranciaN);
+		panelContenedor.add(txtToleranciaN);
+
+		
+		lblToleranciaM = new JLabel("Simular Tolerancia (m días):");
+		txtToleranciaM= new JTextField(10);
+		
+		
+		
+		
+		panelContenedor.add(lblToleranciaM);
+		panelContenedor.add(txtToleranciaM);
+		btnTolerancia = new JButton("Definir Tolerancia");
+		btnTolerancia.addActionListener(new ActionListener() {
+			
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				if (txtToleranciaN.getText().matches("\\d*") && !"".equals(txtToleranciaN.getText()) && txtToleranciaM.getText().matches("\\d*") && !"".equals(txtToleranciaM.getText())){
+					
+					
+					
+						diasToleranciaN = Integer.parseInt(txtToleranciaN.getText());
+						diasToleranciaM = Integer.parseInt(txtToleranciaM.getText());
+						TablaArticulos.llenarTabla();
+					
+					
+				}else{
+					JOptionPane.showMessageDialog(null, "Los valores no pueden ser nulos y solo acepta números");
+				}
+				
+					
+										
+					
+					
+				
+				
+				
+			}
+		});
+		panelContenedor.add(btnTolerancia);
 		
 		
 		
