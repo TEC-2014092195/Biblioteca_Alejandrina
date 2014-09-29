@@ -252,6 +252,8 @@ public class PrestarArticulo implements ActionListener {
 			}
 		});
 		panelGrilla.add(txtCategoria, grid);
+		
+		
 
 		// -----------------------------------------------------Tabla-----
 
@@ -272,11 +274,11 @@ public class PrestarArticulo implements ActionListener {
 		    public void mouseClicked(MouseEvent evt) {
 		        
 		        if (evt.getClickCount() == 2) {
-		        	System.out.println(table.getSelectedRow());
-					System.out.println(table.getSelectedColumn());
+//		        	System.out.println(table.getSelectedRow());
+//					System.out.println(table.getSelectedColumn());
 
 					int indexCliente = table.convertRowIndexToModel(table.getSelectedRow());
-					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
+//					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
 					PopupArticulos poparticulos = new PopupArticulos(ClaseHome.ventana, indexCliente);
  
 		        }

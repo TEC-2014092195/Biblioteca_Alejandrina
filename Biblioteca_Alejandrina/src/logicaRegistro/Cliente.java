@@ -91,9 +91,9 @@ public class Cliente extends Registro{
 	
 	//------------------------------------------------------------------------//
 	public String presentarCategoria(){ //Cambio hecho para PruebaK
-		if ("1".equals(getCategoria())){return "Estudiante";}
-		else if ("2".equals(getCategoria())){return "Colega";}
-		else if ("3".equals(getCategoria())){return "Familiar";}
+		if ("Estudiante".equals(getCategoria())){return "Estudiante";}
+		else if ("Colega".equals(getCategoria())){return "Colega";}
+		else if ("Familiar".equals(getCategoria())){return "Familiar";}
 		else {return "Categoría Desconocida";}}
 	
 	public void prestar (int ID){

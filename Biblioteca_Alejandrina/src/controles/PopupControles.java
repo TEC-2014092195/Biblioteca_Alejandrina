@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Notificaciones.TablaArticulos;
 import logicaRegistro.Articulo;
 import logicaRegistro.Cliente;
 import logicaRegistro.Registro;
@@ -119,12 +120,11 @@ public class PopupControles extends JFrame{
 				if (txtToleranciaN.getText().matches("\\d*") && !"".equals(txtToleranciaN.getText()) && txtToleranciaM.getText().matches("\\d*") && !"".equals(txtToleranciaM.getText())){
 					
 					
-					if (Integer.parseInt(txtToleranciaN.getText())>0 && Integer.parseInt(txtToleranciaM.getText())>0){
+					
 						diasToleranciaN = Integer.parseInt(txtToleranciaN.getText());
 						diasToleranciaM = Integer.parseInt(txtToleranciaM.getText());
-					}else{
-						JOptionPane.showMessageDialog(null, "Los valores deben ser mayores a cero");
-					}
+						TablaArticulos.llenarTabla();
+					
 					
 				}else{
 					JOptionPane.showMessageDialog(null, "Los valores no pueden ser nulos y solo acepta números");

@@ -92,7 +92,6 @@ public class PopupArticulos extends JDialog implements ActionListener{
 				
 		grid.gridy=1;
 		panelContenedor.add(tabla,grid);
-		filtroDevolucion();
 		
 		ventanaPopup.add(panelContenedor);
 		

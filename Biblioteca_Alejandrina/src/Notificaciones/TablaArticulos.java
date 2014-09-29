@@ -54,7 +54,7 @@ import logicaRegistro.Articulo;
 import logicaRegistro.Filtro;
 import logicaRegistro.Registro;
 
-public class TablaArticulos extends JPanel implements ActionListener{
+public class TablaArticulos extends JPanel{
 
 	static JTable table;
 	static JPanel panelContenedor = new JPanel();
@@ -118,20 +118,15 @@ public class TablaArticulos extends JPanel implements ActionListener{
 		table.setRowSorter(sorter);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		table.addMouseListener(new MouseAdapter() {
-		    public void mouseClicked(MouseEvent evt) {
-		        
-		        if (evt.getClickCount() == 2) {
-		        	
-		        	
-		        	
-	                	
-		        	
-		        		
-		        }
-		    }
-		    
-		});
+//		table.addMouseListener(new MouseAdapter() {
+//		    public void mouseClicked(MouseEvent evt) {        
+//		        if (evt.getClickCount() == 2) {
+//
+//		        		
+//		        }
+//		    }
+//		    
+//		});
 		
 		table.getColumn("Imagen").setCellRenderer( new ImagenRenderer() );
 		table.getColumn("Imagen").setPreferredWidth(130);
@@ -159,11 +154,11 @@ public class TablaArticulos extends JPanel implements ActionListener{
                 
                 JLabel label = new JLabel();
                 int modelRow = table.convertRowIndexToModel(row);
-                String type = (String)table.getModel().getValueAt(modelRow, 10); //Obtener Valor
+                String type = (String)table.getModel().getValueAt(modelRow, 8); //Obtener Valor
                 
                 int diasPrestados = Integer.parseInt(type);
                 if (PopupControles.diasToleranciaN == 0 && PopupControles.diasToleranciaM == 0 ){
-                	pane.setBackground(Color.DARK_GRAY);
+                	pane.setBackground(Color.GREEN);
                 }else if (diasPrestados < PopupControles.diasToleranciaN && diasPrestados < PopupControles.diasToleranciaM ){
                 	pane.setBackground(Color.GREEN);
                 }else if (diasPrestados >= PopupControles.diasToleranciaN && diasPrestados < PopupControles.diasToleranciaM ){
@@ -215,17 +210,6 @@ public class TablaArticulos extends JPanel implements ActionListener{
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void actionPerformed(ActionEvent e) {
-		
-		
-	}
+
 
 }

@@ -42,7 +42,7 @@ import prestamo.articulo.ImagenRenderer;
 import logicaRegistro.Articulo;
 import logicaRegistro.Registro;
 
-public class TablaArticulos extends JPanel implements ActionListener{
+public class TablaArticulos extends JPanel{
 
 	static JTable table;
 	static JPanel panelContenedor = new JPanel();
@@ -73,7 +73,7 @@ public class TablaArticulos extends JPanel implements ActionListener{
 			public boolean isCellEditable(int row, int column)  
 		    {  
 		        // only columns 0 and 1 are editable  
-		        return column > 8;  
+		        return column < 7;  
 		    }  
 		};
 		table = new JTable(modelo);
@@ -107,9 +107,32 @@ public class TablaArticulos extends JPanel implements ActionListener{
 		table.addMouseListener(new MouseAdapter() {
 		    public void mouseClicked(MouseEvent evt) {
 		        
-		        if (evt.getClickCount() == 2) {
-
-					System.out.println(table.convertRowIndexToModel(table.getSelectedRow()));
+		    	if (evt.getButton() == evt.BUTTON3) {
+		        	int indexArticulo = table.convertRowIndexToModel(table.getSelectedRow());
+		        	String Tipo = (String)table.getValueAt(indexArticulo, 0);
+		        	String Titulo = (String)table.getValueAt(indexArticulo, 1);
+		        	String Detalle1 = (String)table.getValueAt(indexArticulo, 2);
+		        	String Detalle2 = (String)table.getValueAt(indexArticulo, 3);
+		        	String Detalle3 = (String)table.getValueAt(indexArticulo, 4);
+		        	String Calificacion = (String)table.getValueAt(indexArticulo, 6);
+		        	if (Calificacion.matches("\\d*") ){
+		        		if (Integer.parseInt(Calificacion)>=0 && Integer.parseInt(Calificacion)<6){
+		        			Registro.articulosRegistrados.get(indexArticulo).setTipo(Tipo);
+							Registro.articulosRegistrados.get(indexArticulo).setTitulo(Titulo);
+							Registro.articulosRegistrados.get(indexArticulo).setAutor(Detalle1);
+							Registro.articulosRegistrados.get(indexArticulo).setDato1(Detalle2);
+							Registro.articulosRegistrados.get(indexArticulo).setDato2(Detalle3);
+							Registro.articulosRegistrados.get(indexArticulo).setCalif(Calificacion);
+							
+							Registro.guardarEstadoActualSistema();
+							JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
+							PopupArticulos.ventanaPopup.dispose();
+		        		}else{
+		        			JOptionPane.showMessageDialog(null, "El dato calificación no puede ser mayor a 5");
+		        		}
+		        	}else{
+		        		JOptionPane.showMessageDialog(null, "La Calificación solamente admite datos númericos");
+		        	}
 					
  
 		        }
@@ -171,12 +194,6 @@ public class TablaArticulos extends JPanel implements ActionListener{
 
 		}
 	}
-	
-	
-	
-	public void actionPerformed(ActionEvent e) {
-		
-		
-	}
+
 
 }
