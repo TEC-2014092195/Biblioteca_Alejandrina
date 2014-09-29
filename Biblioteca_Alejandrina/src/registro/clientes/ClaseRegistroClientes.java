@@ -33,85 +33,102 @@ import main.ClaseHome;
 public class ClaseRegistroClientes extends JFrame implements ActionListener{
 	
 	//-------Declaracion Variables
-	/** The panel contenedor. */
+	
+	//Páneles para la contrucción de la ventana
 	JPanel panel,panelGeneral,panelContenedor;
 	
-	/** The gridbag. */
+	//Para el Layout de la ventana
 	GridBagLayout gridbag;
 	
-	/** The gbc2. */
+	//Para el Layout de la ventana
 	GridBagConstraints c,gbc2;
 	
-	/** The grid. */
+	//EL grid normal para Layout
 	GridLayout grid;
 	
-	/** The lbl logo. */
+	//Etiquetas para todos lo elementos de la ventana
 	JLabel lblCedula,lblNombre,lblPApellido,lblSApellido,lblTelefono,lblCorreo,lblCategoria,lblLogo;
 	
-	/** The txt correo. */
+	//Campos de texto para todos los datos de la ventana
 	JTextField txtCedula,txtNombre,txtPApellido,txtSApellido,txtTelefono,txtCorreo;
 	
-	/** The cb categoria. */
+	//COmboBox para elegir la categoria
 	JComboBox cbCategoria;
 	
-	/** The str categoria. */
+	//String para elegir la categoría
 	String[] strCategoria; 
 	
-	/** The btn atras. */
+	//Botones para Guardar(Validar) y Devolverse
 	JButton btnValidar,btnAtras;
 	
+	//Instancia de la clase Cliente para registrar personas
 	Cliente cliente_reg;
 	
+	//Color para el fondo del panel
 	Color colorlbl = new Color(0,54,43);
 	//-------Fin declaracion variables
 	
 	/**
-	 * Instantiates a new clase registro clientes.
+	 * Constructor de la clase ClaseRegistroClientes
 	 */
 	public ClaseRegistroClientes(){
+		
+		//Creación del panel panelContenedor
 		 panelContenedor = new JPanel();
+		 
+		 //Asignar Layout al panelContenedor
 		 panelContenedor.setLayout(new FlowLayout());
 		
+		 //Creación del panel panelGeneral
 		 panelGeneral = new JPanel();
 		 panelGeneral.setLayout(new GridBagLayout());
-		 //panelGeneral.setBackground(Color.WHITE);
+		 
+		 //Creación del Grid para las posiciones de los objetos
 		 gbc2 = new GridBagConstraints();
 		 
+		 //Creación del panel panel, y asignación respectiva del Layout
 		 panel = new JPanel();
 		 gridbag = new GridBagLayout();
 		 c = new GridBagConstraints();
 		 panel.setLayout(gridbag);
 		 
+		 //Configuración de la etiqueta para Cédula
 		 lblCedula = new JLabel("Cédula ");
 		 lblCedula.setHorizontalAlignment(SwingConstants.RIGHT);
 		 lblCedula.setForeground(colorlbl);
 		 txtCedula = new JTextField(20);
 		 
+		//Configuración de la etiqueta para Nombre
 		 lblNombre = new JLabel("Nombre ");
 		 lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		 lblNombre.setForeground(colorlbl);
 		 txtNombre = new JTextField(20);
 		 
+		//Configuración de la etiqueta para Primer Apellido
 		 lblPApellido = new JLabel("Primer Apellido ");
 		 lblPApellido.setHorizontalAlignment(SwingConstants.RIGHT);
 		 lblPApellido.setForeground(colorlbl);
 		 txtPApellido = new JTextField(20);
 		 
+		//Configuración de la etiqueta para Segundo Apellido
 		 lblSApellido = new JLabel("Segundo Apellido ");
 		 lblSApellido.setHorizontalAlignment(SwingConstants.RIGHT);
 		 lblSApellido.setForeground(colorlbl);
 		 txtSApellido = new JTextField(20);
 		 
+		//Configuración de la etiqueta para Teléfono
 		 lblTelefono = new JLabel("Teléfono ");
 		 lblTelefono.setHorizontalAlignment(SwingConstants.RIGHT);
 		 lblTelefono.setForeground(colorlbl);
 		 txtTelefono = new JTextField(20);
 		 
+		//Configuración de la etiqueta para Correo Electrónico
 		 lblCorreo = new JLabel("Correo Electrónico");
 		 lblCorreo.setHorizontalAlignment(SwingConstants.RIGHT);
 		 lblCorreo.setForeground(colorlbl);
 		 txtCorreo = new JTextField(20);
 		 
+		//Configuración del botón Validar
 		 btnValidar = new JButton("Validar");
 		 btnValidar.setBackground(colorlbl);
 		 btnValidar.setForeground(Color.WHITE);
@@ -119,18 +136,22 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 btnValidar.setFocusable(false);
 		 
 		 
-		 
+		//Creación de la etiqueta para la Categoría
 		 lblCategoria = new JLabel("Categoria ");
 		 lblCategoria.setForeground(colorlbl);
 		 
+		//String para los tres tipos de categoría
 		 strCategoria = new String[] { "Estudiante" , "Familiar" , "Colega" };
 		 cbCategoria = new JComboBox(strCategoria);
 		 
+		//Inicio del grid en x=0 y y=0
 		 c.gridx=0;
 		 c.gridy=0;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.anchor = GridBagConstraints.CENTER;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,10,0,10);
 		 panel.add(lblCedula,c);
 		 
@@ -138,6 +159,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=0;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
+		 
+	    // Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,0,0,10);
 		 panel.add(txtCedula,c);
 		 
@@ -146,6 +169,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=1;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,10,0,10);
 		 panel.add(lblNombre,c);
 		 
@@ -153,6 +178,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=1;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,0,0,10); // Extrenal Pad (top, left, bottom, right)
 		 panel.add(txtNombre,c);
 		 
@@ -161,6 +188,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=2;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,10,0,10); 
 		 panel.add(lblPApellido,c);
 		 
@@ -169,6 +198,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=2;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
+		
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,0,0,10); 
 		 panel.add(txtPApellido,c);		 
 		 
@@ -177,6 +208,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=3;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,10,0,10);
 		 panel.add(lblSApellido,c);
 		 
@@ -185,6 +218,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=3;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,0,0,10);
 		 panel.add(txtSApellido,c);
 
@@ -193,6 +228,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=4;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,10,0,10);
 		 panel.add(lblTelefono,c);
 		 
@@ -201,6 +238,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=4;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,0,0,10);
 		 panel.add(txtTelefono,c);
 		 
@@ -208,13 +247,17 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=5;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
-		 c.insets = new Insets(10,10,0,10); // Extrenal Pad (top, left, bottom, right)
+		 
+		// Insets (top, left, bottom, right)
+		 c.insets = new Insets(10,10,0,10); 
 		 panel.add(lblCorreo,c);
 		 
 		 c.gridx=1;
 		 c.gridy=5;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,0,0,10);
 		 panel.add(txtCorreo,c);
 		 
@@ -222,7 +265,9 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=6;
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
-		 c.insets = new Insets(10,10,0,10); // Extrenal Pad (top, left, bottom, right)
+		 
+		// Insets (top, left, bottom, right)
+		 c.insets = new Insets(10,10,0,10); 
 		 panel.add(lblCategoria,c);
 		 
 		 c.gridx=1;
@@ -230,6 +275,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridwidth=GridBagConstraints.RELATIVE;
 		 c.gridheight=1;
 		 c.anchor = GridBagConstraints.CENTER;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,0,0,10);
 		 cbCategoria.setBackground(Color.WHITE);
 		 cbCategoria.setEditable(true);
@@ -240,23 +287,29 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 c.gridy=7;
 		 c.gridwidth=2;
 		 c.gridheight=1;
+		 
+		// Insets (top, left, bottom, right)
 		 c.insets = new Insets(10,0,10,10);
 		 
-		 
+		 //Se agrega el actionListener a btnValidar
 		 btnValidar.addActionListener(this);
 		 panel.add(btnValidar,c);
+		//Fin de posicionar los objetos
 		 
-		 
+		//Color del panel panel
 		 panel.setBackground(new Color(24,190,155));
 		 
 		
-	
+		//Inicio del grid para el panel panel
 		 gbc2.gridx=0;
 		 gbc2.gridy=0;
 		 gbc2.gridheight=1;
 		 gbc2.gridwidth=GridBagConstraints.RELATIVE;
 		 
+		// Insets (top, left, bottom, right)
 		 gbc2.insets = new Insets(32,-2,130,0); 
+		 
+		 //Configuración del panelGeneral
 		 ImageIcon img = new ImageIcon(getClass().getResource("/recursos/BALogo.png")); 
 		 lblLogo = new JLabel("");
 		 lblLogo.setIcon(img);
@@ -268,6 +321,8 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 gbc2.gridx=0;
 		 gbc2.gridy=1;
 		 gbc2.gridheight=1;
+		 
+		// Insets (top, left, bottom, right)
 		 gbc2.insets = new Insets(-90,0,0,0); 
 		 panelGeneral.add(panel,gbc2);
 		 
@@ -277,34 +332,43 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		 gbc2.gridy=2;
 		 gbc2.gridheight=2;
 		 gbc2.anchor = GridBagConstraints.LINE_END;
+		 
+		// Insets (top, left, bottom, right)
 		 gbc2.insets = new Insets(20,0,0,0);
+		 
+		 //Configuración de btnAtras
 		 btnAtras = new JButton("Atrás");
 		 btnAtras.setBackground(Color.DARK_GRAY);
 		 btnAtras.setForeground(Color.WHITE);
 		 btnAtras.setBorderPainted(false);
+		 
+		 //Se agrega el actionListener al btnAtras
 		 btnAtras.addActionListener(this);
 		 
 		 
-		 
-
+		 //Se agrega a los páneles todo lo configurado
 		 panelGeneral.add(btnAtras,gbc2);
-		 
 		 panelContenedor.add(panelGeneral);
-		
-		
-		
 	}
 	
+	
+	/**
+	 * Obtine el JPanel <code>panelContenedor</code> para que otras clases lo puedan usar
+	 * 
+	 * @return panelContenedor
+	 */
 	public Container getContenedor(){
 		return panelContenedor;
 	}
 
 	
-	//TODO ActionListener()
-	/* (non-Javadoc)
-	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	/**
+	 * Implementación del <code>actionPerformed</code>() para asignar acciones a los botones y ComboBox
+	 * 
 	 */
 	public void actionPerformed(ActionEvent e) {
+		
+		//Condicional del botón validar
 		if(e.getSource()==btnValidar){
 			
 			if (verificarDatos()){
@@ -327,7 +391,9 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 						JOptionPane.showMessageDialog(null, s);
 						
 						limpiarTextos();
-					}else{
+					}
+					//Excepción para asegurarse que los datos ingresados son válidos
+					else{
 						JOptionPane.showMessageDialog(null, "El cliente ya está registrado en el sistema.","Error valores duplicados",JOptionPane.ERROR_MESSAGE);
 						limpiarTextos();
 					}
@@ -340,9 +406,9 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 			
 			
 			
-			
+		//Condicional para el botón btnAtras, que instancia a la Clase Home para regresar	
 		}if(e.getSource()==btnAtras){
-			
+			//Instancia de clase ClaseHome
 			ClaseHome home = new ClaseHome();
 			home.getCardLayout().show(home.getPanelCards(), "Home");
 			home.ventana.revalidate();
@@ -353,14 +419,24 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		
 	}
 	
+	/**
+	 * Método para guardar los Datos en un <code>Cliente</code>
+	 * 
+	 * @see #Registro.clientesRegistrados()
+	 * @see #Registro.guardarEstadoActualSistema()
+	 */
 	public void guardarDatos(){
+		
+		//Se crea un cliente nuevo con la información otorgada
 		cliente_reg = new Cliente(txtCedula.getText(), txtNombre.getText(), txtPApellido.getText(), txtSApellido.getText(), txtTelefono.getText(), txtCorreo.getText(), (String) cbCategoria.getSelectedItem());
 		Registro.clientesRegistrados.add(cliente_reg);
+		
+		//Guarda el estado actual del Sistema mediante un txt
 		Registro.guardarEstadoActualSistema();
 	}
 	
 	/**
-	 * Limpiar textos.
+	 * Limpiar textos. Limpia todos los campos de texto de la ventana
 	 */
 	public void limpiarTextos(){
 		txtCedula.setText("");
@@ -372,13 +448,16 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 		cbCategoria.setSelectedIndex(0);
 	}
 	
-    //http://mirastro.wordpress.com/2012/02/09/validar-direccion-email-con-java/
+    
+	/**
+	 * Método para verificar si la dirección ingresada sea un email válido
+	 */
 	public boolean verificarEmail () {
 
-	    // Establecer el patron
+	    // Establecer el patrón
 	    Pattern p = Pattern.compile("[-\\w\\.]+@[\\.\\w]+\\.\\w+");
 
-	    // Asociar el string al patron
+	    // Asociar el string al patrón
 	    Matcher matchCorreo = p.matcher( txtCorreo.getText() );
 
 	   // Comprobar si encaja
@@ -392,28 +471,44 @@ public class ClaseRegistroClientes extends JFrame implements ActionListener{
 
 	}
 	
-	
+	/**
+	 * Método para verificar si los datos ingresados están correctos
+	 * 
+	 * @return true or false 
+	 */
 	public boolean verificarDatos(){
+		
+		//Comprobar cédula
 		if (!txtCedula.getText().matches("\\d*") || txtCedula.getText().matches("\\s*")){
 			JOptionPane.showMessageDialog(null, "El número de Cédula solo acepta digitos");
 			return false;
 		}
+		
+		//Comprobar Nombre
 		if ( txtNombre.getText().matches("\\s*") ){ //Verifica si tiene espacios en blanco
 			JOptionPane.showMessageDialog(null, "El dato Nombre no ha sido ingresado");
 			return false;
 		}
+		
+		//Comprobar Primer apellido
 		if ( txtPApellido.getText().matches("\\s*") ){
 			JOptionPane.showMessageDialog(null, "El dato Primer Apellido no ha sido ingresado");
 			return false;
 		}
+		
+		//Comprobar segundo apellido
 		if ( txtSApellido.getText().matches("\\s*") ){
 			JOptionPane.showMessageDialog(null, "El dato Segundo Apellido no ha sido ingresado");
 			return false;
 		}
+		
+		//Comprobar teléfono
 		if ( !txtTelefono.getText().matches("\\d*") || txtTelefono.getText().matches("\\s*") ){
 			JOptionPane.showMessageDialog(null, "El número de Teléfono solo acepta números del 0 al 9");
 			return false;
 		}
+		
+		//Comprobar Correo
 		if ( txtCorreo.getText().matches("\\s*") ){
 			JOptionPane.showMessageDialog(null, "El dato Correo no ha sido ingresado");
 			return false;
