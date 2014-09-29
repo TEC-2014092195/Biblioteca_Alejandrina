@@ -1,2 +1,2 @@
-Libro;hfgh;gh;fgh;fgh;Biblioteca_Alejandrina/recursosImagen/articulo0.jpg;1;true;28/Setiembre/2014;0;1;1;
-Cliente;123;Kevin;Hernandez;Rostran;38102;kevinah95@gmail.com;Estudiante;0-1-;
+Libro;hfgh;nvbn;vbnvbn;bnvbnvb;Biblioteca_Alejandrina/recursosImagen/articulo0.jpg;0;true;28/Setiembre/2014;0;1;0;
+Cliente;12345678;Kevinewqe;Kevinewqe;Kevinewqe;Kevinewqe;Kevinewqe;Kevinewqe;0-1-;

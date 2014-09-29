@@ -29,6 +29,7 @@ import registro.clientes.ClaseRegistroClientes;
 import consultas.ClaseConsulta;
 import consultas.TablaConsultas;
 import devolucion.articulo.DevolverArticulo;
+import edicion.EditarArticulo;
 import logicaRegistro.Registro;
 import prestamo.articulo.*;
 
@@ -46,7 +47,7 @@ public class ClaseHome extends JFrame implements ActionListener {
 
 	// Botones del panelHome
 	JButton btnRegistroClientes, btnRegistroArticulos, btnConsultas,
-			btnPrestamos, btnDevoluciones, btnSalir;
+			btnPrestamos, btnDevoluciones, btnEdicion, btnSalir;
 
 	// Layout asignado a panelCards para visuaizar los diferentes paneles que contiene
 	static CardLayout cardlayout = new CardLayout();
@@ -154,6 +155,18 @@ public class ClaseHome extends JFrame implements ActionListener {
 		panelContenedor.add(btnDevoluciones, grid);
 		panelContenedor.setComponentZOrder(btnDevoluciones, 0);
 		
+		// Insets (top, left, bottom, right)
+		grid.insets = new Insets(285, 0, 0, 0); 
+		btnEdicion = new JButton("Editar");
+		btnEdicion.setOpaque(false);
+//		btnEdicion.setBorderPainted(false);
+		btnEdicion.setPreferredSize(new Dimension(100, 100));
+		btnEdicion.setBackground(Color.WHITE);
+		btnEdicion.setFocusable(false);
+		btnEdicion.setBounds(553, 236, 150, 150);
+		panelContenedor.add(btnEdicion, grid);
+		panelContenedor.setComponentZOrder(btnEdicion, 0);
+		
 		// Añadir al panelHome todos sus Widgets contenidos en panelContenedor
 		panelHome.add(panelContenedor);
 
@@ -164,6 +177,7 @@ public class ClaseHome extends JFrame implements ActionListener {
 		btnConsultas.addActionListener(this);
 		btnPrestamos.addActionListener(this);
 		btnDevoluciones.addActionListener(this);
+		btnEdicion.addActionListener(this);
 
 	}
 
@@ -243,6 +257,8 @@ public class ClaseHome extends JFrame implements ActionListener {
 		// Agrega a panelCards el contenedor de la clase DevolverArticulo y le asigna name="Devoluciones"
 		panelCards.add("Devoluciones", devoluciones.getContenedor());
 		
+		EditarArticulo editar = new EditarArticulo();
+		panelCards.add("Editar", editar.getContenedor());
 		
 		// Define el panel que se desea mostrar del panelCards con el name asignado anticipadamente 
 		cardlayout.show(panelCards, "Home");
@@ -282,6 +298,11 @@ public class ClaseHome extends JFrame implements ActionListener {
 		}else if (e.getSource() == btnDevoluciones){
 			//Mostrar en cardlayout "Devoluciones"
 			cardlayout.show(panelCards, "Devoluciones");
+			ventana.revalidate();
+			ventana.repaint();
+		}else if (e.getSource() == btnEdicion){
+			//Mostrar en cardlayout "Editar"
+			cardlayout.show(panelCards, "Editar");
 			ventana.revalidate();
 			ventana.repaint();
 		}
